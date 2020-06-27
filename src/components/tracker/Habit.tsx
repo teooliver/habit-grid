@@ -1,7 +1,5 @@
 import React from "react";
 
-interface Props {}
-
 const colors = [
   "#4c4e58",
   "#abc3e7",
@@ -14,6 +12,8 @@ const colors = [
   "#bae1ff",
 ];
 const n = colors.length;
+
+interface Props {}
 
 const Habit: React.FC<Props> = () => {
   return <div></div>;

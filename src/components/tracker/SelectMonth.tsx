@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { connect } from "react-redux";
-import { selectMonth } from "../redux/actions/selectMonth";
-import { StoreState } from "../redux/reducers";
+import { selectMonth } from "../../redux/actions/selectMonth";
+import { StoreState } from "../../redux/reducers";
 
 interface Props {
   selectedMonth: number;

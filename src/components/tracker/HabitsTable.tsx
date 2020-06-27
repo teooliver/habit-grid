@@ -1,8 +1,8 @@
 import React, { Component, useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { StoreState } from "../redux/reducers";
-import { Habit } from "../redux/actions";
-import { getHabits } from "../redux/actions";
+import { StoreState } from "../../redux/reducers";
+import { Habit } from "../../redux/actions";
+import { getHabits } from "../../redux/actions";
 
 interface MainTableProps {
   getHabits: Function;

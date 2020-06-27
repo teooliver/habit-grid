@@ -1,6 +1,7 @@
 import Dexie from "dexie";
 import { Habit } from "../redux/actions";
 
+//  Todo: Delete IHabit use Habit interface
 export interface IHabit {
   // id: number;
   name: string;
@@ -67,12 +68,7 @@ export const deletePoint = async (id: number, date: Date) => {
       }
     }
     await db.habits.put(habit, id);
-    // habit.events.forEach((event, i) => {
-    //   return event.getTime() === date.getTime()
-    //     ? habit.events.splice(i)
-    //     : event;
-    // });
-    // console.log("new: ", habit);
+
     return habit;
   }
 };

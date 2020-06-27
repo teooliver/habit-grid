@@ -1,5 +1,5 @@
 import React, { useEffect, useState, FunctionComponent } from "react";
-import "./App.css";
+import "./styles/styles.scss";
 import { connect } from "react-redux";
 import {
   Habit,
@@ -10,8 +10,7 @@ import {
   removePoint,
 } from "./redux/actions";
 import { StoreState } from "./redux/reducers";
-import SelectMonth from "./components/SelectMonth";
-import { selectMonth } from "./redux/actions/selectMonth";
+import SelectMonth from "./components/tracker/SelectMonth";
 
 interface AppProps {
   habits: Habit[];
