@@ -1,4 +1,4 @@
-import React, { useEffect, useState, FunctionComponent } from "react";
+import React, { useEffect, useState } from "react";
 import "./styles/styles.scss";
 import { connect } from "react-redux";
 import {
@@ -10,11 +10,10 @@ import {
   removePoint,
 } from "./redux/actions";
 import { StoreState } from "./redux/reducers";
-import SelectMonth from "./components/tracker/SelectMonth";
+import HabitTracker from "./components/tracker/HabitTracker";
 
 interface AppProps {
   habits: Habit[];
-  selectedMonth: number;
   getHabits: Function;
   removeHabit: Function;
   createHabit: Function;
@@ -29,9 +28,7 @@ const _App: React.FC<AppProps> = ({
   createHabit,
   addPoint,
   removePoint,
-  selectedMonth,
 }) => {
-  // const [isFetching, setIsFetching] = useState(false);
   const [habitInput, setHabitInput] = useState("");
 
   useEffect(() => {
@@ -59,8 +56,8 @@ const _App: React.FC<AppProps> = ({
   return (
     <div className="App">
       <h1>HabitGrid</h1>
-      <SelectMonth />
-      <p>{selectedMonth}</p>
+
+      <HabitTracker />
       <input
         type="text"
         name="habitInput"

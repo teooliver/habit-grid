@@ -50,6 +50,7 @@ export const deleteHabit = async (id: number) => {
 
 export const createPoint = async (id: number, date: Date) => {
   const habit = await db.habits.get(Number(id));
+  console.log("Create Point: ", habit);
   if (habit) {
     // insert date into the events[]
     habit.events.push(date);

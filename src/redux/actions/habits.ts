@@ -92,7 +92,7 @@ export const addPoint = (id: number, date: Date) => async (
 export const removePoint = (id: number, date: Date) => async (
   dispatch: Dispatch
 ) => {
-  console.log(id, date);
+  console.log("From remove", id, date);
   const habit = await deletePoint(id, date);
 
   dispatch<RemovePointAction>({

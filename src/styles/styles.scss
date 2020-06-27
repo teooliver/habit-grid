@@ -15,3 +15,25 @@ code {
 .App {
   text-align: center;
 }
+
+.HabitsTable {
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+
+  td {
+    min-width: 32px;
+    height: 32px;
+    border: dotted 1px #000000;
+    &:hover {
+      background-color: lightgray;
+    }
+  }
+
+  .point {
+    display: block;
+    width: 98%;
+    height: 98%;
+    border-radius: 100px;
+  }
+}

@@ -1,5 +1,4 @@
 import { ActionTypes, Habit, Action } from "../actions/index";
-import { addHabit } from "../../indexedDb/connectDb";
 
 export const habitsReducer = (state: Habit[] = [], action: Action) => {
   switch (action.type) {
