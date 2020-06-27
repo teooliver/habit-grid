@@ -40,7 +40,11 @@ export const addHabit = async (habit: IHabit) => {
 };
 
 export const deleteHabit = async (id: number) => {
+  const habit = await db.habits.get(Number(id));
+  console.log(id);
   await db.table("habits").delete(id);
+
+  return habit;
 };
 
 export const createPoint = async (id: number, date: Date) => {

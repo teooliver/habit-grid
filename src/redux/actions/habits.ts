@@ -7,6 +7,7 @@ import {
   IHabit,
   createPoint,
   deletePoint,
+  deleteHabit,
 } from "../../indexedDb/connectDb";
 
 export interface Habit {
@@ -70,6 +71,7 @@ export const createHabit = (formData: string) => async (dispatch: Dispatch) => {
 };
 
 export const removeHabit = (id: number): RemoveHabitAction => {
+  deleteHabit(id);
   return {
     type: ActionTypes.removeHabit,
     payload: id,
