@@ -5,9 +5,10 @@ import { StoreState } from "../redux/reducers";
 
 interface Props {
   selectedMonth: number;
+  selectMonth: typeof selectMonth;
 }
 
-const SelectMonth: FC<Props> = ({ selectedMonth }) => {
+const SelectMonth: FC<Props> = ({ selectedMonth, selectMonth }) => {
   const months = [
     "Jan",
     "Feb",

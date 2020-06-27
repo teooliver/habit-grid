@@ -10,10 +10,12 @@ import {
   removePoint,
 } from "./redux/actions";
 import { StoreState } from "./redux/reducers";
-import { deleteHabit } from "./indexedDb/connectDb";
+import SelectMonth from "./components/SelectMonth";
+import { selectMonth } from "./redux/actions/selectMonth";
 
 interface AppProps {
   habits: Habit[];
+  selectedMonth: number;
   getHabits: Function;
   removeHabit: Function;
   createHabit: Function;
@@ -28,6 +30,7 @@ const _App: React.FC<AppProps> = ({
   createHabit,
   addPoint,
   removePoint,
+  selectedMonth,
 }) => {
   // const [isFetching, setIsFetching] = useState(false);
   const [habitInput, setHabitInput] = useState("");
@@ -56,7 +59,9 @@ const _App: React.FC<AppProps> = ({
 
   return (
     <div className="App">
-      <h1>Hello There</h1>
+      <h1>HabitGrid</h1>
+      <SelectMonth />
+      <p>{selectedMonth}</p>
       <input
         type="text"
         name="habitInput"
@@ -72,8 +77,11 @@ const _App: React.FC<AppProps> = ({
   );
 };
 
-const mapStateToProps = ({ habits }: StoreState): { habits: Habit[] } => {
-  return { habits };
+const mapStateToProps = ({
+  habits,
+  selectedMonth,
+}: StoreState): { habits: Habit[]; selectedMonth: number } => {
+  return { habits, selectedMonth };
 };
 
 export const App = connect(mapStateToProps, {
