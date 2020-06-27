@@ -1,4 +1,5 @@
 import Dexie from "dexie";
+import { Habit } from "../redux/actions";
 
 export interface IHabit {
   // id: number;
@@ -27,13 +28,47 @@ class AppDatabase extends Dexie {
 
 export var db = new AppDatabase();
 
+export const gellAllHabits = async () => {
+  let allHabits: IHabit[] = await db.table("habits").toArray();
+  return allHabits;
+};
+
 export const addHabit = async (habit: IHabit) => {
   let id = await db.table("habits").add(habit);
   const newHabit = await db.habits.get(Number(id));
   return newHabit;
 };
 
-export const gellAllHabits = async () => {
-  let allHabits: IHabit[] = await db.table("habits").toArray();
-  return allHabits;
+export const deleteHabit = async (id: number) => {
+  await db.table("habits").delete(id);
+};
+
+export const createPoint = async (id: number, date: Date) => {
+  const habit = await db.habits.get(Number(id));
+  if (habit) {
+    // insert date into the events[]
+    habit.events.push(date);
+    await db.habits.put(habit, id);
+    return habit;
+  }
+};
+
+export const deletePoint = async (id: number, date: Date) => {
+  const habit = await db.habits.get(Number(id));
+  console.log("old: ", habit);
+  if (habit) {
+    for (let index = 0; index < habit.events.length; index++) {
+      if (habit.events[index].getTime() === date.getTime()) {
+        habit.events.splice(index, 1);
+      }
+    }
+    await db.habits.put(habit, id);
+    // habit.events.forEach((event, i) => {
+    //   return event.getTime() === date.getTime()
+    //     ? habit.events.splice(i)
+    //     : event;
+    // });
+    // console.log("new: ", habit);
+    return habit;
+  }
 };

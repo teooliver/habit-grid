@@ -1,14 +1,24 @@
 import React, { useEffect, useState, FunctionComponent } from "react";
 import "./App.css";
 import { connect } from "react-redux";
-import { Habit, getHabits, removeHabit, createHabit } from "./redux/actions";
+import {
+  Habit,
+  getHabits,
+  removeHabit,
+  createHabit,
+  addPoint,
+  removePoint,
+} from "./redux/actions";
 import { StoreState } from "./redux/reducers";
+import { deleteHabit } from "./indexedDb/connectDb";
 
 interface AppProps {
   habits: Habit[];
   getHabits: Function;
-  removeHabit: typeof removeHabit;
+  removeHabit: Function;
   createHabit: Function;
+  addPoint: Function;
+  removePoint: Function;
 }
 
 const _App: React.FC<AppProps> = ({
@@ -16,6 +26,8 @@ const _App: React.FC<AppProps> = ({
   getHabits,
   removeHabit,
   createHabit,
+  addPoint,
+  removePoint,
 }) => {
   // const [isFetching, setIsFetching] = useState(false);
   const [habitInput, setHabitInput] = useState("");
@@ -28,8 +40,15 @@ const _App: React.FC<AppProps> = ({
     return habits!.map((habit: Habit) => {
       return (
         <div>
-          <p>{habit.name}</p>
-          {/* <p>{ habit.events[0].getDay()}</p> */}
+          <p onClick={() => addPoint(habit.id, new Date())}>{habit.name}</p>
+          <p onClick={() => removeHabit(habit.id)}>Delete this evenet</p>
+          {habit.events.map((event) => {
+            return (
+              <ul
+                onClick={() => removePoint(habit.id, event)}
+              >{`${event.getDay()}, ${event.getMonth()}, ${event.getFullYear()}`}</ul>
+            );
+          })}
         </div>
       );
     });
@@ -61,4 +80,6 @@ export const App = connect(mapStateToProps, {
   getHabits,
   removeHabit,
   createHabit,
+  addPoint,
+  removePoint,
 })(_App);

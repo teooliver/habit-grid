@@ -1,9 +1,16 @@
 import { Dispatch } from "redux";
 import { ActionTypes } from "./types";
-import { db, addHabit, gellAllHabits, IHabit } from "../../indexedDb/connectDb";
+import {
+  db,
+  addHabit,
+  gellAllHabits,
+  IHabit,
+  createPoint,
+  deletePoint,
+} from "../../indexedDb/connectDb";
 
 export interface Habit {
-  // id: number;
+  id?: number;
   name: string;
   events: Date[];
 }
@@ -20,6 +27,16 @@ export interface RemoveHabitAction {
 
 export interface CreateHabitAction {
   type: ActionTypes.createHabit;
+  payload: Habit;
+}
+
+export interface CreatePointAction {
+  type: ActionTypes.addPoint;
+  payload: Habit;
+}
+
+export interface RemovePointAction {
+  type: ActionTypes.removePoint;
   payload: Habit;
 }
 
@@ -57,4 +74,27 @@ export const removeHabit = (id: number): RemoveHabitAction => {
     type: ActionTypes.removeHabit,
     payload: id,
   };
+};
+
+export const addPoint = (id: number, date: Date) => async (
+  dispatch: Dispatch
+) => {
+  const habit = await createPoint(id, date);
+
+  dispatch<CreatePointAction>({
+    type: ActionTypes.addPoint,
+    payload: habit!,
+  });
+};
+
+export const removePoint = (id: number, date: Date) => async (
+  dispatch: Dispatch
+) => {
+  console.log(id, date);
+  const habit = await deletePoint(id, date);
+
+  dispatch<RemovePointAction>({
+    type: ActionTypes.removePoint,
+    payload: habit!,
+  });
 };

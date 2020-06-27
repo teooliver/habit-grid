@@ -2,6 +2,8 @@ import {
   CreateHabitAction,
   RemoveHabitAction,
   GetHabitsAction,
+  CreatePointAction,
+  RemovePointAction,
 } from "./habits";
 
 export enum ActionTypes {
@@ -15,4 +17,9 @@ export enum ActionTypes {
   removeAlert,
 }
 
-export type Action = RemoveHabitAction | GetHabitsAction | CreateHabitAction;
+export type Action =
+  | RemoveHabitAction
+  | GetHabitsAction
+  | CreateHabitAction
+  | CreatePointAction
+  | RemovePointAction;
