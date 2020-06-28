@@ -22,13 +22,8 @@ const HabitCell: FC<Props> = ({
   addPoint,
 }) => {
   const { events, id } = habit;
-  // const [isDateInEvents, setIsDateInEvents] = useState(false);
 
   const thisCellDate = new Date(2020, selectedMonth, parseInt(day));
-
-  // useEffect(() => {
-  //   checkDateInEvent();
-  // }, [habit, selectedMonth]);
 
   const foundDate = events.find((event) => {
     if (
