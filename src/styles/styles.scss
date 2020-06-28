@@ -1,44 +1,9 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}
+@import "./reset";
+@import "./global";
+@import "./mediaqueries";
+@import "./Navbar";
+@import "./HabitsTable";
 
 .App {
   text-align: center;
-}
-
-.HabitsTable {
-  border-collapse: collapse;
-  margin-left: auto;
-  margin-right: auto;
-
-  td {
-    min-width: 32px;
-    height: 32px;
-    border: dotted 1px #000000;
-    &:hover {
-      background-color: lightgray;
-    }
-  }
-
-  .habit-name {
-    font-weight: bold;
-    padding: 0 0.5rem;
-  }
-
-  .point {
-    display: block;
-    width: 98%;
-    height: 98%;
-    border-radius: 100px;
-  }
 }

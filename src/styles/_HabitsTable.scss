@@ -1,0 +1,31 @@
+.HabitsTable {
+  border-collapse: collapse;
+  margin: 2rem auto;
+
+  td {
+    width: 35px;
+    height: 35px;
+    border: dotted 1px #000000;
+    // vertical-align: middle;
+    &:hover {
+      background-color: lightgray;
+    }
+  }
+
+  th {
+    padding-bottom: 0.3rem;
+  }
+
+  .habit-name {
+    font-weight: bold;
+    padding: 0 0.5rem;
+  }
+
+  .point {
+    display: block;
+    width: 85%;
+    height: 85%;
+    border-radius: 50%;
+    margin: 0 auto;
+  }
+}

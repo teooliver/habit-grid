@@ -14,8 +14,8 @@ export const months = [
 ];
 
 export const colors = [
-  "#4c4e58",
   "#abc3e7",
+  "#4c4e58",
   "#e7cfab",
   "#abe7cf",
   "#f4c6bc",

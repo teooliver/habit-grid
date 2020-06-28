@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { Habit, getHabits } from "./redux/actions";
 import { StoreState } from "./redux/reducers";
 import HabitTracker from "./components/tracker/HabitTracker";
+import Navbar from "./components/layout/Navbar";
 
 interface AppProps {
   getHabits: Function;
@@ -16,6 +17,7 @@ const _App: React.FC<AppProps> = ({ getHabits }) => {
 
   return (
     <div className="App">
+      <Navbar />
       <HabitTracker />
     </div>
   );
