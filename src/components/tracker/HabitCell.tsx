@@ -13,8 +13,7 @@ interface Props {
   addPoint: Function;
 }
 
-// Change to HabitCell
-const HabitPoint: FC<Props> = ({
+const HabitCell: FC<Props> = ({
   day,
   habit,
   color,
@@ -71,4 +70,4 @@ const mapStateToProps = ({
   };
 };
 
-export default connect(mapStateToProps, { addPoint, removePoint })(HabitPoint);
+export default connect(mapStateToProps, { addPoint, removePoint })(HabitCell);

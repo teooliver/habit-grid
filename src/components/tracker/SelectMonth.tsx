@@ -2,6 +2,7 @@ import React, { FC } from "react";
 import { connect } from "react-redux";
 import { selectMonth } from "../../redux/actions/selectMonth";
 import { StoreState } from "../../redux/reducers";
+import { months } from "../../utils/variables";
 
 interface Props {
   selectedMonth: number;
@@ -9,21 +10,6 @@ interface Props {
 }
 
 const SelectMonth: FC<Props> = ({ selectedMonth, selectMonth }) => {
-  const months = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sept",
-    "Oct",
-    "Nov",
-    "Dec",
-  ];
-
   return (
     <div className="SelectMonth">
       {months.map((month, index) => {

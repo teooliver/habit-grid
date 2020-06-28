@@ -4,14 +4,15 @@ import { StoreState } from "../../redux/reducers";
 import { Habit } from "../../redux/actions";
 import { getHabits } from "../../redux/actions";
 import HabitRow from "./HabitRow";
+import { months } from "../../utils/variables";
 
-interface HabitsTableProps {
+interface Props {
   getHabits: Function;
   selectedMonth: number;
   habits: Habit[];
 }
 
-export const HabitsTable: React.FC<HabitsTableProps> = ({
+export const HabitsTable: React.FC<Props> = ({
   getHabits,
   selectedMonth,
   habits,
@@ -30,14 +31,12 @@ export const HabitsTable: React.FC<HabitsTableProps> = ({
     }
   };
 
-  // const checkHabits = habits.length !== 0;
-
   return (
     <>
-      {habits ? (
+      {habits.length != 0 ? (
         <table className="HabitsTable">
           <thead>
-            <th></th>
+            <th>{months[selectedMonth].toUpperCase()}</th>
             {renderTableHeader(daysOnSelectedMonth)}
             {daysArray.map((day) => {
               return <th key={day}>{day}</th>;
