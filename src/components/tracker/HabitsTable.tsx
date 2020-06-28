@@ -21,6 +21,10 @@ export const HabitsTable: React.FC<Props> = ({
     getHabits();
   }, []);
 
+  useEffect(() => {
+    renderTableHeader(daysOnSelectedMonth);
+  }, []);
+
   const daysOnSelectedMonth: number =
     new Date(2019, selectedMonth + 1, 0).getDate() + 1;
 
@@ -31,21 +35,29 @@ export const HabitsTable: React.FC<Props> = ({
     }
   };
 
+  renderTableHeader(daysOnSelectedMonth);
+
   return (
     <>
       {habits.length != 0 ? (
         <table className="HabitsTable">
           <thead>
-            <th>{months[selectedMonth].toUpperCase()}</th>
-            {renderTableHeader(daysOnSelectedMonth)}
-            {daysArray.map((day) => {
-              return <th key={day}>{day}</th>;
-            })}
+            <tr>
+              <th>{months[selectedMonth].toUpperCase()}</th>
+              {daysArray.map((day) => {
+                return <th key={day}>{day}</th>;
+              })}
+            </tr>
           </thead>
           <tbody>
             {habits.map((habit, index) => {
               return (
-                <HabitRow habit={habit} index={index} daysArray={daysArray} />
+                <HabitRow
+                  key={index}
+                  habit={habit}
+                  index={index}
+                  daysArray={daysArray}
+                />
               );
             })}
           </tbody>

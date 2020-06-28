@@ -16,6 +16,7 @@ const SelectMonth: FC<Props> = ({ selectedMonth, selectMonth }) => {
         if (selectedMonth === index) {
           return (
             <button
+              key={index}
               className="active"
               onClick={() => {
                 selectMonth(index);

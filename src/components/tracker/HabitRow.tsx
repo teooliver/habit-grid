@@ -27,9 +27,10 @@ const HabitRow: React.FC<Props> = ({
       >
         {habit.name}
       </td>
-      {daysArray.map((day) => {
+      {daysArray.map((day, i) => {
         return (
           <HabitCell
+            key={i}
             day={day}
             habit={habit}
             color={colors[((index % n) + n) % n]}

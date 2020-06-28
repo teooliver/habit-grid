@@ -5,11 +5,11 @@ import HabitForm from "./HabitForm";
 
 const HabitTracker = () => {
   return (
-    <div>
+    <>
       <SelectMonth />
       <HabitsTable />
       <HabitForm />
-    </div>
+    </>
   );
 };
 

@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import "./styles/styles.scss";
 import { connect } from "react-redux";
-import { Habit, getHabits } from "./redux/actions";
 import { StoreState } from "./redux/reducers";
+import { Habit, getHabits } from "./redux/actions";
 import HabitTracker from "./components/tracker/HabitTracker";
 import Navbar from "./components/layout/Navbar";
 
@@ -18,7 +18,9 @@ const _App: React.FC<AppProps> = ({ getHabits }) => {
   return (
     <div className="App">
       <Navbar />
-      <HabitTracker />
+      <div className="page-container">
+        <HabitTracker />
+      </div>
     </div>
   );
 };
