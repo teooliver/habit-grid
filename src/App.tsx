@@ -6,7 +6,7 @@ import { Habit, getHabits } from "./redux/actions";
 import HabitTracker from "./components/tracker/HabitTracker";
 import Navbar from "./components/layout/Navbar";
 import Logo from "./components/layout/Logo";
-
+import MonthDropdown from "../src/components/tracker/monthSelector/MonthDropdown";
 interface AppProps {
   getHabits: Function;
 }
@@ -21,8 +21,9 @@ const _App: React.FC<AppProps> = ({ getHabits }) => {
       <Navbar />
       <div className="page-container">
         <HabitTracker />
-        <Logo />
       </div>
+      <Logo />
+      <MonthDropdown />
     </div>
   );
 };

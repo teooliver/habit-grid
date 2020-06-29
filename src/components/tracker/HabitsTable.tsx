@@ -43,7 +43,7 @@ export const HabitsTable: React.FC<Props> = ({
         <table className="HabitsTable">
           <thead>
             <tr>
-              <th>{months[selectedMonth].toUpperCase()}</th>
+              <th>{months[selectedMonth].toUpperCase()} / 2019</th>
               {daysArray.map((day) => {
                 return <th key={day}>{day}</th>;
               })}
