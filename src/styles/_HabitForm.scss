@@ -16,12 +16,28 @@
     position: relative;
     bottom: 1rem;
     right: 5rem;
-    background-color: lightcyan;
+    // background-color: lightcyan;
+    margin-right: 1.2rem;
+    button {
+      width: 200px;
+      //   height: 1.5rem;
+      padding: 0.2rem 0.2rem;
+      border-radius: 0.2rem;
+      border: none;
+      margin-top: 0.2rem;
+      background-color: skyblue;
+      outline: none;
+      font-size: 1.2rem;
+      &:hover {
+        background-color: #abe7cf;
+      }
+    }
+
     input {
       font-size: 18px;
-      padding: 10px 10px 10px 5px;
+      padding: 0.3rem 0.3rem 0.3rem 0.2rem;
       display: block;
-      width: 300px;
+      width: 200px;
       border: none;
       border-bottom: 1px solid #757575;
     }
@@ -36,7 +52,7 @@
       font-weight: normal;
       position: absolute;
       pointer-events: none;
-      left: 5px;
+      left: 3px;
       top: 10px;
       transition: 0.2s ease all;
       -moz-transition: 0.2s ease all;
@@ -46,8 +62,8 @@
     /* active state */
     input:focus ~ label,
     input:valid ~ label {
-      top: -20px;
-      font-size: 14px;
+      top: -1rem;
+      font-size: 1rem;
       color: #5264ae;
     }
 
@@ -55,7 +71,7 @@
     .bar {
       position: relative;
       display: block;
-      width: 300px;
+      width: 200px;
     }
     .bar:before,
     .bar:after {
