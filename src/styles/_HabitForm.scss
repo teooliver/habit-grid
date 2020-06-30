@@ -1,0 +1,21 @@
+.HabitForm {
+  position: absolute;
+  top: 0;
+  right: 0;
+  .plus-circle {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    height: 50px;
+    width: auto;
+    &:hover {
+      fill: #baffc9;
+    }
+  }
+  form {
+    position: absolute;
+    top: 1rem;
+    right: 5rem;
+    background-color: lightcyan;
+  }
+}

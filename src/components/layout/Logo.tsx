@@ -6,9 +6,11 @@ interface Props {
   pathStroke?: string;
   width?: string;
   height?: string;
+  className?: string;
 }
 
 const Logo: FC<Props> = ({
+  className,
   backgroundColor,
   borderColor,
   pathStroke,
@@ -17,6 +19,7 @@ const Logo: FC<Props> = ({
 }) => {
   return (
     <svg
+      className={className || "habit-grid-logo"}
       width={width || "200"}
       height={height || "200"}
       version="1.1"

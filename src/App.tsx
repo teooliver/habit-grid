@@ -22,7 +22,7 @@ const _App: React.FC<AppProps> = ({ getHabits }) => {
       <div className="page-container">
         <HabitTracker />
       </div>
-      <Logo />
+      {/* <Logo /> */}
       <MonthDropdown />
     </div>
   );

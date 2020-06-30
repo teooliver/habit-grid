@@ -3,9 +3,8 @@ import { months } from "../../../utils/variables.tsx";
 
 const DropDownMenu = ({ setOpen }) => {
   const [activeMenu, setActiveMenu] = useState("main");
-  const [isActive, setIsActive] = useState(false);
-
   const dropDownRef = useRef(null);
+
   useEffect(() => {
     document.addEventListener("click", handleClickOutside);
     return () => {
