@@ -6,7 +6,7 @@ import HabitForm from "./HabitForm";
 const HabitTracker = () => {
   return (
     <>
-      <SelectMonth />
+      {/* <SelectMonth /> */}
       <HabitsTable />
       <HabitForm />
     </>

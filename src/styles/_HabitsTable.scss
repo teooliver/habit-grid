@@ -21,6 +21,7 @@
   .habit-name {
     font-weight: bold;
     padding: 0 0.5rem;
+    white-space: nowrap;
 
     .habit-name-items {
       display: flex;
