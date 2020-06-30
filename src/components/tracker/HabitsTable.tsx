@@ -5,7 +5,7 @@ import { Habit } from "../../redux/actions";
 import { getHabits } from "../../redux/actions";
 import HabitRow from "./HabitRow";
 import { months } from "../../utils/variables";
-import MonthDropdown from "./monthSelector/MonthDropdown";
+import MonthYearDropdown from "./monthYearSelector/MonthYearDropdown";
 
 interface Props {
   getHabits: Function;
@@ -45,8 +45,7 @@ export const HabitsTable: React.FC<Props> = ({
           <thead>
             <tr>
               <th className="th-dropdown">
-                <MonthDropdown />
-                {/* {months[selectedMonth].toUpperCase()} / 2019 */}
+                <MonthYearDropdown />
               </th>
               {daysArray.map((day) => {
                 return <th key={day}>{day}</th>;
