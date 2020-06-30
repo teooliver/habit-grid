@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { removeHabit, Habit } from "../../redux/actions/habits";
 import HabitCell from "./HabitCell";
 import { colors } from "../../utils/variables";
-import TrashIcon from "../layout/TrashIcon";
+import TrashIcon from "../layout/icons/TrashIcon";
 
 const n = colors.length;
 

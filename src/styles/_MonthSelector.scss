@@ -1,8 +1,27 @@
 .MonthDropdown {
-  position: relative;
-  width: 100px;
-  margin: 0 auto;
+  // position: relative;
+  // width: 100px;
+  // margin: 0 auto;
+  .dropdown-button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.2rem 0.2rem;
+    white-space: nowrap;
+    font-size: 1rem;
+    width: 100%;
+    background-color: white;
+    border-radius: 0.5rem;
+    border: 1px solid black;
+    outline: none;
+  }
+
+  .dropdown-button-text {
+    // margin: 0 1rem;
+  }
+
   .dropdown {
+    position: absolute;
     padding: 0.5rem;
     overflow-x: hidden;
     width: 100px;
