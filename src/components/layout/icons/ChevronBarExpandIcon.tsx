@@ -4,7 +4,7 @@ interface Props {
   className?: string;
 }
 
-const ChevronBarExpand: FC<Props> = ({ className }) => {
+const ChevronBarExpandIcon: FC<Props> = ({ className }) => {
   return (
     <svg
       width="1em"
@@ -22,4 +22,4 @@ const ChevronBarExpand: FC<Props> = ({ className }) => {
   );
 };
 
-export default ChevronBarExpand;
+export default ChevronBarExpandIcon;

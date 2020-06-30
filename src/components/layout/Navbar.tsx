@@ -1,5 +1,6 @@
 import React from "react";
 import Logo from "./Logo";
+import GearIcon from "./icons/GearIcon";
 
 const Navbar = () => {
   return (
@@ -8,7 +9,9 @@ const Navbar = () => {
         <Logo height="2.5rem" width="2.5rem" backgroundColor="white" />
         <h1>Habit Grid</h1>
       </div>
-      <span>About</span>
+      <span>
+        <GearIcon className="navbar-gear-icon" />
+      </span>
     </nav>
   );
 };

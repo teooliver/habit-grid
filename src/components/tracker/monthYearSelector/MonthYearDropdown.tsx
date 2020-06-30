@@ -1,9 +1,9 @@
 import React, { useState, useRef, useEffect } from "react";
 import DropDownMenu from "./DropDownMenu";
-import ChevronBarExpand from "../../layout/icons/ChevronBarExpand";
 import { StoreState } from "../../../redux/reducers";
 import { connect } from "react-redux";
 import { months } from "../../../utils/variables";
+import ChevronBarExpandIcon from "../../layout/icons/ChevronBarExpandIcon";
 
 interface Props {
   selectedMonth: number;
@@ -19,7 +19,7 @@ const MonthYearDropdown: React.FC<Props> = ({ selectedMonth }) => {
           <span className="dropdown-button-text">
             {months[selectedMonth].toUpperCase()} / 2019
           </span>
-          <ChevronBarExpand className="dropdown-button-icon" />
+          <ChevronBarExpandIcon className="dropdown-button-icon" />
         </button>
       </div>
       {open && <DropDownMenu setOpen={setOpen} />}
