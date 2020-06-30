@@ -1,31 +1,41 @@
-import React from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
-import { removePoint, Habit } from "../../redux/actions/habits";
+import { removeHabit, Habit } from "../../redux/actions/habits";
 import HabitCell from "./HabitCell";
 import { colors } from "../../utils/variables";
+import TrashIcon from "../layout/TrashIcon";
 
 const n = colors.length;
 
 interface Props {
   habit: Habit;
-  removePoint: Function;
+  removeHabit: Function;
   index: number;
   daysArray: string[];
 }
 
 const HabitRow: React.FC<Props> = ({
   habit,
-  removePoint,
+  removeHabit,
   index,
   daysArray,
 }) => {
+  const [isTrashVisible, setisTrashVisible] = useState(false);
+
   return (
     <tr>
       <td
         className="habit-name"
         style={{ color: colors[((index % n) + n) % n] }}
+        onClick={() => setisTrashVisible(!isTrashVisible)}
       >
-        {habit.name}
+        <div className="habit-name-items">
+          <span> {habit.name} </span>
+
+          <div className="trash-icon" onClick={() => removeHabit(habit.id)}>
+            {isTrashVisible && <TrashIcon />}
+          </div>
+        </div>
       </td>
       {daysArray.map((day, i) => {
         return (
@@ -41,4 +51,4 @@ const HabitRow: React.FC<Props> = ({
   );
 };
 
-export default connect(null, { removePoint })(HabitRow);
+export default connect(null, { removeHabit })(HabitRow);

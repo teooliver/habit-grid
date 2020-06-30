@@ -21,6 +21,21 @@
   .habit-name {
     font-weight: bold;
     padding: 0 0.5rem;
+
+    .habit-name-items {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .trash-icon {
+        width: 10px;
+        margin-left: 0.8rem;
+        margin-right: 0.2rem;
+        &:hover {
+          color: red;
+        }
+      }
+    }
   }
 
   .point {
