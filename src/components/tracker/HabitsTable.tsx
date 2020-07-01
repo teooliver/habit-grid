@@ -6,6 +6,7 @@ import { getHabits } from "../../redux/actions";
 import HabitRow from "./HabitRow";
 import { months } from "../../utils/variables";
 import MonthYearDropdown from "./monthYearSelector/MonthYearDropdown";
+import { ReactComponent as StabilityBall } from "../../images/undraw_Stability_ball_b4ia.svg";
 
 interface Props {
   getHabits: Function;
@@ -64,7 +65,9 @@ export const HabitsTable: React.FC<Props> = ({
           </tbody>
         </table>
       ) : (
-        <div className="">Nothing to show yet</div>
+        <div className="">
+          <StabilityBall />
+        </div>
       )}
     </>
   );
