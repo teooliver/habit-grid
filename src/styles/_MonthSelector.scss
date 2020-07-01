@@ -1,7 +1,9 @@
 .MonthDropdown {
-  position: relative;
-  // width: 100px;
-  // margin: 0 auto;
+  // position: absolute;
+  // top: -1.2rem;
+  // left: 1rem;
+  width: 150px;
+  margin: 0 auto;
   .dropdown-button {
     display: flex;
     align-items: center;
@@ -28,6 +30,7 @@
 
   .dropdown {
     position: absolute;
+    z-index: 1000;
     padding: 0.5rem;
     overflow-x: hidden;
     width: 100px;

@@ -1,8 +1,8 @@
 .HabitsTable {
   border-collapse: collapse;
   margin: 1rem;
-
   margin-bottom: 0;
+
   td {
     width: 35px;
     height: 35px;
@@ -19,12 +19,12 @@
     padding-bottom: 0.3rem;
   }
 
-  // .th-dropdown {
-  //   position: relative;
-  //   width: 100%;
-  //   display: flex;
-  //   justify-content: center;
-  // }
+  .th-dropdown {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
 
   .habit-name {
     font-weight: bold;

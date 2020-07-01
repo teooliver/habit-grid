@@ -19,7 +19,11 @@ h1 {
 }
 
 .page-container {
-  overflow-y: hidden;
-  margin-top: 1.5rem;
+  position: relative;
+  margin-top: 2.5rem;
   margin-left: 1rem;
+}
+
+.habits-table-container {
+  overflow-y: hidden;
 }

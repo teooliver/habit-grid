@@ -7,6 +7,7 @@ import HabitTracker from "./components/tracker/HabitTracker";
 import Navbar from "./components/layout/Navbar";
 import Logo from "./components/layout/Logo";
 import MonthDropdown from "./components/tracker/monthYearSelector/MonthYearDropdown";
+import HabitForm from "./components/tracker/HabitForm";
 interface AppProps {
   getHabits: Function;
 }
@@ -22,6 +23,7 @@ const _App: React.FC<AppProps> = ({ getHabits }) => {
       <div className="page-container">
         <HabitTracker />
       </div>
+      <HabitForm />
       {/* <Logo /> */}
       {/* <MonthDropdown /> */}
     </div>

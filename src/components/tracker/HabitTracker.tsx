@@ -1,14 +1,16 @@
 import React from "react";
 import HabitsTable from "./HabitsTable";
-import SelectMonth from "./SelectMonth";
 import HabitForm from "./HabitForm";
+import MonthYearDropdown from "./monthYearSelector/MonthYearDropdown";
 
 const HabitTracker = () => {
   return (
     <>
       {/* <SelectMonth /> */}
-      <HabitsTable />
-      <HabitForm />
+      <MonthYearDropdown />
+      <div className="habits-table-container">
+        <HabitsTable />
+      </div>
     </>
   );
 };

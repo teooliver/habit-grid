@@ -44,9 +44,7 @@ export const HabitsTable: React.FC<Props> = ({
         <table className="HabitsTable">
           <thead>
             <tr>
-              <th className="th-dropdown">
-                <MonthYearDropdown />
-              </th>
+              <th className="th-dropdown">{/* <MonthYearDropdown /> */}</th>
               {daysArray.map((day) => {
                 return <th key={day}>{day}</th>;
               })}
