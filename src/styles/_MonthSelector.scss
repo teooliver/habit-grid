@@ -1,5 +1,5 @@
 .MonthDropdown {
-  // position: relative;
+  position: relative;
   // width: 100px;
   // margin: 0 auto;
   .dropdown-button {
@@ -17,7 +17,13 @@
   }
 
   .dropdown-button-text {
-    // margin: 0 1rem;
+    margin-left: 0.4rem;
+  }
+  .dropdown-button-icon {
+    transition: 400ms ease;
+    &.isOpen {
+      transform: rotate(90deg);
+    }
   }
 
   .dropdown {
@@ -26,11 +32,13 @@
     overflow-x: hidden;
     width: 100px;
 
-    background-color: lightcyan;
+    background-color: #4c4e58;
+    border: 1px solid black;
     border-radius: 1rem;
+    color: white;
+
     ul {
       transition: margin 0.5s ease;
-
       &.active {
         height: fit-content;
         width: 100%;
@@ -51,8 +59,27 @@
       }
 
       .menu-item:hover {
-        // background-color: teal;
+        border-radius: 0.5rem;
+        background-color: teal;
+      }
+      li {
+        margin: 0.4rem 0;
+        &.active {
+          background-color: teal;
+        }
+        &:hover {
+          background-color: blanchedalmond;
+        }
+        button {
+          background-color: transparent;
+          border: none;
+          font-weight: bold;
+          font-size: 1rem;
+          color: white;
+        }
       }
     }
   }
 }
+
+// button.active

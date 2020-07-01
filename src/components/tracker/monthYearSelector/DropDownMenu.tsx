@@ -3,15 +3,17 @@ import { months } from "../../../utils/variables";
 import { StoreState } from "../../../redux/reducers";
 import { connect } from "react-redux";
 import { selectMonth } from "../../../redux/actions/selectMonth";
+import ArrowBarRightIcon from "../../layout/icons/ArrowBarRightIcon";
+import ArrowBarLeftIcon from "../../layout/icons/ArrowBarLeftIcon";
 
 interface Props {
-  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
   selectedMonth: number;
   selectMonth: typeof selectMonth;
 }
 
 const DropDownMenu: React.FC<Props> = ({
-  setOpen,
+  setIsOpen,
   selectMonth,
   selectedMonth,
 }) => {
@@ -32,7 +34,7 @@ const DropDownMenu: React.FC<Props> = ({
       dropDownRef.current != null &&
       !dropDownRef.current.contains(e.target)
     ) {
-      setOpen(false);
+      setIsOpen(false);
     } else {
       return;
     }
@@ -42,15 +44,16 @@ const DropDownMenu: React.FC<Props> = ({
     <div ref={dropDownRef} className="dropdown">
       <ul className={` ${activeMenu === "main" ? "active" : "inactive"}`}>
         <li className="menu-item" onClick={() => setActiveMenu("month")}>
-          Month --
+          Month <ArrowBarRightIcon />
         </li>
         <li className="menu-item" onClick={() => setActiveMenu("year")}>
-          Year --
+          Year <ArrowBarRightIcon />
         </li>
       </ul>
 
       <ul className={` ${activeMenu === "month" ? "active" : "inactive"}`}>
         <li className="menu-item" onClick={() => setActiveMenu("main")}>
+          <ArrowBarLeftIcon />
           Back
         </li>
         {/* {months.map((month) => {
@@ -58,10 +61,9 @@ const DropDownMenu: React.FC<Props> = ({
         })} */}
         {months.map((month, index) => {
           return (
-            <li>
+            <li className={selectedMonth === index ? "active" : ""}>
               <button
                 key={index}
-                className="active"
                 onClick={() => {
                   selectMonth(index);
                 }}
@@ -75,6 +77,7 @@ const DropDownMenu: React.FC<Props> = ({
 
       <ul className={` ${activeMenu === "year" ? "active" : "inactive"}`}>
         <li className="menu-item" onClick={() => setActiveMenu("main")}>
+          <ArrowBarLeftIcon />
           Back
         </li>
         <li className="menu-item">2019</li>

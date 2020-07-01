@@ -10,19 +10,21 @@ interface Props {
 }
 
 const MonthYearDropdown: React.FC<Props> = ({ selectedMonth }) => {
-  const [open, setOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div className="MonthDropdown">
-      <div onClick={() => setOpen(!open)} onBlur={() => setOpen(false)}>
+      <div onClick={() => setIsOpen(!isOpen)} onBlur={() => setIsOpen(false)}>
         <button className="dropdown-button">
           <span className="dropdown-button-text">
             {months[selectedMonth].toUpperCase()} / 2019
           </span>
-          <ChevronBarExpandIcon className="dropdown-button-icon" />
+          <ChevronBarExpandIcon
+            className={`dropdown-button-icon ${isOpen ? "isOpen" : ""}`}
+          />
         </button>
       </div>
-      {open && <DropDownMenu setOpen={setOpen} />}
+      {isOpen && <DropDownMenu setIsOpen={setIsOpen} />}
     </div>
   );
 };
