@@ -65,7 +65,7 @@ export const HabitsTable: React.FC<Props> = ({
           </tbody>
         </table>
       ) : (
-        <div className="">
+        <div className="splash-screen">
           <StabilityBall />
         </div>
       )}
