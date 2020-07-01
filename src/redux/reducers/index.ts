@@ -5,7 +5,7 @@ import { Habit } from "../actions";
 
 export interface StoreState {
   habits: Habit[];
-  selectedMonth: number;
+  selectedMonth: { selectedMonth: number; selectedYear: number };
 }
 
 export const reducers = combineReducers<StoreState>({

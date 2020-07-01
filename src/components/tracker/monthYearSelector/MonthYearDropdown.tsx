@@ -39,7 +39,7 @@ const MonthYearDropdown: React.FC<Props> = ({ selectedMonth, habits }) => {
 };
 const mapStateProps = ({ selectedMonth, habits }: StoreState) => {
   return {
-    selectedMonth: selectedMonth,
+    selectedMonth: selectedMonth.selectedMonth,
     habits: habits,
   };
 };

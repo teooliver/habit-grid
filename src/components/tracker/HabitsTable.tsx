@@ -7,6 +7,7 @@ import HabitRow from "./HabitRow";
 import { months } from "../../utils/variables";
 import MonthYearDropdown from "./monthYearSelector/MonthYearDropdown";
 import { ReactComponent as StabilityBall } from "../../images/undraw_Stability_ball_b4ia.svg";
+import { selectMonth } from "../../redux/actions/selectMonth";
 
 interface Props {
   getHabits: Function;
@@ -73,13 +74,10 @@ export const HabitsTable: React.FC<Props> = ({
   );
 };
 
-const mapStateToProps = ({
-  habits,
-  selectedMonth,
-}: StoreState): { habits: Habit[]; selectedMonth: number } => {
+const mapStateToProps = ({ habits, selectedMonth }: StoreState) => {
   return {
     habits,
-    selectedMonth,
+    selectedMonth: selectedMonth.selectedMonth,
   };
 };
 

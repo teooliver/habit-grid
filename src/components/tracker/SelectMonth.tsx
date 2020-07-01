@@ -42,7 +42,7 @@ const SelectMonth: FC<Props> = ({ selectedMonth, selectMonth }) => {
 
 const mapStateProps = ({ selectedMonth }: StoreState) => {
   return {
-    selectedMonth: selectedMonth,
+    selectedMonth: selectedMonth.selectedMonth,
   };
 };
 

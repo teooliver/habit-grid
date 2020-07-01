@@ -5,7 +5,7 @@ import {
   CreatePointAction,
   RemovePointAction,
 } from "./habits";
-import { SelectMonthAction } from "./selectMonth";
+import { SelectMonthAction, SelectYearAction } from "./selectMonth";
 
 export enum ActionTypes {
   getHabits,
@@ -14,6 +14,7 @@ export enum ActionTypes {
   createHabit,
   removeHabit,
   selectMonth,
+  selectYear,
   setAlert,
   removeAlert,
 }
@@ -25,4 +26,4 @@ export type Action =
   | CreatePointAction
   | RemovePointAction;
 
-export type CalendarActions = SelectMonthAction;
+export type CalendarActions = SelectMonthAction | SelectYearAction;

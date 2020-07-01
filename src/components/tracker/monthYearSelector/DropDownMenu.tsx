@@ -88,7 +88,7 @@ const DropDownMenu: React.FC<Props> = ({
 };
 const mapStateProps = ({ selectedMonth }: StoreState) => {
   return {
-    selectedMonth: selectedMonth,
+    selectedMonth: selectedMonth.selectedMonth,
   };
 };
 

@@ -3,6 +3,7 @@ import { Habit } from "../../redux/actions";
 import { StoreState } from "../../redux/reducers";
 import { connect } from "react-redux";
 import { addPoint, removePoint } from "../../redux/actions/habits";
+import { selectMonth } from "../../redux/actions/selectMonth";
 
 interface Props {
   day: string;
@@ -57,11 +58,9 @@ const HabitCell: FC<Props> = ({
   );
 };
 
-const mapStateToProps = ({
-  selectedMonth,
-}: StoreState): { selectedMonth: number } => {
+const mapStateToProps = ({ selectedMonth }: StoreState) => {
   return {
-    selectedMonth,
+    selectedMonth: selectedMonth.selectedMonth,
   };
 };
 
