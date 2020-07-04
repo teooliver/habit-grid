@@ -4,7 +4,6 @@ const currentMonth = new Date().getMonth();
 const currentYear = new Date().getFullYear();
 
 export const selectMonthReducer = (
-  // state: number = currentMonth,
   state = { selectedMonth: currentMonth, selectedYear: currentYear },
   action: CalendarActions
 ) => {

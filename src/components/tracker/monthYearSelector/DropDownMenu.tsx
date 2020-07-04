@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { months } from "../../../utils/variables";
 import { StoreState } from "../../../redux/reducers";
 import { connect } from "react-redux";
-import { selectMonth } from "../../../redux/actions/selectMonth";
+import { selectMonth, selectYear } from "../../../redux/actions/selectMonth";
 import ArrowBarRightIcon from "../../layout/icons/ArrowBarRightIcon";
 import ArrowBarLeftIcon from "../../layout/icons/ArrowBarLeftIcon";
 
@@ -10,12 +10,15 @@ interface Props {
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
   selectedMonth: number;
   selectMonth: typeof selectMonth;
+  selectYear: typeof selectYear;
+  possibleYearOptions: number[];
 }
 
 const DropDownMenu: React.FC<Props> = ({
   setIsOpen,
   selectMonth,
   selectedMonth,
+  possibleYearOptions,
 }) => {
   const [activeMenu, setActiveMenu] = useState("main");
   const dropDownRef = useRef<HTMLDivElement>(null);
@@ -40,6 +43,8 @@ const DropDownMenu: React.FC<Props> = ({
     }
   };
 
+  console.log(possibleYearOptions);
+
   return (
     <div ref={dropDownRef} className="dropdown">
       <ul className={` ${activeMenu === "main" ? "active" : "inactive"}`}>
@@ -56,9 +61,6 @@ const DropDownMenu: React.FC<Props> = ({
           <ArrowBarLeftIcon />
           Back
         </li>
-        {/* {months.map((month) => {
-          return <li className="menu-item">{month}</li>;
-        })} */}
         {months.map((month, index) => {
           return (
             <li className={selectedMonth === index ? "active" : ""}>
@@ -80,8 +82,20 @@ const DropDownMenu: React.FC<Props> = ({
           <ArrowBarLeftIcon />
           Back
         </li>
-        <li className="menu-item">2019</li>
-        <li className="menu-item">2020</li>
+        {possibleYearOptions.map((year, index) => {
+          return (
+            <li className={selectedMonth === index ? "active" : ""}>
+              <button
+                key={index}
+                onClick={() => {
+                  selectYear(year);
+                }}
+              >
+                {year}
+              </button>
+            </li>
+          );
+        })}
       </ul>
     </div>
   );
@@ -92,4 +106,6 @@ const mapStateProps = ({ selectedMonth }: StoreState) => {
   };
 };
 
-export default connect(mapStateProps, { selectMonth })(DropDownMenu);
+export default connect(mapStateProps, { selectMonth, selectYear })(
+  DropDownMenu
+);

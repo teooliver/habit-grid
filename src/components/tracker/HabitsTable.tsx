@@ -24,6 +24,7 @@ export const HabitsTable: React.FC<Props> = ({
     getHabits();
   }, []);
 
+  // Check THis, not working!!
   useEffect(() => {
     renderTableHeader(daysOnSelectedMonth);
   }, []);

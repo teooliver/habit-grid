@@ -10,6 +10,7 @@ interface Props {
   habit: Habit;
   color: string;
   selectedMonth: number;
+  selectedYear: number;
   removePoint: Function;
   addPoint: Function;
 }
@@ -19,17 +20,20 @@ const HabitCell: FC<Props> = ({
   habit,
   color,
   selectedMonth,
+  selectedYear,
   removePoint,
   addPoint,
 }) => {
   const { events, id } = habit;
 
-  const thisCellDate = new Date(2020, selectedMonth, parseInt(day));
+  const thisCellDate = new Date(selectedYear, selectedMonth, parseInt(day));
 
   const foundDate = events.find((event) => {
     if (
+      // Review -> do I need to check all of this options? Or just getDate is enought?
       event.getDate() === thisCellDate.getDate() &&
-      event.getMonth() === thisCellDate.getMonth()
+      event.getMonth() === thisCellDate.getMonth() &&
+      event.getFullYear() === thisCellDate.getFullYear()
     ) {
       return true;
     } else {
@@ -61,6 +65,7 @@ const HabitCell: FC<Props> = ({
 const mapStateToProps = ({ selectedMonth }: StoreState) => {
   return {
     selectedMonth: selectedMonth.selectedMonth,
+    selectedYear: selectedMonth.selectedYear,
   };
 };
 
