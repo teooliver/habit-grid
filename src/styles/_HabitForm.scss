@@ -1,8 +1,11 @@
 .HabitForm {
   position: absolute;
-  background-color: gray;
+  background-color: white;
   bottom: 0;
   right: 0;
+  right: 0;
+  width: 320px;
+  height: 100px;
   .plus-circle {
     position: absolute;
     bottom: 1rem;
@@ -14,7 +17,7 @@
     }
   }
   form {
-    position: relative;
+    position: absolute;
     bottom: 1rem;
     right: 5rem;
     // background-color: lightcyan;
