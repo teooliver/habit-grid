@@ -1,12 +1,15 @@
 import React, { FC, useState, useEffect, useRef, useLayoutEffect } from "react";
 import { connect } from "react-redux";
-import { createHabit } from "../../redux/actions/habits";
+import { createHabit, Habit } from "../../redux/actions/habits";
 import PlusCircleIcon from "../layout/icons/PlusCircleIcon";
+import { StoreState } from "../../redux/reducers";
+import ArrowDownIcon from "../layout/icons/ArrowDownIcon";
 
 interface Props {
   createHabit: Function;
+  habits: Habit[];
 }
-const HabitForm: FC<Props> = ({ createHabit }) => {
+const HabitForm: FC<Props> = ({ createHabit, habits }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [habitName, setHabitName] = useState("");
   const [isValid, setIsValid] = useState(true);
@@ -55,6 +58,11 @@ const HabitForm: FC<Props> = ({ createHabit }) => {
 
   return (
     <div ref={habitFormRef} className="HabitForm">
+      {habits.length === 0 && (
+        <div className="arrow-animation-container">
+          <ArrowDownIcon className="arrow-down" />
+        </div>
+      )}
       <div
         onClick={() => {
           setIsOpen(!isOpen);
@@ -94,4 +102,10 @@ const HabitForm: FC<Props> = ({ createHabit }) => {
   );
 };
 
-export default connect(null, { createHabit })(HabitForm);
+const mapStateToProps = ({ habits }: StoreState) => {
+  return {
+    habits,
+  };
+};
+
+export default connect(mapStateToProps, { createHabit })(HabitForm);

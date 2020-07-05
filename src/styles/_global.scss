@@ -22,6 +22,7 @@ h1 {
   position: relative;
   margin-top: 2.5rem;
   margin-left: 1rem;
+  margin-right: 1rem;
 }
 
 .habits-table-container {
@@ -29,6 +30,8 @@ h1 {
 }
 
 .stability-ball {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  overflow: auto;
 }
