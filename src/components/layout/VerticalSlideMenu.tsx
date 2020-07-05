@@ -1,15 +1,18 @@
 import React, { useState } from "react";
-import ArrowBarRightIcon from "../layout/icons/ArrowBarRightIcon";
+import ArrowBarRightIcon from "./icons/ArrowBarRightIcon";
 
-const VerticalSlideMenu = () => {
-  const [isOpen, setIsOpen] = useState(false);
+interface Props {
+  isOpen: boolean;
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
+const VerticalSlideMenu: React.FC<Props> = ({ isOpen, setIsOpen }) => {
   // put icon to close the menu
   // clickoutside to close
 
   //
   return (
-    <div className="VerticalSlideMenu">
+    <div className={`VerticalSlideMenu ${isOpen ? "open" : ""}`}>
       <div className="" onClick={() => setIsOpen(false)}>
         <ArrowBarRightIcon className="close-icon" />
       </div>
@@ -36,10 +39,10 @@ const VerticalSlideMenu = () => {
         </p>
         <p className="faq__question">- What about privacy?</p>
         <p className="faq__answer">
-          All your data is stored in a database in the browser. You have to
-          check the privacy of your browser to be sure that they are not getting
-          your data. But you can be sure that HabitGrid is not. (We recommend
-          using Firefox)
+          All your data is stored in a database in the browser. Check your
+          browser's privacy rules to be sure that they are not getting your
+          data. But you can be sure that HabitGrid is not. (We recommend using
+          Firefox)
         </p>
         <p className="faq__answer">
           Habit grid doesn't run any kind of scripts to collect data. You can
