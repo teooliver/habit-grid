@@ -39,8 +39,7 @@ const DropDownMenu: React.FC<Props> = ({
       dropDownRef.current != null &&
       !dropDownRef.current.contains(e.target)
     ) {
-      e.preventDefault();
-      // setIsOpen(false);
+      setIsOpen(false);
     } else {
       return;
     }
@@ -53,8 +52,7 @@ const DropDownMenu: React.FC<Props> = ({
       <ul className={` ${activeMenu === "main" ? "active" : "inactive"}`}>
         <li
           className="menu-item"
-          onClick={(e) => {
-            e.preventDefault();
+          onClick={() => {
             setActiveMenu("month");
           }}
         >
@@ -62,8 +60,7 @@ const DropDownMenu: React.FC<Props> = ({
         </li>
         <li
           className="menu-item"
-          onClick={(e) => {
-            e.preventDefault();
+          onClick={() => {
             setActiveMenu("year");
           }}
         >
@@ -82,6 +79,7 @@ const DropDownMenu: React.FC<Props> = ({
               className={`menu-item ${selectedMonth === index ? "active" : ""}`}
             >
               <button
+                type="button"
                 key={index}
                 onClick={() => {
                   selectMonth(index);
@@ -106,6 +104,7 @@ const DropDownMenu: React.FC<Props> = ({
             >
               <button
                 key={index}
+                type="button"
                 onClick={() => {
                   selectYear(year);
                 }}

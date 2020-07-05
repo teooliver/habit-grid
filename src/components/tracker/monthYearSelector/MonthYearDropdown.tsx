@@ -41,10 +41,7 @@ const MonthYearDropdown: React.FC<Props> = ({
     <>
       {habits.length !== 0 && (
         <div className="MonthDropdown">
-          <div
-            onClick={() => setIsOpen(!isOpen)}
-            onBlur={() => setIsOpen(false)}
-          >
+          <div onClick={() => setIsOpen(!isOpen)}>
             <button className="dropdown-button">
               <span className="dropdown-button-text">
                 {months[selectedMonth].toUpperCase()} / {selectedYear}
