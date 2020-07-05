@@ -12,6 +12,7 @@ interface Props {
   selectMonth: typeof selectMonth;
   selectYear: typeof selectYear;
   possibleYearOptions: number[];
+  selectedYear: number;
 }
 
 const DropDownMenu: React.FC<Props> = ({
@@ -19,6 +20,7 @@ const DropDownMenu: React.FC<Props> = ({
   selectMonth,
   selectedMonth,
   possibleYearOptions,
+  selectedYear,
 }) => {
   const [activeMenu, setActiveMenu] = useState("main");
   const dropDownRef = useRef<HTMLDivElement>(null);
@@ -63,7 +65,9 @@ const DropDownMenu: React.FC<Props> = ({
         </li>
         {months.map((month, index) => {
           return (
-            <li className={selectedMonth === index ? "active" : ""}>
+            <li
+              className={`menu-item ${selectedMonth === index ? "active" : ""}`}
+            >
               <button
                 key={index}
                 onClick={() => {
@@ -84,7 +88,9 @@ const DropDownMenu: React.FC<Props> = ({
         </li>
         {possibleYearOptions.map((year, index) => {
           return (
-            <li className={selectedMonth === index ? "active" : ""}>
+            <li
+              className={`menu-item ${selectedYear === year ? "active" : ""}`}
+            >
               <button
                 key={index}
                 onClick={() => {
@@ -103,6 +109,7 @@ const DropDownMenu: React.FC<Props> = ({
 const mapStateProps = ({ selectedMonth }: StoreState) => {
   return {
     selectedMonth: selectedMonth.selectedMonth,
+    selectedYear: selectedMonth.selectedYear,
   };
 };
 
