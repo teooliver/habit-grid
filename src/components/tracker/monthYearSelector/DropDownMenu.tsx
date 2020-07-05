@@ -50,10 +50,22 @@ const DropDownMenu: React.FC<Props> = ({
   return (
     <div ref={dropDownRef} className="dropdown">
       <ul className={` ${activeMenu === "main" ? "active" : "inactive"}`}>
-        <li className="menu-item" onClick={() => setActiveMenu("month")}>
+        <li
+          className="menu-item"
+          onClick={(e) => {
+            e.preventDefault();
+            setActiveMenu("month");
+          }}
+        >
           Month <ArrowBarRightIcon />
         </li>
-        <li className="menu-item" onClick={() => setActiveMenu("year")}>
+        <li
+          className="menu-item"
+          onClick={(e) => {
+            e.preventDefault();
+            setActiveMenu("year");
+          }}
+        >
           Year <ArrowBarRightIcon />
         </li>
       </ul>
