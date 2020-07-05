@@ -56,7 +56,8 @@ const DropDownMenu: React.FC<Props> = ({
             setActiveMenu("month");
           }}
         >
-          Month <ArrowBarRightIcon />
+          <span>Month</span>
+          <ArrowBarRightIcon />
         </li>
         <li
           className="menu-item"
@@ -64,14 +65,14 @@ const DropDownMenu: React.FC<Props> = ({
             setActiveMenu("year");
           }}
         >
-          Year <ArrowBarRightIcon />
+          <span>Year</span>
+          <ArrowBarRightIcon />
         </li>
       </ul>
 
       <ul className={` ${activeMenu === "month" ? "active" : "inactive"}`}>
         <li className="menu-item" onClick={() => setActiveMenu("main")}>
           <ArrowBarLeftIcon />
-          Back
         </li>
         {months.map((month, index) => {
           return (
@@ -95,7 +96,6 @@ const DropDownMenu: React.FC<Props> = ({
       <ul className={` ${activeMenu === "year" ? "active" : "inactive"}`}>
         <li className="menu-item" onClick={() => setActiveMenu("main")}>
           <ArrowBarLeftIcon />
-          Back
         </li>
         {possibleYearOptions.map((year, index) => {
           return (
