@@ -39,7 +39,8 @@ const DropDownMenu: React.FC<Props> = ({
       dropDownRef.current != null &&
       !dropDownRef.current.contains(e.target)
     ) {
-      setIsOpen(false);
+      e.preventDefault();
+      // setIsOpen(false);
     } else {
       return;
     }
