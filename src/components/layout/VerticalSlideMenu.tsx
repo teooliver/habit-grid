@@ -75,7 +75,7 @@ const VerticalSlideMenu: React.FC<Props> = ({
         </p>
       </article>
 
-      <div className="delete-data-button">
+      <div className="danger-zone">
         <h3>Danger Zone</h3>
         <button
           onClick={() => {
