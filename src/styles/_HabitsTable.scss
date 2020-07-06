@@ -11,6 +11,7 @@
     border: dotted 1px #000000;
     &:hover {
       background-color: lightgray;
+      cursor: pointer;
     }
   }
 
@@ -39,8 +40,10 @@
         width: 10px;
         margin-left: 0.8rem;
         margin-right: 0.2rem;
+        color: black;
         &:hover {
           color: red;
+          cursor: pointer;
         }
       }
     }

@@ -17,14 +17,13 @@
     margin-right: 0.5rem;
   }
 
-  span {
+  .navbar-gear-icon {
     justify-self: flex-end;
-    svg {
-      width: 1.5rem;
-      height: 1.5rem;
-      &:hover {
-        fill: lightcoral;
-      }
+    width: 1.5rem;
+    height: 1.5rem;
+    &:hover {
+      fill: lightcoral;
+      cursor: pointer;
     }
   }
 }
