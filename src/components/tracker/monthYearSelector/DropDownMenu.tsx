@@ -45,8 +45,6 @@ const DropDownMenu: React.FC<Props> = ({
     }
   };
 
-  console.log(possibleYearOptions);
-
   return (
     <div ref={dropDownRef} className="dropdown">
       <ul className={` ${activeMenu === "main" ? "active" : "inactive"}`}>
@@ -77,11 +75,11 @@ const DropDownMenu: React.FC<Props> = ({
         {months.map((month, index) => {
           return (
             <li
+              key={index}
               className={`menu-item ${selectedMonth === index ? "active" : ""}`}
             >
               <button
                 type="button"
-                key={index}
                 onClick={() => {
                   selectMonth(index);
                 }}
@@ -100,10 +98,10 @@ const DropDownMenu: React.FC<Props> = ({
         {possibleYearOptions.map((year, index) => {
           return (
             <li
+              key={index}
               className={`menu-item ${selectedYear === year ? "active" : ""}`}
             >
               <button
-                key={index}
                 type="button"
                 onClick={() => {
                   selectYear(year);

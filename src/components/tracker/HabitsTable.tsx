@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { StoreState } from "../../redux/reducers";
 import { Habit } from "../../redux/actions";
@@ -9,34 +9,37 @@ import { ReactComponent as StabilityBall } from "../../images/undraw_Stability_b
 interface Props {
   getHabits: Function;
   selectedMonth: number;
+  selectedYear: number;
   habits: Habit[];
 }
 
 export const HabitsTable: React.FC<Props> = ({
   getHabits,
   selectedMonth,
+  selectedYear,
   habits,
 }) => {
+  const [daysArray, setDaysArray] = useState<string[]>([]);
+
   useEffect(() => {
     getHabits();
   }, []);
 
-  // Check THis, not working!!
   useEffect(() => {
-    renderTableHeader(daysOnSelectedMonth);
+    renderTableHeader();
   }, []);
 
-  const daysOnSelectedMonth: number =
-    new Date(2019, selectedMonth + 1, 0).getDate() + 1;
+  const renderTableHeader = () => {
+    let days: string[] = [];
+    let daysAmountInSelectedMonth: number =
+      new Date(selectedYear, selectedMonth + 1, 0).getDate() + 1;
 
-  let daysArray: string[] = [];
-  const renderTableHeader = (days: number) => {
-    for (let i = 1; i < days; i++) {
-      daysArray.push(`${i}`);
+    for (let i = 1; i < daysAmountInSelectedMonth; i++) {
+      days.push(`${i}`);
     }
-  };
 
-  renderTableHeader(daysOnSelectedMonth);
+    setDaysArray(days);
+  };
 
   return (
     <>
@@ -76,6 +79,7 @@ const mapStateToProps = ({ habits, selectedMonth }: StoreState) => {
   return {
     habits,
     selectedMonth: selectedMonth.selectedMonth,
+    selectedYear: selectedMonth.selectedYear,
   };
 };
 

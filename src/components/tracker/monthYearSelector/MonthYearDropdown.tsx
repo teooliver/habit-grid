@@ -18,13 +18,18 @@ const MonthYearDropdown: React.FC<Props> = ({
   habits,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [possibleYearOptions, setPossibleYearOptions] = useState<number[]>([]);
 
-  let possibleYearOptions: number[] = [];
+  useEffect(() => {
+    checkYearInEvents();
+  }, [habits]);
+
   const checkYearInEvents = () => {
     habits.forEach((habit) => {
       habit.events.forEach((event) => {
         if (!possibleYearOptions.includes(event.getFullYear())) {
-          possibleYearOptions.push(event.getFullYear());
+          setPossibleYearOptions([...possibleYearOptions, event.getFullYear()]);
+          // possibleYearOptions.push(event.getFullYear());
         } else {
           return;
         }
@@ -32,9 +37,7 @@ const MonthYearDropdown: React.FC<Props> = ({
     });
   };
 
-  useEffect(() => {
-    checkYearInEvents();
-  }, [possibleYearOptions]);
+  // checkYearInEvents();
 
   return (
     <>
