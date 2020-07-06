@@ -5,8 +5,6 @@ import { StoreState } from "./redux/reducers";
 import { Habit, getHabits } from "./redux/actions";
 import HabitTracker from "./components/tracker/HabitTracker";
 import Navbar from "./components/layout/Navbar";
-import Logo from "./components/layout/Logo";
-import MonthDropdown from "./components/tracker/monthYearSelector/MonthYearDropdown";
 import HabitForm from "./components/tracker/HabitForm";
 interface AppProps {
   getHabits: Function;

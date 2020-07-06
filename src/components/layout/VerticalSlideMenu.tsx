@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React from "react";
 import ArrowBarRightIcon from "./icons/ArrowBarRightIcon";
 import Logo from "./Logo";
 

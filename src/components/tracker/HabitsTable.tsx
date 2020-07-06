@@ -4,10 +4,7 @@ import { StoreState } from "../../redux/reducers";
 import { Habit } from "../../redux/actions";
 import { getHabits } from "../../redux/actions";
 import HabitRow from "./HabitRow";
-import { months } from "../../utils/variables";
-import MonthYearDropdown from "./monthYearSelector/MonthYearDropdown";
 import { ReactComponent as StabilityBall } from "../../images/undraw_Stability_ball_b4ia.svg";
-import { selectMonth } from "../../redux/actions/selectMonth";
 
 interface Props {
   getHabits: Function;
@@ -43,7 +40,7 @@ export const HabitsTable: React.FC<Props> = ({
 
   return (
     <>
-      {habits.length != 0 ? (
+      {habits.length !== 0 ? (
         <table className="HabitsTable">
           <thead>
             <tr>

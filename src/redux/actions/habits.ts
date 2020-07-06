@@ -8,7 +8,6 @@ import {
   createPoint,
   deletePoint,
   deleteHabit,
-  deleteDataBase,
 } from "../../indexedDb/connectDb";
 
 export interface Habit {

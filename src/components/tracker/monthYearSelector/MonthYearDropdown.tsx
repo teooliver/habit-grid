@@ -1,11 +1,10 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import DropDownMenu from "./DropDownMenu";
 import { StoreState } from "../../../redux/reducers";
 import { connect } from "react-redux";
 import { months } from "../../../utils/variables";
 import ChevronBarExpandIcon from "../../layout/icons/ChevronBarExpandIcon";
 import { Habit } from "../../../redux/actions";
-import { selectYear } from "../../../redux/actions/selectMonth";
 
 interface Props {
   selectedMonth: number;
