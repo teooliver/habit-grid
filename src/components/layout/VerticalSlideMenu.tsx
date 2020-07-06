@@ -20,6 +20,8 @@ const VerticalSlideMenu: React.FC<Props> = ({
     if (window.confirm("Are you sure you want to delete all your Habits?")) {
       deleteAllHabits();
 
+      window.location.reload(false);
+
       console.log("The database was deleted");
     } else {
       // Do nothing!
