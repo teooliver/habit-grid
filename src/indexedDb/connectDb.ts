@@ -73,3 +73,17 @@ export const deletePoint = async (id: number, date: Date) => {
     return habit;
   }
 };
+
+export const deleteDataBase = async () => {
+  await db
+    .delete()
+    .then(() => {
+      console.log("Database successfully deleted");
+    })
+    .catch((err) => {
+      console.error("Could not delete database");
+    })
+    .finally(() => {
+      // Do what should be done next...
+    });
+};

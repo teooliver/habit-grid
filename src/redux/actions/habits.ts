@@ -8,6 +8,7 @@ import {
   createPoint,
   deletePoint,
   deleteHabit,
+  deleteDataBase,
 } from "../../indexedDb/connectDb";
 
 export interface Habit {
@@ -39,6 +40,11 @@ export interface CreatePointAction {
 export interface RemovePointAction {
   type: ActionTypes.removePoint;
   payload: Habit;
+}
+
+export interface DeleteAllHabits {
+  type: ActionTypes.deleteAllHabits;
+  payload: [];
 }
 
 export const getHabits = (): Function => {
@@ -92,11 +98,31 @@ export const addPoint = (id: number, date: Date) => async (
 export const removePoint = (id: number, date: Date) => async (
   dispatch: Dispatch
 ) => {
-  console.log("From remove", id, date);
   const habit = await deletePoint(id, date);
 
   dispatch<RemovePointAction>({
     type: ActionTypes.removePoint,
     payload: habit!,
+  });
+};
+
+// Delete all Data
+export const deleteAllHabits = () => async (dispatch: Dispatch) => {
+  // await deleteDataBase();
+
+  await db
+    .delete()
+    .then(() => {
+      console.log("Database successfully deleted");
+    })
+    .catch((err) => {
+      console.error("Could not delete database");
+    })
+    .finally(() => {
+      // Do what should be done next...
+    });
+  dispatch<DeleteAllHabits>({
+    type: ActionTypes.deleteAllHabits,
+    payload: [],
   });
 };

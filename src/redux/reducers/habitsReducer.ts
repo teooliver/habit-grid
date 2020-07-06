@@ -16,6 +16,8 @@ export const habitsReducer = (state: Habit[] = [], action: Action) => {
       return state.map((habit) => {
         return habit.id === action.payload.id ? action.payload : habit;
       });
+    case ActionTypes.deleteAllHabits:
+      return action.payload;
     default:
       return state;
   }

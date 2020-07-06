@@ -1,17 +1,21 @@
-import React, { useState } from "react";
+import React, { useRef, useEffect } from "react";
 import ArrowBarRightIcon from "./icons/ArrowBarRightIcon";
 import Logo from "./Logo";
+
+import { connect } from "react-redux";
+import { deleteAllHabits } from "../../redux/actions";
 
 interface Props {
   isOpen: boolean;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  deleteAllHabits: Function;
 }
 
-const VerticalSlideMenu: React.FC<Props> = ({ isOpen, setIsOpen }) => {
-  // put icon to close the menu
-  // clickoutside to close
-
-  //
+const VerticalSlideMenu: React.FC<Props> = ({
+  isOpen,
+  setIsOpen,
+  deleteAllHabits,
+}) => {
   return (
     <section className={`VerticalSlideMenu ${isOpen ? "open" : ""}`}>
       <div className="" onClick={() => setIsOpen(false)}>
@@ -59,11 +63,11 @@ const VerticalSlideMenu: React.FC<Props> = ({ isOpen, setIsOpen }) => {
           </a>
         </p>
       </article>
-      <div className="delete-data-button">
+      <div className="delete-data-button" onClick={() => deleteAllHabits()}>
         <button>Delete All Data</button>
       </div>
     </section>
   );
 };
 
-export default VerticalSlideMenu;
+export default connect(null, { deleteAllHabits })(VerticalSlideMenu);
