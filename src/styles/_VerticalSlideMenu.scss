@@ -1,17 +1,30 @@
 .VerticalSlideMenu {
-  // display: none;
-  transform: translate(22rem);
-  transition: all 350ms linear;
+  @include desktop {
+    width: 22rem;
+    transform: translate(22rem);
+    transition: all 350ms linear;
+  }
+  @include tablet {
+    width: 22rem;
+    transform: translate(22rem);
+    transition: all 350ms linear;
+  }
+
+  @include mobile {
+    transform: translate(14rem);
+    transition: all 350ms linear;
+    width: 14rem;
+  }
+
   &.open {
     overflow: scroll;
-    // display: block;
     transform: translate(0rem);
   }
   position: fixed;
   z-index: 100000;
   top: 0;
   right: 0;
-  width: 22rem;
+
   height: 100%;
   background-color: lightcoral;
   overflow: hidden;
@@ -36,8 +49,6 @@
   .faq {
     display: flex;
     flex-direction: column;
-    // align-items: center;
-    // justify-content: flex-start;
     margin: 0 1rem;
     margin-top: 3rem;
     h2 {

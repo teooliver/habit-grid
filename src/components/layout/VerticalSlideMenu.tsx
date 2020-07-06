@@ -63,8 +63,10 @@ const VerticalSlideMenu: React.FC<Props> = ({
           </a>
         </p>
       </article>
-      <div className="delete-data-button" onClick={() => deleteAllHabits()}>
-        <button>Delete All Data</button>
+
+      <div className="delete-data-button">
+        <h3>Danger Zone</h3>
+        <button onClick={() => deleteAllHabits()}>Delete All Data</button>
       </div>
     </section>
   );

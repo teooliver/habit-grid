@@ -67,6 +67,8 @@ export const createHabit = (formData: string) => async (dispatch: Dispatch) => {
     events: [],
   };
 
+  // check if database exists before addHabit
+
   const indexdHabit = await addHabit(newHabit);
 
   dispatch<CreateHabitAction>({
@@ -107,7 +109,8 @@ export const removePoint = (id: number, date: Date) => async (
 
 // Delete all Data
 export const deleteAllHabits = () => async (dispatch: Dispatch) => {
-  // await deleteDataBase();
+  // refresh page after deleting data
+  // create alert to make sure you want to delete the data
 
   await db
     .delete()
