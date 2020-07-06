@@ -2,19 +2,16 @@ import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { StoreState } from "../../redux/reducers";
 import { Habit } from "../../redux/actions";
-import { getHabits } from "../../redux/actions";
 import HabitRow from "./HabitRow";
 import { ReactComponent as StabilityBall } from "../../images/undraw_Stability_ball_b4ia.svg";
 
 interface Props {
-  getHabits: Function;
   selectedMonth: number;
   selectedYear: number;
   habits: Habit[];
 }
 
 export const HabitsTable: React.FC<Props> = ({
-  getHabits,
   selectedMonth,
   selectedYear,
   habits,
@@ -22,23 +19,21 @@ export const HabitsTable: React.FC<Props> = ({
   const [daysArray, setDaysArray] = useState<string[]>([]);
 
   useEffect(() => {
-    getHabits();
-  }, []);
+    renderTableHeader(selectedMonth, selectedYear);
+  }, [selectedMonth]);
 
-  useEffect(() => {
-    renderTableHeader();
-  }, []);
-
-  const renderTableHeader = () => {
+  const renderTableHeader = (month: number, year: number) => {
     let days: string[] = [];
     let daysAmountInSelectedMonth: number =
-      new Date(selectedYear, selectedMonth + 1, 0).getDate() + 1;
-
+      new Date(year, month + 1, 0).getDate() + 1;
+    console.log("month: ", month, "year: ", year);
+    console.log("Amount", daysAmountInSelectedMonth);
     for (let i = 1; i < daysAmountInSelectedMonth; i++) {
       days.push(`${i}`);
     }
 
-    setDaysArray(days);
+    setDaysArray([...days]);
+    console.log("Days Array", daysArray);
   };
 
   return (
@@ -83,4 +78,4 @@ const mapStateToProps = ({ habits, selectedMonth }: StoreState) => {
   };
 };
 
-export default connect(mapStateToProps, { getHabits })(HabitsTable);
+export default connect(mapStateToProps)(HabitsTable);
