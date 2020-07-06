@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import ArrowBarRightIcon from "./icons/ArrowBarRightIcon";
+import Logo from "./Logo";
 
 interface Props {
   isOpen: boolean;
@@ -15,6 +16,9 @@ const VerticalSlideMenu: React.FC<Props> = ({ isOpen, setIsOpen }) => {
     <section className={`VerticalSlideMenu ${isOpen ? "open" : ""}`}>
       <div className="" onClick={() => setIsOpen(false)}>
         <ArrowBarRightIcon className="close-icon" />
+      </div>
+      <div className="logo">
+        <Logo className="vertical-menu-logo" backgroundColor="transparent" />
       </div>
 
       <article className="faq">

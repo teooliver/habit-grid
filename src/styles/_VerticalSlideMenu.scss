@@ -1,7 +1,11 @@
 .VerticalSlideMenu {
-  display: none;
+  // display: none;
+  transform: translate(22rem);
+  transition: all 1s linear;
   &.open {
-    display: block;
+    overflow: scroll;
+    // display: block;
+    transform: translate(0rem);
   }
   position: absolute;
   z-index: 100000;
@@ -11,6 +15,17 @@
   height: 100%;
   background-color: lightcoral;
   overflow: hidden;
+  .logo {
+    width: fit-content;
+    margin: 2rem auto;
+  }
+  .vertical-menu-logo {
+    width: 10rem;
+    height: auto;
+    g {
+      fill: transparent;
+    }
+  }
   .close-icon {
     position: absolute;
     left: 0;
@@ -41,7 +56,7 @@
   }
   .delete-data-button {
     width: 80%;
-    margin: 0 auto;
+    margin: 2rem auto;
     button {
       width: 100%;
       height: 3rem;

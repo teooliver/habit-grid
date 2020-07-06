@@ -19,5 +19,12 @@
 
   span {
     justify-self: flex-end;
+    svg {
+      width: 1.5rem;
+      height: 1.5rem;
+      &:hover {
+        fill: lightcoral;
+      }
+    }
   }
 }
