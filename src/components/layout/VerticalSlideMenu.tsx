@@ -16,6 +16,17 @@ const VerticalSlideMenu: React.FC<Props> = ({
   setIsOpen,
   deleteAllHabits,
 }) => {
+  const confirmDeleteAllData = () => {
+    if (window.confirm("Are you sure you want to delete all your Habits?")) {
+      deleteAllHabits();
+
+      console.log("The database was deleted");
+    } else {
+      // Do nothing!
+      return;
+    }
+  };
+
   return (
     <section className={`VerticalSlideMenu ${isOpen ? "open" : ""}`}>
       <div className="" onClick={() => setIsOpen(false)}>
@@ -66,7 +77,13 @@ const VerticalSlideMenu: React.FC<Props> = ({
 
       <div className="delete-data-button">
         <h3>Danger Zone</h3>
-        <button onClick={() => deleteAllHabits()}>Delete All Data</button>
+        <button
+          onClick={() => {
+            confirmDeleteAllData();
+          }}
+        >
+          Delete All Data
+        </button>
       </div>
     </section>
   );
