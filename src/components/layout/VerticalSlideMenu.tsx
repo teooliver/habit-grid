@@ -12,12 +12,12 @@ const VerticalSlideMenu: React.FC<Props> = ({ isOpen, setIsOpen }) => {
 
   //
   return (
-    <div className={`VerticalSlideMenu ${isOpen ? "open" : ""}`}>
+    <section className={`VerticalSlideMenu ${isOpen ? "open" : ""}`}>
       <div className="" onClick={() => setIsOpen(false)}>
         <ArrowBarRightIcon className="close-icon" />
       </div>
 
-      <div className="faq">
+      <article className="faq">
         <h2>FAQ: </h2>
         <p className="faq__question">- Where's is my data stored?</p>
         <p className="faq__answer">
@@ -54,11 +54,11 @@ const VerticalSlideMenu: React.FC<Props> = ({ isOpen, setIsOpen }) => {
             Click here to check it out.
           </a>
         </p>
-      </div>
+      </article>
       <div className="delete-data-button">
         <button>Delete All Data</button>
       </div>
-    </div>
+    </section>
   );
 };
 

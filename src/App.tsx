@@ -19,13 +19,15 @@ const _App: React.FC<AppProps> = ({ getHabits }) => {
 
   return (
     <div className="App">
-      <Navbar />
-      <div className="page-container">
-        <HabitTracker />
-      </div>
-      <HabitForm />
-      {/* <Logo /> */}
-      {/* <MonthDropdown /> */}
+      <header>
+        <Navbar />
+      </header>
+      <main>
+        <section className="page-container">
+          <HabitTracker />
+        </section>
+        <HabitForm />
+      </main>
     </div>
   );
 };
