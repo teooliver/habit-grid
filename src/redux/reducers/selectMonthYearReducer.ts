@@ -3,7 +3,7 @@ import { ActionTypes, CalendarActions } from "../actions/index";
 const currentMonth = new Date().getMonth();
 const currentYear = new Date().getFullYear();
 
-export const selectMonthReducer = (
+export const selectMonthYearReducer = (
   state = { selectedMonth: currentMonth, selectedYear: currentYear },
   action: CalendarActions
 ) => {

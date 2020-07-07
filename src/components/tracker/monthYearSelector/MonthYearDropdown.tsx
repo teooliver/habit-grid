@@ -64,10 +64,10 @@ const MonthYearDropdown: React.FC<Props> = ({
     </>
   );
 };
-const mapStateProps = ({ selectedMonth, habits }: StoreState) => {
+const mapStateProps = ({ selectedMonthYear, habits }: StoreState) => {
   return {
-    selectedMonth: selectedMonth.selectedMonth,
-    selectedYear: selectedMonth.selectedYear,
+    selectedMonth: selectedMonthYear.selectedMonth,
+    selectedYear: selectedMonthYear.selectedYear,
     habits: habits,
   };
 };

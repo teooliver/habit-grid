@@ -61,10 +61,10 @@ const HabitCell: FC<Props> = ({
   );
 };
 
-const mapStateToProps = ({ selectedMonth }: StoreState) => {
+const mapStateToProps = ({ selectedMonthYear }: StoreState) => {
   return {
-    selectedMonth: selectedMonth.selectedMonth,
-    selectedYear: selectedMonth.selectedYear,
+    selectedMonth: selectedMonthYear.selectedMonth,
+    selectedYear: selectedMonthYear.selectedYear,
   };
 };
 

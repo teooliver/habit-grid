@@ -6,7 +6,7 @@ import {
   RemovePointAction,
   DeleteAllHabits,
 } from "./habits";
-import { SelectMonthAction, SelectYearAction } from "./selectMonth";
+import { SelectMonthAction, SelectYearAction } from "./selectMonthYear";
 
 export enum ActionTypes {
   getHabits,

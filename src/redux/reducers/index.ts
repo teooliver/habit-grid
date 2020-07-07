@@ -1,14 +1,14 @@
 import { combineReducers } from "redux";
 import { habitsReducer } from "./habitsReducer";
-import { selectMonthReducer } from "./selectMonthReducer";
+import { selectMonthYearReducer } from "./selectMonthYearReducer";
 import { Habit } from "../actions";
 
 export interface StoreState {
   habits: Habit[];
-  selectedMonth: { selectedMonth: number; selectedYear: number };
+  selectedMonthYear: { selectedMonth: number; selectedYear: number };
 }
 
 export const reducers = combineReducers<StoreState>({
   habits: habitsReducer,
-  selectedMonth: selectMonthReducer,
+  selectedMonthYear: selectMonthYearReducer,
 });

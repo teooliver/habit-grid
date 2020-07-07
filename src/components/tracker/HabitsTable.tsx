@@ -70,11 +70,11 @@ export const HabitsTable: React.FC<Props> = ({
   );
 };
 
-const mapStateToProps = ({ habits, selectedMonth }: StoreState) => {
+const mapStateToProps = ({ habits, selectedMonthYear }: StoreState) => {
   return {
     habits,
-    selectedMonth: selectedMonth.selectedMonth,
-    selectedYear: selectedMonth.selectedYear,
+    selectedMonth: selectedMonthYear.selectedMonth,
+    selectedYear: selectedMonthYear.selectedYear,
   };
 };
 

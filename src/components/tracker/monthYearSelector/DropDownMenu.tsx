@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { months } from "../../../utils/variables";
 import { StoreState } from "../../../redux/reducers";
 import { connect } from "react-redux";
-import { selectMonth, selectYear } from "../../../redux/actions/selectMonth";
+import { selectMonth, selectYear } from "../../../redux/actions/selectMonthYear";
 import ArrowBarRightIcon from "../../layout/icons/ArrowBarRightIcon";
 import ArrowBarLeftIcon from "../../layout/icons/ArrowBarLeftIcon";
 
@@ -116,10 +116,10 @@ const DropDownMenu: React.FC<Props> = ({
     </div>
   );
 };
-const mapStateProps = ({ selectedMonth }: StoreState) => {
+const mapStateProps = ({ selectedMonthYear }: StoreState) => {
   return {
-    selectedMonth: selectedMonth.selectedMonth,
-    selectedYear: selectedMonth.selectedYear,
+    selectedMonth: selectedMonthYear.selectedMonth,
+    selectedYear: selectedMonthYear.selectedYear,
   };
 };
 
