@@ -18,13 +18,13 @@ Click on the habit name (first cell of the row), a trash icon will appear, click
 
 ### Where is my data stored?
 
-Habit Grid doesn't upload your data to any server, yours data is stored on your device. Because of that, you can't sync your data with other devices or between browsers on the same device.
+Habit Grid doesn't upload your data to any server, your data is stored on your browser.
 
 ### What about privacy?
 
 All your data is stored in a database in the browser. Check your browser's privacy rules to be sure that they are not getting your data. But you can be sure that HabitGrid is not.
 
-Habit grid doesn't run any kind of scripts to collect data. You can trust this because the app is open sourced and can be audited.
+Habit Grid doesn't run any kind of scripts to collect data. You can trust this because the app is open sourced and can be audited.
 
 ## Technical
 

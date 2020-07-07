@@ -54,8 +54,7 @@ const VerticalSlideMenu: React.FC<Props> = ({
         <p className="faq__question">- Where is my data stored?</p>
         <p className="faq__answer">
           Habit Grid doesn't upload your data to any server, your data is stored
-          on your device. Because of that, you can't sync your data with other
-          devices or between browsers on the same device.
+          on your browser.
         </p>
         <p className="faq__question">- What about privacy?</p>
         <p className="faq__answer">
