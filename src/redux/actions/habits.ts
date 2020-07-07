@@ -1,14 +1,6 @@
 import { Dispatch } from "redux";
 import { ActionTypes } from "./types";
-import {
-  db,
-  addHabit,
-  gellAllHabits,
-  IHabit,
-  createPoint,
-  deletePoint,
-  deleteHabit,
-} from "../../indexedDb/connectDb";
+import { db } from "../../indexedDb/connectDb";
 
 export interface Habit {
   id?: number;
@@ -18,7 +10,7 @@ export interface Habit {
 
 export interface GetHabitsAction {
   type: ActionTypes.getHabits;
-  payload: IHabit[];
+  payload: Habit[];
 }
 
 export interface RemoveHabitAction {
@@ -49,7 +41,8 @@ export interface DeleteAllHabits {
 export const getHabits = (): Function => {
   return async (dispatch: Dispatch) => {
     try {
-      const allHabits = await gellAllHabits();
+      let allHabits: Habit[] = await db.table("habits").toArray();
+
       dispatch<GetHabitsAction>({
         type: ActionTypes.getHabits,
         payload: allHabits,
@@ -62,14 +55,15 @@ export const getHabits = (): Function => {
 };
 
 export const createHabit = (formData: string) => async (dispatch: Dispatch) => {
-  const newHabit: Habit = {
+  const habit: Habit = {
     name: formData,
     events: [],
   };
 
   // check if database exists before addHabit
 
-  const indexdHabit = await addHabit(newHabit);
+  let id = await db.table("habits").add(habit);
+  const indexdHabit = await db.habits.get(Number(id));
 
   dispatch<CreateHabitAction>({
     type: ActionTypes.createHabit,
@@ -77,18 +71,27 @@ export const createHabit = (formData: string) => async (dispatch: Dispatch) => {
   });
 };
 
-export const removeHabit = (id: number): RemoveHabitAction => {
-  deleteHabit(id);
-  return {
+export const removeHabit = (id: number) => async (dispatch: Dispatch) => {
+  const habit = await db.habits.get(Number(id));
+  await db.table("habits").delete(id);
+  dispatch<RemoveHabitAction>({
     type: ActionTypes.removeHabit,
     payload: id,
-  };
+  });
 };
 
 export const addPoint = (id: number, date: Date) => async (
   dispatch: Dispatch
 ) => {
-  const habit = await createPoint(id, date);
+  // const habit = await createPoint(id, date);
+  const habit = await db.habits.get(Number(id));
+  // console.log("Create Point: ", habit);
+  if (habit) {
+    // insert date into the events[]
+    habit.events.push(date);
+    await db.habits.put(habit, id);
+    // return habit;
+  }
 
   dispatch<CreatePointAction>({
     type: ActionTypes.addPoint,
@@ -99,7 +102,19 @@ export const addPoint = (id: number, date: Date) => async (
 export const removePoint = (id: number, date: Date) => async (
   dispatch: Dispatch
 ) => {
-  const habit = await deletePoint(id, date);
+  // const habit = await deletePoint(id, date);
+  const habit = await db.habits.get(Number(id));
+
+  if (habit) {
+    for (let index = 0; index < habit.events.length; index++) {
+      if (habit.events[index].getTime() === date.getTime()) {
+        habit.events.splice(index, 1);
+      }
+    }
+    await db.habits.put(habit, id);
+
+    // return habit;
+  }
 
   dispatch<RemovePointAction>({
     type: ActionTypes.removePoint,
@@ -109,9 +124,6 @@ export const removePoint = (id: number, date: Date) => async (
 
 // Delete all Data
 export const deleteAllHabits = () => async (dispatch: Dispatch) => {
-  // refresh page after deleting data
-  // create alert to make sure you want to delete the data
-
   await db
     .delete()
     .then(() => {
