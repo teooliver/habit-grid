@@ -2,10 +2,7 @@
 
 ![habit-grid](./Habit-Grid-Image.png)
 
-> Habit Grid is a minimalistic app to help you track and build habits. With a simple and straight to the point interface, you dont have to configure or learn anything to use the app. Just add the task and start clicking the cells to track.
-
-Privacy:
-This app doesnt connect to the internet, you dont have to make an account, you dont have to input any personal information.
+Habit Grid is a minimalistic app to help you track and build habits. With a simple and straight to the point interface, you dont have to configure or learn anything to use the app. Just add the task and start clicking the cells to track.
 
 ## F.A.Q
 
