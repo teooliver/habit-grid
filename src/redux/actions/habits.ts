@@ -71,7 +71,7 @@ export const createHabit = (formData: string) => async (dispatch: Dispatch) => {
 };
 
 export const removeHabit = (id: number) => async (dispatch: Dispatch) => {
-  const habit = await db.habits.get(Number(id));
+  // const habit = await db.habits.get(Number(id));
   await db.table("habits").delete(id);
   dispatch<RemoveHabitAction>({
     type: ActionTypes.removeHabit,
@@ -83,12 +83,10 @@ export const addPoint = (id: number, date: Date) => async (
   dispatch: Dispatch
 ) => {
   const habit = await db.habits.get(Number(id));
-  // console.log("Create Point: ", habit);
+
   if (habit) {
-    // insert date into the events[]
     habit.events.push(date);
     await db.habits.put(habit, id);
-    // return habit;
   }
 
   dispatch<CreatePointAction>({
