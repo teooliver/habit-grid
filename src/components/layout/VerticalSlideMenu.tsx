@@ -40,12 +40,6 @@ const VerticalSlideMenu: React.FC<Props> = ({
 
       <article className="faq">
         <h2>FAQ: </h2>
-        <p className="faq__question">- Where's is my data stored?</p>
-        <p className="faq__answer">
-          Habit Grid doesn't upload your data to any server, yours data is
-          stored on your device. Because of that, you can't sync your data with
-          other devices or between browsers on the same device.
-        </p>
         <p className="faq__question">- How do a delete a habit row?</p>
         <p className="faq__answer">
           Click on the habit name (first cell of the row), a trash icon will
@@ -57,6 +51,12 @@ const VerticalSlideMenu: React.FC<Props> = ({
           On the bottom right corner of the screen you will find a big "plus"
           button, to click on that, fill the input field and press enter. (or
           click on submit).
+        </p>
+        <p className="faq__question">- Where is my data stored?</p>
+        <p className="faq__answer">
+          Habit Grid doesn't upload your data to any server, your data is stored
+          on your device. Because of that, you can't sync your data with other
+          devices or between browsers on the same device.
         </p>
         <p className="faq__question">- What about privacy?</p>
         <p className="faq__answer">
