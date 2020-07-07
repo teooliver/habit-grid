@@ -1,7 +1,10 @@
 .HabitsTable {
   border-collapse: collapse;
-  margin: 1rem;
+  margin: 1.5rem 1rem;
   margin-bottom: 0;
+  @include desktop {
+    margin: 2rem auto;
+  }
 
   td {
     width: 35px;

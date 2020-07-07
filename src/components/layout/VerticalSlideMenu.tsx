@@ -21,7 +21,6 @@ const VerticalSlideMenu: React.FC<Props> = ({
       deleteAllHabits();
 
       window.location.reload(false);
-
       console.log("The database was deleted");
     } else {
       // Do nothing!
