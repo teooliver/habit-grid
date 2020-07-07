@@ -60,8 +60,7 @@ export const createHabit = (formData: string) => async (dispatch: Dispatch) => {
     events: [],
   };
 
-  // check if database exists before addHabit
-
+  // TODO: check if database exists before addHabit
   let id = await db.table("habits").add(habit);
   const indexdHabit = await db.habits.get(Number(id));
 
@@ -83,7 +82,6 @@ export const removeHabit = (id: number) => async (dispatch: Dispatch) => {
 export const addPoint = (id: number, date: Date) => async (
   dispatch: Dispatch
 ) => {
-  // const habit = await createPoint(id, date);
   const habit = await db.habits.get(Number(id));
   // console.log("Create Point: ", habit);
   if (habit) {
@@ -102,7 +100,6 @@ export const addPoint = (id: number, date: Date) => async (
 export const removePoint = (id: number, date: Date) => async (
   dispatch: Dispatch
 ) => {
-  // const habit = await deletePoint(id, date);
   const habit = await db.habits.get(Number(id));
 
   if (habit) {
@@ -112,8 +109,6 @@ export const removePoint = (id: number, date: Date) => async (
       }
     }
     await db.habits.put(habit, id);
-
-    // return habit;
   }
 
   dispatch<RemovePointAction>({
