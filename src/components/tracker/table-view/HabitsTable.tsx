@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { StoreState } from "../../redux/reducers";
-import { Habit } from "../../redux/actions";
+import { StoreState } from "../../../redux/reducers";
+import { Habit } from "../../../redux/actions";
 import HabitRow from "./HabitRow";
-import { ReactComponent as StabilityBall } from "../../images/undraw_Stability_ball_b4ia.svg";
+import { ReactComponent as StabilityBall } from "../../../images/undraw_Stability_ball_b4ia.svg";
 
 interface Props {
   selectedMonth: number;
@@ -39,10 +39,10 @@ export const HabitsTable: React.FC<Props> = ({
   return (
     <>
       {habits.length !== 0 ? (
-        <table className="HabitsTable">
+        <table className='HabitsTable'>
           <thead>
             <tr>
-              <th className="th-dropdown">{/* <MonthYearDropdown /> */}</th>
+              <th className='th-dropdown'>{/* <MonthYearDropdown /> */}</th>
               {daysArray.map((day) => {
                 return <th key={day}>{day}</th>;
               })}
@@ -62,7 +62,7 @@ export const HabitsTable: React.FC<Props> = ({
           </tbody>
         </table>
       ) : (
-        <div className="splash-screen">
+        <div className='splash-screen'>
           <StabilityBall />
         </div>
       )}

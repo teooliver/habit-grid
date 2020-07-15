@@ -1,8 +1,8 @@
 import React, { FC } from "react";
-import { Habit } from "../../redux/actions";
-import { StoreState } from "../../redux/reducers";
+import { Habit } from "../../../redux/actions";
+import { StoreState } from "../../../redux/reducers";
 import { connect } from "react-redux";
-import { addPoint, removePoint } from "../../redux/actions/habits";
+import { addPoint, removePoint } from "../../../redux/actions/habits";
 
 interface Props {
   day: string;

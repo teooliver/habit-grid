@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import HabitsTable from "./HabitsTable";
+import HabitsTable from "./table-view/HabitsTable";
 import MonthYearDropdown from "./monthYearSelector/MonthYearDropdown";
 import { getHabits } from "../../redux/actions";
 import { connect } from "react-redux";
@@ -13,7 +13,7 @@ const HabitTracker = () => {
   return (
     <>
       <MonthYearDropdown />
-      <section className="habits-table-container">
+      <section className='habits-table-container'>
         <HabitsTable />
       </section>
     </>

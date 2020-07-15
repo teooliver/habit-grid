@@ -57,10 +57,10 @@ const HabitForm: FC<Props> = ({ createHabit, habits }) => {
   };
 
   return (
-    <div ref={habitFormRef} className="HabitForm">
+    <div ref={habitFormRef} className='HabitForm'>
       {habits.length === 0 && (
-        <div className="arrow-animation-container">
-          <ArrowDownIcon className="arrow-down" />
+        <div className='arrow-animation-container'>
+          <ArrowDownIcon className='arrow-down' />
         </div>
       )}
       <div
@@ -69,14 +69,14 @@ const HabitForm: FC<Props> = ({ createHabit, habits }) => {
           setHabitName("");
         }}
       >
-        <PlusCircleIcon className="plus-circle" />
+        <PlusCircleIcon className='plus-circle' />
       </div>
       {isOpen && (
         <form>
           <input
             ref={inputRef}
-            type="text"
-            id="name"
+            type='text'
+            id='name'
             required
             value={habitName}
             onChange={(e) => {
@@ -84,9 +84,9 @@ const HabitForm: FC<Props> = ({ createHabit, habits }) => {
               setHabitName(e.target.value);
             }}
           />
-          <span className="highlight"></span>
-          <span className="bar"></span>
-          <label htmlFor="name">New Habit</label>
+          <span className='highlight'></span>
+          <span className='bar'></span>
+          <label htmlFor='name'>New Habit</label>
 
           <button
             onClick={(e) => {
