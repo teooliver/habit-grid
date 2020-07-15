@@ -42,6 +42,24 @@ h1 {
   overflow: auto;
 }
 
+.control {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 14rem;
+  margin: 0 auto;
+}
+
+.view-buttons {
+  display: flex;
+  margin-left: 1rem;
+  svg {
+    height: 1.4rem;
+    width: auto;
+    margin: 0 0.2rem;
+  }
+}
+
 // Colors - Need Better Colors
 $base1: #abc3e7;
 $base2: #4c4e58;
