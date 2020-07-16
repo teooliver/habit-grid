@@ -53,11 +53,16 @@ h1 {
 .view-buttons {
   display: flex;
   margin-left: 1rem;
-  //
   svg {
     height: 1.4rem;
     width: auto;
     margin: 0 0.2rem;
+    &:hover {
+      cursor: pointer;
+    }
+    &.selected {
+      fill: red;
+    }
   }
 }
 

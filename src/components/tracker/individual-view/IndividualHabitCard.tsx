@@ -1,23 +1,21 @@
-import React, { useEffect, useState } from "react";
-import { connect } from "react-redux";
+import React, { useState, useEffect } from "react";
 import { StoreState } from "../../../redux/reducers";
-import { Habit } from "../../../redux/actions";
-import HabitRow from "./HabitRow";
-import { ReactComponent as StabilityBall } from "../../../images/undraw_Stability_ball_b4ia.svg";
+import { connect } from "react-redux";
+import { Habit } from "../../../redux/actions/habits";
+import IndividualHabitCardUL from "./IndividualHabitCardUL";
 
 interface Props {
+  habits: Habit[];
   selectedMonth: number;
   selectedYear: number;
-  habits: Habit[];
 }
 
-export const HabitsTable: React.FC<Props> = ({
+const IndividualHabitCard: React.FC<Props> = ({
+  habits,
   selectedMonth,
   selectedYear,
-  habits,
 }) => {
   const [daysArray, setDaysArray] = useState<string[]>([]);
-
   // Maybe this should be a separate Component and store the info on State(Redux)
   useEffect(() => {
     renderTableHeader(selectedMonth, selectedYear);
@@ -41,32 +39,21 @@ export const HabitsTable: React.FC<Props> = ({
   return (
     <>
       {habits.length !== 0 ? (
-        <table className='HabitsTable'>
-          <thead>
-            <tr>
-              <th className='th-dropdown'>{/* <MonthYearDropdown /> */}</th>
-              {daysArray.map((day) => {
-                return <th key={day}>{day}</th>;
-              })}
-            </tr>
-          </thead>
-          <tbody>
-            {habits.map((habit, index) => {
-              return (
-                <HabitRow
-                  key={index}
-                  habit={habit}
-                  index={index}
-                  daysArray={daysArray}
-                />
-              );
-            })}
-          </tbody>
-        </table>
+        habits.map((habit, index) => {
+          return (
+            <div className='HabitsCard'>
+              <h3>Habit Title</h3>
+              <IndividualHabitCardUL
+                key={index}
+                habit={habit}
+                index={index}
+                daysArray={daysArray}
+              />
+            </div>
+          );
+        })
       ) : (
-        <div className='splash-screen'>
-          <StabilityBall />
-        </div>
+        <div className='splash-screen'>{/* <StabilityBall /> */}</div>
       )}
     </>
   );
@@ -80,4 +67,4 @@ const mapStateToProps = ({ habits, selectedMonthYear }: StoreState) => {
   };
 };
 
-export default connect(mapStateToProps)(HabitsTable);
+export default connect(mapStateToProps)(IndividualHabitCard);
