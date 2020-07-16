@@ -2,16 +2,18 @@ import React, { useState, useEffect } from "react";
 import { StoreState } from "../../../redux/reducers";
 import { connect } from "react-redux";
 import { Habit } from "../../../redux/actions/habits";
-import IndividualHabitCardUL from "./IndividualHabitCardUL";
+import HabitCardUL from "./HabitCardUL";
 
 interface Props {
-  habits: Habit[];
+  habit: Habit;
   selectedMonth: number;
   selectedYear: number;
+  index: number;
 }
 
-const IndividualHabitCard: React.FC<Props> = ({
-  habits,
+const HabitCard: React.FC<Props> = ({
+  habit,
+  index,
   selectedMonth,
   selectedYear,
 }) => {
@@ -37,25 +39,15 @@ const IndividualHabitCard: React.FC<Props> = ({
   };
 
   return (
-    <>
-      {habits.length !== 0 ? (
-        habits.map((habit, index) => {
-          return (
-            <div className='HabitsCard'>
-              <h3>Habit Title</h3>
-              <IndividualHabitCardUL
-                key={index}
-                habit={habit}
-                index={index}
-                daysArray={daysArray}
-              />
-            </div>
-          );
-        })
-      ) : (
-        <div className='splash-screen'>{/* <StabilityBall /> */}</div>
-      )}
-    </>
+    <div className='HabitsCard'>
+      <h3>{habit.name}</h3>
+      <HabitCardUL
+        key={index}
+        habit={habit}
+        index={index}
+        daysArray={daysArray}
+      />
+    </div>
   );
 };
 
@@ -67,4 +59,4 @@ const mapStateToProps = ({ habits, selectedMonthYear }: StoreState) => {
   };
 };
 
-export default connect(mapStateToProps)(IndividualHabitCard);
+export default connect(mapStateToProps)(HabitCard);

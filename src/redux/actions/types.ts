@@ -7,6 +7,7 @@ import {
   DeleteAllHabits,
 } from "./habits";
 import { SelectMonthAction, SelectYearAction } from "./selectMonthYear";
+import { SelectViewAction } from "./viewActions";
 
 export enum ActionTypes {
   getHabits,
@@ -19,7 +20,11 @@ export enum ActionTypes {
   setAlert,
   removeAlert,
   deleteAllHabits,
+  selectView,
 }
+
+/// should ViewOptions be a Enum?
+export type ViewOptions = "individual" | "table";
 
 export type Action =
   | RemoveHabitAction
@@ -30,3 +35,5 @@ export type Action =
   | DeleteAllHabits;
 
 export type CalendarActions = SelectMonthAction | SelectYearAction;
+
+export type ViewActions = SelectViewAction;

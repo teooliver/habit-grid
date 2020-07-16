@@ -5,7 +5,7 @@ import { getHabits } from "../../redux/actions";
 import { connect } from "react-redux";
 import TableIcon from "../layout/icons/TableIcon";
 import Calendar3Icon from "../layout/icons/Calendar3Icon";
-import IndividualHabitCard from "./individual-view/IndividualHabitCard";
+import HabitCardsView from "./individual-view/HabitCardsView";
 
 const HabitTracker = () => {
   // THis should go to APP
@@ -27,7 +27,7 @@ const HabitTracker = () => {
         <HabitsTable />
       </section>
       <section className='habits-individual-container'>
-        <IndividualHabitCard />
+        <HabitCardsView />
       </section>
     </>
   );

@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { removeHabit, Habit } from "../../../redux/actions/habits";
 import { colors } from "../../../utils/variables";
 import TrashIcon from "../../layout/icons/TrashIcon";
-import IndividualHabitCardLi from "./IndividualHabitCardLi";
+import HabitCardLi from "./HabitCardLi";
 
 const n = colors.length;
 
@@ -26,7 +26,7 @@ const IndividualHabitCardU: React.FC<Props> = ({
     <ul>
       {daysArray.map((day, i) => {
         return (
-          <IndividualHabitCardLi
+          <HabitCardLi
             key={i}
             day={day}
             habit={habit}

@@ -14,7 +14,7 @@ interface Props {
   addPoint: Function;
 }
 
-const IndividualHabitCardLi: FC<Props> = ({
+const HabitCardLi: FC<Props> = ({
   day,
   habit,
   color,
@@ -27,6 +27,7 @@ const IndividualHabitCardLi: FC<Props> = ({
 
   const thisCellDate = new Date(selectedYear, selectedMonth, parseInt(day));
 
+  // Should This go to /utils?
   const foundDate = events.find((event) => {
     if (
       // Review -> do I need to check all of this options? Or just getDate is enought?
@@ -44,13 +45,13 @@ const IndividualHabitCardLi: FC<Props> = ({
     <>
       {foundDate ? (
         <li
+          className='selected'
+          style={{ backgroundColor: color }}
           onClick={() => {
             removePoint(id!, foundDate);
           }}
         >
-          <i className='selected' style={{ backgroundColor: color }}>
-            {day}
-          </i>
+          {day}
         </li>
       ) : (
         <li
@@ -72,6 +73,4 @@ const mapStateToProps = ({ selectedMonthYear }: StoreState) => {
   };
 };
 
-export default connect(mapStateToProps, { addPoint, removePoint })(
-  IndividualHabitCardLi
-);
+export default connect(mapStateToProps, { addPoint, removePoint })(HabitCardLi);
