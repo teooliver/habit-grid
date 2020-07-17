@@ -1,36 +1,58 @@
 import React, { useEffect } from "react";
-import HabitsTable from "./table-view/HabitsTable";
-import MonthYearDropdown from "./monthYearSelector/MonthYearDropdown";
-import { getHabits } from "../../redux/actions";
 import { connect } from "react-redux";
-import TableIcon from "../layout/icons/TableIcon";
-import Calendar3Icon from "../layout/icons/Calendar3Icon";
+import HabitsTable from "./table-view/HabitsTable";
+import { getHabits } from "../../redux/actions";
 import HabitCardsView from "./individual-view/HabitCardsView";
+import Control from "./control/Control";
+import { StoreState } from "../../redux/reducers";
+import { ViewOptions } from "../../redux/actions/types";
+import { selectView } from "../../redux/actions/viewActions";
 
-const HabitTracker = () => {
+interface Props {
+  selectedView: ViewOptions;
+}
+
+const HabitTracker: React.FC<Props> = ({ selectedView }) => {
   // THis should go to APP
   useEffect(() => {
     getHabits();
   }, []);
 
+  const switchViews = (view: ViewOptions) => {
+    switch (view) {
+      case "table":
+        return (
+          <section className='habits-table-container'>
+            <HabitsTable />
+          </section>
+        );
+      case "individual":
+        return (
+          <section className='habit-cards-container'>
+            <HabitCardsView />
+          </section>
+        );
+      default:
+        return (
+          <section className='habits-table-container'>
+            <HabitsTable />
+          </section>
+        );
+    }
+  };
+
   return (
     <>
-      <div className='control'>
-        <MonthYearDropdown />
-        {/* Extraxt to separate component */}
-        <div className='view-buttons'>
-          <TableIcon className='selected' />
-          <Calendar3Icon />
-        </div>
-      </div>
-      <section className='habits-table-container'>
-        <HabitsTable />
-      </section>
-      <section className='habits-individual-container'>
-        <HabitCardsView />
-      </section>
+      <Control />
+      {switchViews(selectedView)}
     </>
   );
 };
 
-export default connect(null, { getHabits })(HabitTracker);
+const mapStateToProps = ({ selectedView }: StoreState) => {
+  return {
+    selectedView,
+  };
+};
+
+export default connect(mapStateToProps, { getHabits })(HabitTracker);

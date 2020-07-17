@@ -1,9 +1,26 @@
 .HabitCardsView {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 14rem);
+  // @include desktop {
+  //   grid-template-columns: repeat(auto-fill, 14rem);
+  // }
+  // @include mobile {
+  //   grid-template-columns: 1fr;
+  // }
 }
 .HabitsCard {
-  width: 12rem;
+  @include desktop {
+    width: 12rem;
+  }
+
+  @include tablet {
+    width: 12rem;
+  }
+
+  @include mobile {
+    width: 90vw;
+    max-width: 12rem;
+  }
   border: 1px solid lightcoral;
   border-radius: 0.5rem;
   margin: 1rem;

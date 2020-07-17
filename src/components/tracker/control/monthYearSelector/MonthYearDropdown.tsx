@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import DropDownMenu from "./DropDownMenu";
-import { StoreState } from "../../../redux/reducers";
+import { StoreState } from "../../../../redux/reducers";
 import { connect } from "react-redux";
-import { months } from "../../../utils/variables";
-import ChevronBarExpandIcon from "../../layout/icons/ChevronBarExpandIcon";
-import { Habit } from "../../../redux/actions";
+import { months } from "../../../../utils/variables";
+import ChevronBarExpandIcon from "../../../layout/icons/ChevronBarExpandIcon";
+import { Habit } from "../../../../redux/actions";
 
 interface Props {
   selectedMonth: number;
@@ -42,10 +42,10 @@ const MonthYearDropdown: React.FC<Props> = ({
   return (
     <>
       {habits.length !== 0 && (
-        <div className="MonthDropdown">
+        <div className='MonthDropdown'>
           <div onClick={() => setIsOpen(!isOpen)}>
-            <button className="dropdown-button">
-              <span className="dropdown-button-text">
+            <button className='dropdown-button'>
+              <span className='dropdown-button-text'>
                 {months[selectedMonth].toUpperCase()} / {selectedYear}
               </span>
               <ChevronBarExpandIcon
