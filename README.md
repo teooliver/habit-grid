@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/210e2e71-f4fb-44e8-8a5d-71288b578627/deploy-status)](https://app.netlify.com/sites/habit-grid/deploys)
+
 # Habit Grid
 
 ![habit-grid](./Habit-Grid-Image.png)
