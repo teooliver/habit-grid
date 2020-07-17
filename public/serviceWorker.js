@@ -33,10 +33,10 @@ self.addEventListener("activate", (event) => {
 
 // Listen for requests
 self.addEventListener("fetch", (event) => {
-  //   console.log("Fetch event", event);
-  //   event.respondWith(
-  //     caches.match(event.request).then((cacheRes) => {
-  //       return cacheRes || fetch(event.request);
-  //     })
-  //   );
+  console.log("Fetch event", event);
+  event.respondWith(
+    caches.match(event.request).then((cacheRes) => {
+      return cacheRes || fetch(event.request);
+    })
+  );
 });
