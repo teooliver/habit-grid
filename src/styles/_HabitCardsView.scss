@@ -21,7 +21,7 @@
     width: 90vw;
     max-width: 12rem;
   }
-  border: 1px solid lightcoral;
+  border: 1px solid;
   border-radius: 0.5rem;
   margin: 1rem;
   h3 {
@@ -44,17 +44,42 @@
     min-height: 35px;
     margin: 0.1rem;
     list-style: none;
-    border: 1px solid lightcoral;
+    border: 1px solid;
     color: lightcoral;
     border-radius: 0.2rem;
     padding: 0.2rem;
     &:hover {
-      background-color: lightgreen;
+      background-color: lightgray;
+      cursor: pointer;
     }
     &.selected {
       background-color: lightblue;
       color: white;
       border-color: lightblue;
+      cursor: pointer;
+    }
+  }
+
+  .habit-name {
+    font-weight: bold;
+    padding: 0 0.5rem;
+    white-space: nowrap;
+
+    .habit-name-items {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .trash-icon {
+        width: 10px;
+        margin-left: 0.8rem;
+        margin-right: 0.2rem;
+        color: black;
+        &:hover {
+          color: red;
+          cursor: pointer;
+        }
+      }
     }
   }
 }

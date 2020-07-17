@@ -1,12 +1,11 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import HabitsTable from "./table-view/HabitsTable";
 import { getHabits } from "../../redux/actions";
-import HabitCardsView from "./individual-view/HabitCardsView";
-import Control from "./control/Control";
 import { StoreState } from "../../redux/reducers";
 import { ViewOptions } from "../../redux/actions/types";
-import { selectView } from "../../redux/actions/viewActions";
+import Control from "./control/Control";
+import HabitCardsView from "./individual-view/HabitCardsView";
+import HabitsTable from "./table-view/HabitsTable";
 
 interface Props {
   selectedView: ViewOptions;

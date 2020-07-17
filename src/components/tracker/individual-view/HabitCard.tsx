@@ -40,7 +40,7 @@ const HabitCard: React.FC<Props> = ({
 
   return (
     <div className='HabitsCard'>
-      <h3>{habit.name}</h3>
+      <h3 className='habit-name'>{habit.name}</h3>
       <HabitCardUL
         key={index}
         habit={habit}

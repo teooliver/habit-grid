@@ -1,8 +1,8 @@
 import React, { FC, useState, useEffect, useRef, useLayoutEffect } from "react";
 import { connect } from "react-redux";
 import { createHabit, Habit } from "../../redux/actions/habits";
-import PlusCircleIcon from "../layout/icons/PlusCircleIcon";
 import { StoreState } from "../../redux/reducers";
+import PlusCircleIcon from "../layout/icons/PlusCircleIcon";
 import ArrowDownIcon from "../layout/icons/ArrowDownIcon";
 
 interface Props {

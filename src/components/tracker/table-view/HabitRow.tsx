@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { removeHabit, Habit } from "../../../redux/actions/habits";
-import HabitCell from "./HabitCell";
 import { colors } from "../../../utils/variables";
+import HabitCell from "./HabitCell";
 import TrashIcon from "../../layout/icons/TrashIcon";
 
 const n = colors.length;
