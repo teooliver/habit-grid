@@ -79,6 +79,9 @@
           color: red;
           cursor: pointer;
         }
+        &.display-none {
+          display: none;
+        }
       }
     }
   }

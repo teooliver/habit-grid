@@ -66,6 +66,12 @@ h1 {
   }
 }
 
+.hide-on-mobile {
+  @include mobile {
+    display: none;
+  }
+}
+
 // Colors - Need Better Colors
 $base1: #abc3e7;
 $base2: #4c4e58;

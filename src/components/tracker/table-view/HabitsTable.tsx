@@ -40,34 +40,28 @@ export const HabitsTable: React.FC<Props> = ({
 
   return (
     <>
-      {habits.length !== 0 ? (
-        <table className='HabitsTable'>
-          <thead>
-            <tr>
-              <th className='th-dropdown'>{/* <MonthYearDropdown /> */}</th>
-              {daysArray.map((day) => {
-                return <th key={day}>{day}</th>;
-              })}
-            </tr>
-          </thead>
-          <tbody>
-            {habits.map((habit, index) => {
-              return (
-                <HabitRow
-                  key={index}
-                  habit={habit}
-                  index={index}
-                  daysArray={daysArray}
-                />
-              );
+      <table className='HabitsTable'>
+        <thead>
+          <tr>
+            <th className='th-dropdown'>{/* <MonthYearDropdown /> */}</th>
+            {daysArray.map((day) => {
+              return <th key={day}>{day}</th>;
             })}
-          </tbody>
-        </table>
-      ) : (
-        <div className='splash-screen'>
-          <StabilityBall />
-        </div>
-      )}
+          </tr>
+        </thead>
+        <tbody>
+          {habits.map((habit, index) => {
+            return (
+              <HabitRow
+                key={index}
+                habit={habit}
+                index={index}
+                daysArray={daysArray}
+              />
+            );
+          })}
+        </tbody>
+      </table>
     </>
   );
 };

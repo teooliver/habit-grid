@@ -1,14 +1,31 @@
 import React from "react";
 import MonthYearDropdown from "./monthYearSelector/MonthYearDropdown";
 import ViewSelection from "./ViewSelection";
+import { StoreState } from "../../../redux/reducers";
+import { connect } from "react-redux";
+import { Habit } from "../../../redux/actions";
 
-const Control = () => {
+interface Props {
+  habits: Habit[];
+}
+
+const Control: React.FC<Props> = ({ habits }) => {
   return (
-    <div className='control'>
-      <MonthYearDropdown />
-      <ViewSelection />
-    </div>
+    <>
+      {habits.length !== 0 && (
+        <div className='control'>
+          <MonthYearDropdown />
+          <ViewSelection />
+        </div>
+      )}
+    </>
   );
 };
 
-export default Control;
+const mapStateProps = ({ habits }: StoreState) => {
+  return {
+    habits: habits,
+  };
+};
+
+export default connect(mapStateProps)(Control);

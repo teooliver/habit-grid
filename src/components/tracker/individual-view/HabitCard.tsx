@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { StoreState } from "../../../redux/reducers";
 import { connect } from "react-redux";
-import { Habit } from "../../../redux/actions/habits";
+import { Habit, removeHabit } from "../../../redux/actions/habits";
 import HabitCardUL from "./HabitCardUL";
+import TrashIcon from "../../layout/icons/TrashIcon";
 
 interface Props {
   habit: Habit;
   selectedMonth: number;
   selectedYear: number;
+  removeHabit: Function;
   index: number;
 }
 
@@ -16,7 +18,9 @@ const HabitCard: React.FC<Props> = ({
   index,
   selectedMonth,
   selectedYear,
+  removeHabit,
 }) => {
+  const [isTrashVisible, setisTrashVisible] = useState(false);
   const [daysArray, setDaysArray] = useState<string[]>([]);
   // Maybe this should be a separate Component and store the info on State(Redux)
   useEffect(() => {
@@ -40,7 +44,21 @@ const HabitCard: React.FC<Props> = ({
 
   return (
     <div className='HabitsCard'>
-      <h3 className='habit-name'>{habit.name}</h3>
+      <h3
+        className='habit-name'
+        onClick={() => setisTrashVisible(!isTrashVisible)}
+      >
+        <div className='habit-name-items'>
+          <span> {habit.name} </span>
+
+          <div
+            className={`trash-icon ${isTrashVisible ? "" : "display-none"}`}
+            onClick={() => removeHabit(habit.id)}
+          >
+            {isTrashVisible && <TrashIcon />}
+          </div>
+        </div>
+      </h3>
       <HabitCardUL
         key={index}
         habit={habit}
@@ -59,4 +77,4 @@ const mapStateToProps = ({ habits, selectedMonthYear }: StoreState) => {
   };
 };
 
-export default connect(mapStateToProps)(HabitCard);
+export default connect(mapStateToProps, { removeHabit })(HabitCard);

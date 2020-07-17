@@ -29,13 +29,13 @@ const Navbar = () => {
   };
 
   return (
-    <nav ref={verticalMenuRef} className="Navbar">
-      <div className="navbar-logo">
-        <Logo height="2.5rem" width="2.5rem" backgroundColor="white" />
-        <h1>Habit Grid</h1>
+    <nav ref={verticalMenuRef} className='Navbar'>
+      <div className='navbar-logo'>
+        <Logo height='2.5rem' width='2.5rem' backgroundColor='white' />
+        <h1 className='hide-on-mobile'>Habit Grid</h1>
       </div>
       <span onClick={() => setIsVerticalMenuOpen(true)}>
-        <GearIcon className="navbar-gear-icon" />
+        <GearIcon className='navbar-gear-icon' />
       </span>
       <VerticalSlideMenu
         isOpen={isVerticalMenuOpen}
