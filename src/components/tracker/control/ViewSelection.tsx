@@ -7,7 +7,7 @@ import TableIcon from "../../layout/icons/TableIcon";
 import Calendar3Icon from "../../layout/icons/Calendar3Icon";
 
 interface Props {
-  selectView: typeof selectView;
+  selectView: Function;
   selectedView: ViewOptions;
 }
 

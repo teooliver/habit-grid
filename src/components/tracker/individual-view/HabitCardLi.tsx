@@ -45,6 +45,7 @@ const HabitCardLi: FC<Props> = ({
     <>
       {foundDate ? (
         <li
+          key={habit.id}
           className='selected'
           style={{ backgroundColor: color, borderColor: color }}
           onClick={() => {
@@ -55,6 +56,7 @@ const HabitCardLi: FC<Props> = ({
         </li>
       ) : (
         <li
+          key={habit.id}
           style={{ borderColor: color, color: color }}
           onClick={() => {
             addPoint(id!, thisCellDate);

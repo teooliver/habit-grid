@@ -48,7 +48,9 @@ export const getHabits = (): Function => {
         payload: allHabits,
       });
     } catch (error) {
+      console.log(error);
       // dispatch error
+
       return;
     }
   };

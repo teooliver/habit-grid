@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { StoreState } from "../../../redux/reducers";
 import { Habit } from "../../../redux/actions";
 import HabitRow from "./HabitRow";
-import { ReactComponent as StabilityBall } from "../../../images/undraw_Stability_ball_b4ia.svg";
 
 interface Props {
   selectedMonth: number;

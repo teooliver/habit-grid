@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { removeHabit, Habit } from "../../../redux/actions/habits";
 import { colors } from "../../../utils/variables";
-import TrashIcon from "../../layout/icons/TrashIcon";
 import HabitCardLi from "./HabitCardLi";
 
 const n = colors.length;
@@ -14,14 +13,7 @@ interface Props {
   daysArray: string[];
 }
 
-const IndividualHabitCardU: React.FC<Props> = ({
-  habit,
-  removeHabit,
-  index,
-  daysArray,
-}) => {
-  const [isTrashVisible, setisTrashVisible] = useState(false);
-
+const IndividualHabitCardU: React.FC<Props> = ({ habit, index, daysArray }) => {
   return (
     <ul>
       {daysArray.map((day, i) => {

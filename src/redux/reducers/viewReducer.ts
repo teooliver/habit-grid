@@ -7,6 +7,8 @@ export const viewReducer = (
   switch (action.type) {
     case ActionTypes.selectView:
       return action.payload;
+    case ActionTypes.getViewSelection:
+      return action.payload;
     default:
       return state;
   }
