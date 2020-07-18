@@ -18,7 +18,7 @@ export interface GetViewSelection {
 }
 
 export const selectView = (view: ViewOptions) => async (dispatch: Dispatch) => {
-  // Alaways edit the view, so there's always only one value.
+  // Always edit the current view, so there's always only one view value.
   await db.table("views").put({ view: view }, 1);
 
   dispatch<SelectViewAction>({
