@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import "../src/styles/styles.scss";
 import { App } from "./App";
@@ -31,5 +31,5 @@ ReactDOM.render(
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
 
-serviceWorker.unregister();
+// serviceWorker.unregister();
 // serviceWorker.register();

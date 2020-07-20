@@ -6,6 +6,7 @@ import { Habit, getHabits, getViewSelection } from "./redux/actions";
 import HabitTracker from "./components/tracker/HabitTracker";
 import Navbar from "./components/layout/Navbar";
 import HabitForm from "./components/tracker/HabitForm";
+import ServiceWorkerWrapper from "./ServiceWorkerWrapper";
 interface AppProps {
   getHabits: Function;
   getViewSelection: Function;
@@ -19,6 +20,7 @@ const _App: React.FC<AppProps> = ({ getHabits, getViewSelection }) => {
 
   return (
     <div className='App'>
+      <ServiceWorkerWrapper />
       <header>
         <Navbar />
       </header>

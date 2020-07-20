@@ -1,0 +1,11 @@
+.ServiceWorkerMessage {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  z-index: 1000000;
+  background-color: lightcoral;
+  display: flex;
+  padding: 0.5rem;
+  align-items: center;
+  justify-content: center;
+}
