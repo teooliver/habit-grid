@@ -57,81 +57,106 @@ export const getHabits = (): Function => {
 };
 
 export const createHabit = (formData: string) => async (dispatch: Dispatch) => {
-  const habit: Habit = {
-    name: formData,
-    events: [],
-  };
+  try {
+    const habit: Habit = {
+      name: formData,
+      events: [],
+    };
 
-  // TODO: check if database exists before addHabit
-  let id = await db.table("habits").add(habit);
-  const indexdHabit = await db.habits.get(Number(id));
+    // TODO: check if database exists before addHabit
+    let id = await db.table("habits").add(habit);
+    const indexdHabit = await db.habits.get(Number(id));
 
-  dispatch<CreateHabitAction>({
-    type: ActionTypes.createHabit,
-    payload: indexdHabit!,
-  });
+    dispatch<CreateHabitAction>({
+      type: ActionTypes.createHabit,
+      payload: indexdHabit!,
+    });
+  } catch (error) {
+    console.log(error);
+    // dispatch error
+  }
 };
 
 export const removeHabit = (id: number) => async (dispatch: Dispatch) => {
-  // const habit = await db.habits.get(Number(id));
-  await db.table("habits").delete(id);
-  dispatch<RemoveHabitAction>({
-    type: ActionTypes.removeHabit,
-    payload: id,
-  });
+  try {
+    // const habit = await db.habits.get(Number(id));
+    await db.table("habits").delete(id);
+    dispatch<RemoveHabitAction>({
+      type: ActionTypes.removeHabit,
+      payload: id,
+    });
+  } catch (error) {
+    console.log(error);
+    // dispatch error
+  }
 };
 
 export const addPoint = (id: number, date: Date) => async (
   dispatch: Dispatch
 ) => {
-  const habit = await db.habits.get(Number(id));
+  try {
+    const habit = await db.habits.get(Number(id));
 
-  if (habit) {
-    habit.events.push(date);
-    await db.habits.put(habit, id);
+    if (habit) {
+      habit.events.push(date);
+      await db.habits.put(habit, id);
+    }
+
+    dispatch<CreatePointAction>({
+      type: ActionTypes.addPoint,
+      payload: habit!,
+    });
+  } catch (error) {
+    console.log(error);
+    // dispatch error
   }
-
-  dispatch<CreatePointAction>({
-    type: ActionTypes.addPoint,
-    payload: habit!,
-  });
 };
 
 export const removePoint = (id: number, date: Date) => async (
   dispatch: Dispatch
 ) => {
-  const habit = await db.habits.get(Number(id));
+  try {
+    const habit = await db.habits.get(Number(id));
 
-  if (habit) {
-    for (let index = 0; index < habit.events.length; index++) {
-      if (habit.events[index].getTime() === date.getTime()) {
-        habit.events.splice(index, 1);
+    if (habit) {
+      for (let index = 0; index < habit.events.length; index++) {
+        if (habit.events[index].getTime() === date.getTime()) {
+          habit.events.splice(index, 1);
+        }
       }
+      await db.habits.put(habit, id);
     }
-    await db.habits.put(habit, id);
-  }
 
-  dispatch<RemovePointAction>({
-    type: ActionTypes.removePoint,
-    payload: habit!,
-  });
+    dispatch<RemovePointAction>({
+      type: ActionTypes.removePoint,
+      payload: habit!,
+    });
+  } catch (error) {
+    console.log(error);
+    // dispatch error
+  }
 };
 
 // Delete all Data
 export const deleteAllHabits = () => async (dispatch: Dispatch) => {
-  await db
-    .delete()
-    .then(() => {
-      console.log("Database successfully deleted");
-    })
-    .catch((err) => {
-      console.error("Could not delete database");
-    })
-    .finally(() => {
-      // Do what should be done next...
+  try {
+    await db
+      .delete()
+      .then(() => {
+        console.log("Database successfully deleted");
+      })
+      .catch((err) => {
+        console.error("Could not delete database");
+      })
+      .finally(() => {
+        // Do what should be done next...
+      });
+    dispatch<DeleteAllHabits>({
+      type: ActionTypes.deleteAllHabits,
+      payload: [],
     });
-  dispatch<DeleteAllHabits>({
-    type: ActionTypes.deleteAllHabits,
-    payload: [],
-  });
+  } catch (error) {
+    console.log(error);
+    // dispatch error
+  }
 };
