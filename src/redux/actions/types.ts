@@ -8,6 +8,7 @@ import {
 } from "./habits";
 import { SelectMonthAction, SelectYearAction } from "./selectMonthYear";
 import { SelectViewAction, GetViewSelection } from "./viewActions";
+import { SetAlert, RemoveAlert } from "./alert";
 
 export enum ActionTypes {
   getHabits,
@@ -27,6 +28,7 @@ export enum ActionTypes {
 /// should ViewOptions be a Enum?
 export type ViewOptions = "individual" | "table";
 
+// Rename Action to HabitActions
 export type Action =
   | RemoveHabitAction
   | GetHabitsAction
@@ -38,3 +40,5 @@ export type Action =
 export type CalendarActions = SelectMonthAction | SelectYearAction;
 
 export type ViewActions = SelectViewAction | GetViewSelection;
+
+export type AlertActions = SetAlert | RemoveAlert;
