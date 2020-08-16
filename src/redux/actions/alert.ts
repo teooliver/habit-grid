@@ -2,18 +2,18 @@
 import { ActionTypes } from "./types";
 import { Dispatch } from "redux";
 
-interface Message {
+export interface Message {
   msg: string;
   alertType: "success" | "warning" | "error";
   id: number;
 }
 
-interface SetAlert {
+export interface SetAlert {
   type: ActionTypes.setAlert;
   payload: Message;
 }
 
-interface RemoveAlert {
+export interface RemoveAlert {
   type: ActionTypes.removeAlert;
   payload: number;
 }
