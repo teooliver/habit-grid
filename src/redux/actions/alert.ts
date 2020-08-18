@@ -22,6 +22,7 @@ export const setAlert = (msg: string, alertType: any, timeout = 5000) => (
   dispatch: Dispatch
 ) => {
   //   const id = uuid.v4();
+  // Research a way of creating uuid v4 without the whole lib.
   const id = Math.random();
   dispatch<SetAlert>({
     type: ActionTypes.setAlert,
