@@ -2,9 +2,11 @@
 import { ActionTypes } from "./types";
 import { Dispatch } from "redux";
 
+type alertTypes = "success" | "warning" | "error";
+
 export interface Message {
   msg: string;
-  alertType: "success" | "warning" | "error";
+  alertType: alertTypes;
   id: number;
 }
 
@@ -18,9 +20,11 @@ export interface RemoveAlert {
   payload: number;
 }
 
-export const setAlert = (msg: string, alertType: any, timeout = 10000) => (
-  dispatch: Dispatch
-) => {
+export const setAlert = (
+  msg: string,
+  alertType: alertTypes,
+  timeout = 10000
+) => (dispatch: Dispatch) => {
   console.log("FROM ALERT ACTION");
 
   //   const id = uuid.v4();

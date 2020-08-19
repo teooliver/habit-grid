@@ -13,7 +13,7 @@ const HabitCardsView: React.FC<Props> = ({ habits }) => {
     <section className='HabitCardsView'>
       {habits.length !== 0 ? (
         habits.map((habit, index) => {
-          return <HabitCard habit={habit} index={index} />;
+          return <HabitCard habit={habit} index={index} key={index} />;
         })
       ) : (
         <div className='splash-screen'>{/* <StabilityBall /> */}</div>

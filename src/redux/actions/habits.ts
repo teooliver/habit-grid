@@ -48,7 +48,7 @@ export const getHabits = (): Function => {
         payload: allHabits,
       });
     } catch (error) {
-      console.log(error);
+      console.error(error);
       // dispatch error
 
       return;
@@ -72,7 +72,7 @@ export const createHabit = (formData: string) => async (dispatch: Dispatch) => {
       payload: indexdHabit!,
     });
   } catch (error) {
-    console.log(error);
+    console.error(error);
     // dispatch error
   }
 };
@@ -86,7 +86,7 @@ export const removeHabit = (id: number) => async (dispatch: Dispatch) => {
       payload: id,
     });
   } catch (error) {
-    console.log(error);
+    console.error(error);
     // dispatch error
   }
 };
@@ -107,7 +107,7 @@ export const addPoint = (id: number, date: Date) => async (
       payload: habit!,
     });
   } catch (error) {
-    console.log(error);
+    console.error(error);
     // dispatch error
   }
 };
