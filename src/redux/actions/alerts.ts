@@ -18,9 +18,11 @@ export interface RemoveAlert {
   payload: number;
 }
 
-export const setAlert = (msg: string, alertType: any, timeout = 5000) => (
+export const setAlert = (msg: string, alertType: any, timeout = 10000) => (
   dispatch: Dispatch
 ) => {
+  console.log("FROM ALERT ACTION");
+
   //   const id = uuid.v4();
   // Research a way of creating uuid v4 without the whole lib.
   const id = Math.random();
@@ -29,8 +31,8 @@ export const setAlert = (msg: string, alertType: any, timeout = 5000) => (
     payload: { msg, alertType, id },
   });
 
-  setTimeout(
-    () => dispatch<RemoveAlert>({ type: ActionTypes.removeAlert, payload: id }),
-    timeout
-  );
+  setTimeout(() => {
+    console.log("sldkjflsdkjfsl");
+    dispatch<RemoveAlert>({ type: ActionTypes.removeAlert, payload: id });
+  }, timeout);
 };

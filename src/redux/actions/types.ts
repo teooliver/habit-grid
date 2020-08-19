@@ -8,7 +8,7 @@ import {
 } from "./habits";
 import { SelectMonthAction, SelectYearAction } from "./selectMonthYear";
 import { SelectViewAction, GetViewSelection } from "./viewActions";
-import { SetAlert, RemoveAlert } from "./alert";
+import { SetAlert, RemoveAlert } from "./alerts";
 
 export enum ActionTypes {
   getHabits,
