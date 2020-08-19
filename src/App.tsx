@@ -7,6 +7,7 @@ import HabitTracker from "./components/tracker/HabitTracker";
 import Navbar from "./components/layout/Navbar";
 import HabitForm from "./components/tracker/HabitForm";
 import ServiceWorkerWrapper from "./ServiceWorkerWrapper";
+import Toast from "./components/toast/Toast";
 interface AppProps {
   getHabits: Function;
   getViewSelection: Function;
@@ -29,7 +30,9 @@ const _App: React.FC<AppProps> = ({ getHabits, getViewSelection }) => {
           <HabitTracker />
         </section>
         <HabitForm />
+        <Toast/>
       </main>
+
     </div>
   );
 };

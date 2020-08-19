@@ -7,6 +7,7 @@ import Control from "./control/Control";
 import HabitCardsView from "./individual-view/HabitCardsView";
 import HabitsTable from "./table-view/HabitsTable";
 import { ReactComponent as StabilityBall } from "../../images/undraw_Stability_ball_b4ia.svg";
+import Toast from "../toast/Toast";
 
 interface Props {
   selectedView: ViewOptions;
