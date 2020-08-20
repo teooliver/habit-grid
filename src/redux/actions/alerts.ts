@@ -1,4 +1,4 @@
-import uuid from "uuid";
+import { v4 as uuid } from "uuid";
 import { ActionTypes } from "./types";
 import { Dispatch } from "redux";
 
@@ -27,7 +27,7 @@ export const setAlert = (
 ) => (dispatch: Dispatch) => {
   console.log("FROM ALERT ACTION");
 
-  const id = uuid.v4();
+  const id = uuid();
   // const id = Math.random();
   dispatch<SetAlert>({
     type: ActionTypes.setAlert,
