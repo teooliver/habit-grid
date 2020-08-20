@@ -1,4 +1,4 @@
-// import uuid from "uuid";
+import uuid from "uuid";
 import { ActionTypes } from "./types";
 import { Dispatch } from "redux";
 
@@ -7,7 +7,7 @@ type alertTypes = "success" | "warning" | "error";
 export interface Message {
   msg: string;
   alertType: alertTypes;
-  id: number;
+  id?: string;
 }
 
 export interface SetAlert {
@@ -17,7 +17,7 @@ export interface SetAlert {
 
 export interface RemoveAlert {
   type: ActionTypes.removeAlert;
-  payload: number;
+  payload: string;
 }
 
 export const setAlert = (
@@ -27,16 +27,14 @@ export const setAlert = (
 ) => (dispatch: Dispatch) => {
   console.log("FROM ALERT ACTION");
 
-  //   const id = uuid.v4();
-  // Research a way of creating uuid v4 without the whole lib.
-  const id = Math.random();
+  const id = uuid.v4();
+  // const id = Math.random();
   dispatch<SetAlert>({
     type: ActionTypes.setAlert,
     payload: { msg, alertType, id },
   });
 
   setTimeout(() => {
-    console.log("sldkjflsdkjfsl");
     dispatch<RemoveAlert>({ type: ActionTypes.removeAlert, payload: id });
   }, timeout);
 };

@@ -1,6 +1,7 @@
 import { Dispatch } from "redux";
 import { ActionTypes } from "./types";
 import { db } from "../../indexedDb/connectDb";
+import { SetAlert } from "./alerts";
 
 export interface Habit {
   id?: number;
@@ -48,10 +49,14 @@ export const getHabits = (): Function => {
         payload: allHabits,
       });
     } catch (error) {
+      dispatch<SetAlert>({
+        type: ActionTypes.setAlert,
+        payload: {
+          msg: "Error geting habits",
+          alertType: "error",
+        },
+      });
       console.error(error);
-      // dispatch error
-
-      return;
     }
   };
 };
@@ -72,8 +77,14 @@ export const createHabit = (formData: string) => async (dispatch: Dispatch) => {
       payload: indexdHabit!,
     });
   } catch (error) {
+    dispatch<SetAlert>({
+      type: ActionTypes.setAlert,
+      payload: {
+        msg: "Error creating a habit",
+        alertType: "error",
+      },
+    });
     console.error(error);
-    // dispatch error
   }
 };
 
@@ -86,8 +97,14 @@ export const removeHabit = (id: number) => async (dispatch: Dispatch) => {
       payload: id,
     });
   } catch (error) {
+    dispatch<SetAlert>({
+      type: ActionTypes.setAlert,
+      payload: {
+        msg: "Error removing a habit",
+        alertType: "error",
+      },
+    });
     console.error(error);
-    // dispatch error
   }
 };
 
@@ -107,8 +124,14 @@ export const addPoint = (id: number, date: Date) => async (
       payload: habit!,
     });
   } catch (error) {
+    dispatch<SetAlert>({
+      type: ActionTypes.setAlert,
+      payload: {
+        msg: "Error adding habit points",
+        alertType: "error",
+      },
+    });
     console.error(error);
-    // dispatch error
   }
 };
 
@@ -132,8 +155,14 @@ export const removePoint = (id: number, date: Date) => async (
       payload: habit!,
     });
   } catch (error) {
-    console.log(error);
-    // dispatch error
+    dispatch<SetAlert>({
+      type: ActionTypes.setAlert,
+      payload: {
+        msg: "Error removing habit point",
+        alertType: "error",
+      },
+    });
+    console.error(error);
   }
 };
 
@@ -156,7 +185,13 @@ export const deleteAllHabits = () => async (dispatch: Dispatch) => {
       payload: [],
     });
   } catch (error) {
-    console.log(error);
-    // dispatch error
+    dispatch<SetAlert>({
+      type: ActionTypes.setAlert,
+      payload: {
+        msg: "Error deleting all Habits",
+        alertType: "error",
+      },
+    });
+    console.error(error);
   }
 };
