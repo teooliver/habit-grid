@@ -1,6 +1,7 @@
 import { Dispatch } from "redux";
 import { ActionTypes, ViewOptions } from "./types";
 import { db } from "../../indexedDb/connectDb";
+import { SetAlert } from "./alerts";
 
 export interface ViewSelection {
   id?: number;
@@ -18,26 +19,48 @@ export interface GetViewSelection {
 }
 
 export const selectView = (view: ViewOptions) => async (dispatch: Dispatch) => {
-  // Always edit the current view, so there's always only one view value.
-  await db.table("views").put({ view: view }, 1);
+  try {
+    // Always edit the current view, so there's always only one view value.
+    await db.table("views").put({ view: view }, 1);
 
-  dispatch<SelectViewAction>({
-    type: ActionTypes.selectView,
-    payload: view,
-  });
+    dispatch<SelectViewAction>({
+      type: ActionTypes.selectView,
+      payload: view,
+    });
+  } catch (error) {
+    dispatch<SetAlert>({
+      type: ActionTypes.setAlert,
+      payload: {
+        msg: "Error selection a view",
+        alertType: "error",
+      },
+    });
+    console.error(error);
+  }
 };
 
 export const getViewSelection = () => async (dispatch: Dispatch) => {
-  let views: ViewSelection[] = await db.table("views").toArray();
-  let viewSelection = views.pop();
-  let view = viewSelection?.view;
-  if (view === undefined) {
-    await db.table("views").add({ view: "table" });
-    view = "table";
-  }
+  try {
+    let views: ViewSelection[] = await db.table("views").toArray();
+    let viewSelection = views.pop();
+    let view = viewSelection?.view;
+    if (view === undefined) {
+      await db.table("views").add({ view: "table" });
+      view = "table";
+    }
 
-  dispatch<GetViewSelection>({
-    type: ActionTypes.getViewSelection,
-    payload: view,
-  });
+    dispatch<GetViewSelection>({
+      type: ActionTypes.getViewSelection,
+      payload: view,
+    });
+  } catch (error) {
+    dispatch<SetAlert>({
+      type: ActionTypes.setAlert,
+      payload: {
+        msg: "Error getting possible views",
+        alertType: "error",
+      },
+    });
+    console.error(error);
+  }
 };

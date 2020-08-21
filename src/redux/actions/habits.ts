@@ -52,7 +52,7 @@ export const getHabits = (): Function => {
       dispatch<SetAlert>({
         type: ActionTypes.setAlert,
         payload: {
-          msg: "Error geting habits",
+          msg: "Error geting habits, please refresh the app",
           alertType: "error",
         },
       });
@@ -80,7 +80,7 @@ export const createHabit = (formData: string) => async (dispatch: Dispatch) => {
     dispatch<SetAlert>({
       type: ActionTypes.setAlert,
       payload: {
-        msg: "Error creating a habit",
+        msg: "Error creating a habit, please refresh the app",
         alertType: "error",
       },
     });
@@ -100,7 +100,7 @@ export const removeHabit = (id: number) => async (dispatch: Dispatch) => {
     dispatch<SetAlert>({
       type: ActionTypes.setAlert,
       payload: {
-        msg: "Error removing a habit",
+        msg: "Error removing a habit, please refresh the app",
         alertType: "error",
       },
     });
@@ -127,7 +127,7 @@ export const addPoint = (id: number, date: Date) => async (
     dispatch<SetAlert>({
       type: ActionTypes.setAlert,
       payload: {
-        msg: "Error adding habit points",
+        msg: "Error adding habit points, please refresh the app",
         alertType: "error",
       },
     });
@@ -158,7 +158,7 @@ export const removePoint = (id: number, date: Date) => async (
     dispatch<SetAlert>({
       type: ActionTypes.setAlert,
       payload: {
-        msg: "Error removing habit point",
+        msg: "Error removing habit point, please refresh the app",
         alertType: "error",
       },
     });
@@ -169,17 +169,28 @@ export const removePoint = (id: number, date: Date) => async (
 // Delete all Data
 export const deleteAllHabits = () => async (dispatch: Dispatch) => {
   try {
-    await db
-      .delete()
-      .then(() => {
-        console.log("Database successfully deleted");
-      })
-      .catch((err) => {
-        console.error("Could not delete database");
-      })
-      .finally(() => {
-        // Do what should be done next...
+    await db.delete().then(() => {
+      dispatch<SetAlert>({
+        type: ActionTypes.setAlert,
+        payload: {
+          msg: "All data was deleted",
+          alertType: "success",
+        },
       });
+    });
+    // .catch((err) => {
+    //   dispatch<SetAlert>({
+    //     type: ActionTypes.setAlert,
+    //     payload: {
+    //       msg: "Error deleting all data, please refresh the app",
+    //       alertType: "error",
+    //     },
+    //   });
+    //   console.log(err);
+    // })
+    // .finally(() => {
+    //   // Do what should be done next...
+    // });
     dispatch<DeleteAllHabits>({
       type: ActionTypes.deleteAllHabits,
       payload: [],
@@ -188,7 +199,7 @@ export const deleteAllHabits = () => async (dispatch: Dispatch) => {
     dispatch<SetAlert>({
       type: ActionTypes.setAlert,
       payload: {
-        msg: "Error deleting all Habits",
+        msg: "Error deleting all data, please refresh the app",
         alertType: "error",
       },
     });

@@ -28,7 +28,6 @@ export const setAlert = (
   console.log("FROM ALERT ACTION");
 
   const id = uuid();
-  // const id = Math.random();
   dispatch<SetAlert>({
     type: ActionTypes.setAlert,
     payload: { msg, alertType, id },
