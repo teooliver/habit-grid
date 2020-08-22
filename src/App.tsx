@@ -30,6 +30,7 @@ const _App: React.FC<AppProps> = ({ getHabits, getViewSelection }) => {
         <section className='page-container'>
           <BrowserRouter>
             <Switch>
+              <Route path='/kanban' exact component={HabitTracker} />
               <Route path='/' exact component={HabitTracker} />
               <Route path='/about' exact render={() => <div>ABOUT</div>} />
             </Switch>
@@ -42,11 +43,11 @@ const _App: React.FC<AppProps> = ({ getHabits, getViewSelection }) => {
   );
 };
 
-const mapStateToProps = ({ habits }: StoreState): { habits: Habit[] } => {
-  return { habits };
-};
+// const mapStateToProps = ({ habits }: StoreState): { habits: Habit[] } => {
+//   return { habits };
+// };
 
-export const App = connect(mapStateToProps, {
+export const App = connect(null, {
   getHabits,
   getViewSelection,
 })(_App);
