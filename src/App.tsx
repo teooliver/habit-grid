@@ -1,13 +1,14 @@
 import React, { useEffect } from "react";
-import "./styles/styles.scss";
 import { connect } from "react-redux";
-import { StoreState } from "./redux/reducers";
-import { Habit, getHabits, getViewSelection } from "./redux/actions";
-import HabitTracker from "./components/tracker/HabitTracker";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Navbar from "./components/layout/Navbar";
-import HabitForm from "./components/tracker/HabitForm";
-import ServiceWorkerWrapper from "./ServiceWorkerWrapper";
 import Toast from "./components/toast/Toast";
+import HabitForm from "./components/tracker/HabitForm";
+import HabitTracker from "./components/tracker/HabitTracker";
+import { getHabits, getViewSelection, Habit } from "./redux/actions";
+import { StoreState } from "./redux/reducers";
+import ServiceWorkerWrapper from "./ServiceWorkerWrapper";
+import "./styles/styles.scss";
 interface AppProps {
   getHabits: Function;
   getViewSelection: Function;
@@ -27,12 +28,16 @@ const _App: React.FC<AppProps> = ({ getHabits, getViewSelection }) => {
       </header>
       <main>
         <section className='page-container'>
-          <HabitTracker />
+          <BrowserRouter>
+            <Switch>
+              <Route path='/' exact component={HabitTracker} />
+              <Route path='/about' exact render={() => <div>ABOUT</div>} />
+            </Switch>
+          </BrowserRouter>
         </section>
         <HabitForm />
-        <Toast/>
+        <Toast />
       </main>
-
     </div>
   );
 };
