@@ -13,23 +13,17 @@ const Toast: React.FC<Props> = ({ alerts, setAlert }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    console.log("Alerts!!!!", alerts.length);
-    if (alerts.length > 0) {
-      setIsOpen(true);
-    } else {
-      console.log(alerts.length);
-      setIsOpen(false);
-    }
-    console.log(isOpen);
+    alerts.length > 0 ? setIsOpen(true) : setIsOpen(false);
   }, [alerts]);
 
   return (
     <>
       {isOpen ? (
-        <div className={`Toast ${isOpen ? "open" : ""}`}>
+        <div
+          className={`Toast ${isOpen ? "open " + alerts[0]?.alertType : ""}`}
+        >
           <p className='toast_type'>{alerts[0]?.alertType}</p>
           <p className='toast_body'>{alerts[0]?.msg}</p>
-          <button>X</button>
         </div>
       ) : null}
     </>

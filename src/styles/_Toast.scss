@@ -5,11 +5,22 @@
   height: 6rem;
   width: 12rem;
   color: white;
-  background-color: lightcoral;
+
   border-radius: 1rem;
   padding: 1rem;
+  &.success {
+    background-color: lightgreen;
+  }
+  &.warning {
+    background-color: yellow;
+  }
+  &.error {
+    background-color: lightcoral;
+  }
   .toast_type {
     font-weight: bold;
+    text-transform: capitalize;
+    text-decoration: underline;
   }
   p {
     margin-bottom: 0.5rem;
