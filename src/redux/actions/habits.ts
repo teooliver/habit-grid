@@ -39,26 +39,24 @@ export interface DeleteAllHabits {
   payload: [];
 }
 
-export const getHabits = (): Function => {
-  return async (dispatch: Dispatch) => {
-    try {
-      let allHabits: Habit[] = await db.table("habits").toArray();
+export const getHabits = () => async (dispatch: Dispatch) => {
+  try {
+    let allHabits: Habit[] = await db.table("habits").toArray();
 
-      dispatch<GetHabitsAction>({
-        type: ActionTypes.getHabits,
-        payload: allHabits,
-      });
-    } catch (error) {
-      dispatch<SetAlert>({
-        type: ActionTypes.setAlert,
-        payload: {
-          msg: "Error geting habits, please refresh the app",
-          alertType: "error",
-        },
-      });
-      console.error(error);
-    }
-  };
+    dispatch<GetHabitsAction>({
+      type: ActionTypes.getHabits,
+      payload: allHabits,
+    });
+  } catch (error) {
+    dispatch<SetAlert>({
+      type: ActionTypes.setAlert,
+      payload: {
+        msg: "Error geting habits, please refresh the app",
+        alertType: "error",
+      },
+    });
+    console.error(error);
+  }
 };
 
 export const createHabit = (formData: string) => async (dispatch: Dispatch) => {

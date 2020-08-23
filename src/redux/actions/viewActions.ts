@@ -45,6 +45,7 @@ export const getViewSelection = () => async (dispatch: Dispatch) => {
     let viewSelection = views.pop();
     let view = viewSelection?.view;
     if (view === undefined) {
+      // Todo, delete all views and insert the new one, so not to acumulate data and keep only on value
       await db.table("views").add({ view: "table" });
       view = "table";
     }

@@ -23,6 +23,15 @@ export enum ActionTypes {
   deleteAllHabits,
   selectView,
   getViewSelection,
+  getKanbanBoards,
+  createKanbanBoard,
+  deleteKanbanBoard,
+  getKanbanColumns,
+  createKanbanColumn,
+  deleteKanbanColumn,
+  getKanbanCards,
+  createKanbanCard,
+  deleteKanbanCard,
 }
 
 /// should ViewOptions be a Enum?
