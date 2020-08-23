@@ -12,17 +12,17 @@ const testTodos: CardAttrs[] = [
   {
     id: "1",
     title: "Read Something",
-    message: "Read Something for school project",
+    description: "Read Something for school project",
   },
   {
     id: "2",
     title: "Read Something",
-    message: "Read Something for school project",
+    description: "Read Something for school project",
   },
   {
     id: "3",
     title: "Read Something",
-    message: "Read Something for school project",
+    description: "Read Something for school project",
   },
 ];
 

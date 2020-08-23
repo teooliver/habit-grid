@@ -14,7 +14,7 @@ export const KanbanColumn: React.FC<KanbanColumnProps> = ({
     <div className='KanbanColumn'>
       <h1 className='KanbanColumn__title'>{title}</h1>
       {issues.map((issue) => (
-        <KanbanCard title={issue.title} message={issue.message} />
+        <KanbanCard title={issue.title} description={issue.description} />
       ))}
     </div>
   );
