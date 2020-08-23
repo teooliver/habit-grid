@@ -43,7 +43,7 @@ export enum ActionTypes {
 export type ViewOptions = "individual" | "table";
 
 // Rename Action to HabitActions
-export type Action =
+export type HabitActions =
   | RemoveHabitAction
   | GetHabitsAction
   | CreateHabitAction
@@ -61,3 +61,10 @@ export type KanbanActions =
   | GetBoardsAction
   | CreateKanbanBoard
   | CreateKanbanIssue;
+
+export type Actions =
+  | HabitActions
+  | CalendarActions
+  | ViewActions
+  | AlertActions
+  | KanbanActions;

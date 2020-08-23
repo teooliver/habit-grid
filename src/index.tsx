@@ -9,13 +9,13 @@ import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import thunk, { ThunkMiddleware } from "redux-thunk";
 import { reducers, StoreState } from "./redux/reducers";
-import { Action } from "./redux/actions";
+import { Actions } from "./redux/actions";
 
 const initialState = {};
 const store = createStore(
   reducers,
   initialState,
-  applyMiddleware(thunk as ThunkMiddleware<StoreState, Action>)
+  applyMiddleware(thunk as ThunkMiddleware<StoreState, Actions>)
 );
 
 ReactDOM.render(

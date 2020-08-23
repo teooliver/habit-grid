@@ -1,6 +1,6 @@
-import { ActionTypes, Habit, Action } from "../actions/index";
+import { ActionTypes, Habit, HabitActions } from "../actions/index";
 
-export const habitsReducer = (state: Habit[] = [], action: Action) => {
+export const habitsReducer = (state: Habit[] = [], action: HabitActions) => {
   switch (action.type) {
     case ActionTypes.getHabits:
       return action.payload;

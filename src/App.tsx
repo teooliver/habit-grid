@@ -10,6 +10,7 @@ import { StoreState } from "./redux/reducers";
 import ServiceWorkerWrapper from "./ServiceWorkerWrapper";
 import "./styles/styles.scss";
 import { KanbanBoard } from "./components/kanban/KanbanBoard";
+
 interface AppProps {
   getHabits: Function;
   getViewSelection: Function;
