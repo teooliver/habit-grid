@@ -1,5 +1,5 @@
 import Dexie from "dexie";
-import { Habit, ViewSelection, Board } from "../redux/actions";
+import { Habit, ViewSelection, Board, Issue } from "../redux/actions";
 
 class AppDatabase extends Dexie {
   // Declare implicit table properties.
@@ -7,6 +7,7 @@ class AppDatabase extends Dexie {
   habits: Dexie.Table<Habit, number>; // number = type of the primkey
   views: Dexie.Table<ViewSelection, number>;
   boards: Dexie.Table<Board, number>;
+  issues: Dexie.Table<Issue, number>;
   //...other tables goes here...
 
   constructor() {
@@ -20,7 +21,8 @@ class AppDatabase extends Dexie {
       views: "++id, view",
     });
     db.version(3).stores({
-      boards: "++id, name, columns, issues",
+      boards: "++id, name, columns, issueIds",
+      issues: "++id, title, description, column, boardId",
     });
 
     // The following line is needed if your typescript
@@ -28,6 +30,7 @@ class AppDatabase extends Dexie {
     this.habits = this.table("habits");
     this.views = this.table("views");
     this.boards = this.table("boards");
+    this.issues = this.table("issues");
   }
 }
 

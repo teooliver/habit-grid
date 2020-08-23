@@ -14,7 +14,8 @@ export interface Issue {
   id?: string;
   title: string;
   description: string;
-  boardId?: number;
+  boardId: number;
+  column: string;
 }
 
 export interface GetBoardsAction {
@@ -22,14 +23,14 @@ export interface GetBoardsAction {
   payload: Board[];
 }
 
-export interface createKanbanBoard {
+export interface CreateKanbanBoard {
   type: ActionTypes.createKanbanBoard;
   payload: Board;
 }
 
-export interface createKanbanIssue {
+export interface CreateKanbanIssue {
   type: ActionTypes.createKanbanCard;
-  payload: Board;
+  payload: Issue;
 }
 
 export const getBoards = () => async (dispatch: Dispatch) => {
@@ -61,7 +62,7 @@ export const createBoard = (formData: Board) => async (dispatch: Dispatch) => {
 
     let id = await db.table("boards").add(board);
     const indexedBoard = await db.boards.get(Number(id));
-    dispatch<createKanbanBoard>({
+    dispatch<CreateKanbanBoard>({
       type: ActionTypes.createKanbanBoard,
       payload: indexedBoard!,
     });
@@ -84,18 +85,15 @@ export const createIssue = (formData: Issue) => async (dispatch: Dispatch) => {
       title: formData.title,
       description: formData.description,
       boardId: boardId,
+      column: formData.column,
     };
 
-    let board = await db.boards.get(Number(boardId));
+    let id = await db.table("issues").add(issue);
+    const indexedIssue = await db.issues.get(Number(id));
 
-    if (board) {
-      board.issues?.push(issue);
-      await db.boards.put(board, boardId);
-    }
-
-    dispatch<createKanbanIssue>({
+    dispatch<CreateKanbanIssue>({
       type: ActionTypes.createKanbanCard,
-      payload: board!,
+      payload: indexedIssue!,
     });
   } catch (error) {
     dispatch<SetAlert>({
