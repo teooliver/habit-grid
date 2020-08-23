@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import ReactDOM from "react-dom";
 import "../src/styles/styles.scss";
 import { App } from "./App";
-import * as serviceWorker from "./serviceWorker";
 
 // Redux
 import { createStore, applyMiddleware } from "redux";

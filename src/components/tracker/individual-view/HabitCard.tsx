@@ -30,16 +30,15 @@ const HabitCard: React.FC<Props> = ({
   // FindAmountOfDaysInMonth?
   const renderTableHeader = (month: number, year: number) => {
     let days: string[] = [];
+    // amountOfDayInSelectedMonth
     let daysAmountInSelectedMonth: number =
       new Date(year, month + 1, 0).getDate() + 1;
-    console.log("month: ", month, "year: ", year);
-    console.log("Amount", daysAmountInSelectedMonth);
+
     for (let i = 1; i < daysAmountInSelectedMonth; i++) {
       days.push(`${i}`);
     }
 
     setDaysArray([...days]);
-    console.log("Days Array", daysArray);
   };
 
   return (

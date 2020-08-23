@@ -11,13 +11,10 @@ interface Props {
 const HabitCardsView: React.FC<Props> = ({ habits }) => {
   return (
     <section className='HabitCardsView'>
-      {habits.length !== 0 ? (
+      {habits.length > 0 &&
         habits.map((habit, index) => {
           return <HabitCard habit={habit} index={index} key={index} />;
-        })
-      ) : (
-        <div className='splash-screen'>{/* <StabilityBall /> */}</div>
-      )}
+        })}
     </section>
   );
 };
