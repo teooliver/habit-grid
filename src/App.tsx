@@ -10,6 +10,7 @@ import { StoreState } from "./redux/reducers";
 import ServiceWorkerWrapper from "./ServiceWorkerWrapper";
 import "./styles/styles.scss";
 import { KanbanBoard } from "./components/kanban/KanbanBoard";
+import PageNotFound from "./pages/PageNotFound";
 
 interface AppProps {
   getHabits: Function;
@@ -35,6 +36,7 @@ const _App: React.FC<AppProps> = ({ getHabits, getViewSelection }) => {
               <Route path='/kanban' exact component={KanbanBoard} />
               <Route path='/' exact component={HabitTracker} />
               <Route path='/about' exact render={() => <div>ABOUT</div>} />
+              <Route path='/' render={PageNotFound} />
             </Switch>
           </BrowserRouter>
         </section>

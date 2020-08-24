@@ -1,0 +1,29 @@
+.PageNotFound {
+  margin: 0 auto;
+  width: fit-content;
+  text-align: center;
+  .waiting-for-you {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    overflow: auto;
+  }
+
+  .message {
+    h1 {
+      margin-bottom: 0.2rem;
+    }
+    margin-bottom: 1rem;
+  }
+
+  .back-to-home-link {
+    display: block;
+    background-color: lightcoral;
+    padding: 1rem;
+    margin: 1rem auto;
+    width: fit-content;
+    font-weight: bold;
+    color: white;
+    border-radius: 0.5rem;
+  }
+}
