@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { getHabits, Habit } from "../../redux/actions";
-import { StoreState } from "../../redux/reducers";
-import { ViewOptions } from "../../redux/actions/types";
-import Control from "./control/Control";
-import HabitCardsView from "./individual-view/HabitCardsView";
-import HabitsTable from "./table-view/HabitsTable";
-import { ReactComponent as StabilityBall } from "../../images/undraw_Stability_ball_b4ia.svg";
+import { getHabits, Habit } from "../redux/actions";
+import { StoreState } from "../redux/reducers";
+import { ViewOptions } from "../redux/actions/types";
+import Control from "../components/tracker/control/Control";
+import HabitCardsView from "../components/tracker/individual-view/HabitCardsView";
+import HabitsTable from "../components/tracker/table-view/HabitsTable";
+import { ReactComponent as StabilityBall } from "../images/undraw_Stability_ball_b4ia.svg";
 
 interface Props {
   selectedView: ViewOptions;
@@ -14,11 +14,6 @@ interface Props {
 }
 
 const HabitTracker: React.FC<Props> = ({ selectedView, habits }) => {
-  // THis should go to APP
-  useEffect(() => {
-    getHabits();
-  }, []);
-
   const switchViews = (view: ViewOptions) => {
     switch (view) {
       case "table":

@@ -4,7 +4,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Navbar from "./components/layout/Navbar";
 import Toast from "./components/toast/Toast";
 import HabitForm from "./components/tracker/HabitForm";
-import HabitTracker from "./components/tracker/HabitTracker";
+import HabitTracker from "./pages/HabitTracker";
 import { getHabits, getViewSelection, Habit } from "./redux/actions";
 import { StoreState } from "./redux/reducers";
 import ServiceWorkerWrapper from "./ServiceWorkerWrapper";

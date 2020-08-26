@@ -2,9 +2,7 @@ import React from "react";
 import { ReactComponent as WaitingForYou } from "../images/undraw_Waiting__for_you_ldha.svg";
 import { Link } from "react-router-dom";
 
-interface PageNotFoundProps {}
-
-const PageNotFound: React.FC<PageNotFoundProps> = ({}) => {
+const PageNotFound = () => {
   return (
     <div className='PageNotFound'>
       <div className='message'>
