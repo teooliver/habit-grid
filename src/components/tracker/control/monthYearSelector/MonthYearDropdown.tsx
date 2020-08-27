@@ -24,6 +24,7 @@ const MonthYearDropdown: React.FC<Props> = ({
     checkYearInEvents();
   }, [habits]);
 
+  // Could this becaume a Redux Selector?
   const checkYearInEvents = () => {
     habits.forEach((habit) => {
       habit.events.forEach((event) => {
