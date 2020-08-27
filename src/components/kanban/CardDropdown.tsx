@@ -1,11 +1,15 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 
 interface CardDropdownProps {
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  boardColumns: string[];
 }
 
-export const CardDropdown: React.FC<CardDropdownProps> = ({ setIsOpen }) => {
-  const cardDropDownRef = useRef<HTMLDivElement>(null);
+export const CardDropdown: React.FC<CardDropdownProps> = ({
+  setIsOpen,
+  boardColumns,
+}) => {
+  const cardDropDownRef = useRef<HTMLUListElement>(null);
 
   useEffect(() => {
     document.addEventListener("click", (e) => handleClickOutside(e));
@@ -28,35 +32,23 @@ export const CardDropdown: React.FC<CardDropdownProps> = ({ setIsOpen }) => {
   };
 
   return (
-    <div className='CardDropdown'>
-      <div ref={cardDropDownRef} className='move-to-collumn-dropdown'>
-        <ul className='active'>
-          <li
-            className='menu-item'
-            onClick={() => {
-              console.log("TODO");
-            }}
-          >
-            <span>Todo</span>
-          </li>
-          <li
-            className='menu-item'
-            onClick={() => {
-              console.log("In Progress");
-            }}
-          >
-            <span>In Progress</span>
-          </li>
-          <li
-            className='menu-item'
-            onClick={() => {
-              console.log("DONE");
-            }}
-          >
-            <span>Done</span>
-          </li>
-        </ul>
-      </div>
-    </div>
+    <ul ref={cardDropDownRef} className='dropdown-list'>
+      <li
+        className='menu-item'
+        onClick={() => {
+          console.log("TODO");
+        }}
+      >
+        <span>{boardColumns[0]}</span>
+      </li>
+      <li
+        className='menu-item'
+        onClick={() => {
+          console.log("In Progress");
+        }}
+      >
+        <span>{boardColumns[1]}</span>
+      </li>
+    </ul>
   );
 };

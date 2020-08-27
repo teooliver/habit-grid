@@ -45,13 +45,28 @@
   &__description {
     font-size: 1rem;
   }
-  .move {
+  &__dropdown {
+    position: relative;
     margin-top: 0.6rem;
     margin-bottom: 0.2rem;
     background-color: lightgreen;
     padding: 0.2rem 0.4rem;
     border-radius: 0.2rem;
-    width: fit-content;
+    // width: fit-content;
+    .dropdown-list {
+      position: absolute;
+      top: 2rem;
+      background-color: lightcoral;
+    }
+    .menu-item,
+    button {
+      text-transform: capitalize;
+      width: fit-content;
+    }
+
+    button {
+      margin-left: auto;
+    }
   }
 }
 
