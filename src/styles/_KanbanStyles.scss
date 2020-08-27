@@ -54,3 +54,93 @@
     width: fit-content;
   }
 }
+
+// .CardDropdown {
+//   width: 150px;
+//   // margin: 0 auto;
+
+//   .dropdown-button {
+//     display: flex;
+//     align-items: center;
+//     justify-content: space-between;
+//     padding: 0.2rem 0.2rem;
+//     white-space: nowrap;
+//     font-size: 1rem;
+//     width: 100%;
+//     background-color: white;
+//     border-radius: 0.5rem;
+//     border: 1px solid black;
+//     outline: none;
+//     &:hover {
+//       cursor: pointer;
+//     }
+//   }
+
+//   .dropdown-button-text {
+//     margin-left: 0.4rem;
+//   }
+//   .dropdown-button-icon {
+//     transition: 400ms ease;
+//     &.isOpen {
+//       transform: rotate(90deg);
+//     }
+//   }
+//   .move-to-collumn-dropdown {
+//     background-color: #4c4e58;
+//     border-radius: 1rem;
+//     border: 1px solid black;
+//     color: white;
+//     overflow-x: hidden;
+//     padding: 0.5rem;
+//     position: absolute;
+//     top: 1.7rem;
+//     width: 150px;
+//     z-index: 1000;
+
+//     ul {
+//       transition: margin 0.5s ease;
+//       &.active {
+//         height: fit-content;
+//         width: 100%;
+//         margin-left: 0;
+//       }
+//       &.inactive {
+//         height: 0;
+//         width: 0;
+//         overflow: hidden;
+//         margin-left: 100px;
+//       }
+//       .menu-item {
+//         cursor: pointer;
+//         width: 100%;
+//         height: 2rem;
+//         display: flex;
+//         align-items: center;
+//         justify-content: space-around;
+//       }
+
+//       .menu-item:hover {
+//         border-radius: 0.5rem;
+//         background-color: teal;
+//       }
+//       li {
+//         margin: 0.4rem 0;
+//         &.active {
+//           background-color: teal;
+//         }
+//         &:hover {
+//           background-color: blanchedalmond;
+//         }
+//         button {
+//           width: 100%;
+//           cursor: pointer;
+//           background-color: transparent;
+//           border: none;
+//           font-weight: bold;
+//           font-size: 1rem;
+//           color: white;
+//         }
+//       }
+//     }
+//   }
+// }

@@ -4,23 +4,19 @@ import { KanbanCardProps } from "./KanbanCard";
 
 interface KanbanBoardProps {}
 
-interface CardAttrs extends KanbanCardProps {
-  id: string;
-}
-
-const testTodos: CardAttrs[] = [
+const testTodos: KanbanCardProps[] = [
   {
-    id: "1",
+    id: 1,
     title: "Read Something",
     description: "Read Something for school project",
   },
   {
-    id: "2",
+    id: 2,
     title: "Read Something",
     description: "Read Something for school project",
   },
   {
-    id: "3",
+    id: 3,
     title: "Read Something",
     description: "Read Something for school project",
   },
