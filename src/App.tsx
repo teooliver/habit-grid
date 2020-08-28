@@ -11,7 +11,7 @@ import ServiceWorkerWrapper from "./ServiceWorkerWrapper";
 import "./styles/styles.scss";
 import KanbanBoard from "./components/kanban/KanbanBoard";
 import PageNotFound from "./pages/PageNotFound";
-import { Boards } from "./pages/Boards";
+import Boards from "./pages/Boards";
 
 interface AppProps {
   getHabits: Function;

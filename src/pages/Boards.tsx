@@ -8,7 +8,8 @@ interface BoardsProps {
   boards: Board[];
 }
 
-export const Boards: React.FC<BoardsProps> = ({ boards }) => {
+const Boards: React.FC<BoardsProps> = ({ boards }) => {
+  console.log("kanban,am", boards);
   return (
     <div className='Boards'>
       {boards.map((board) => (
@@ -18,11 +19,11 @@ export const Boards: React.FC<BoardsProps> = ({ boards }) => {
   );
 };
 
-const mapStateProps = ({ kanban }: StoreState) => {
-  console.log(kanban);
+const mapStateToProps = ({ kanban }: StoreState) => {
+  console.log("kambana", kanban);
   return {
     boards: kanban,
   };
 };
 
-export default connect(mapStateProps)(Boards);
+export default connect(mapStateToProps)(Boards);

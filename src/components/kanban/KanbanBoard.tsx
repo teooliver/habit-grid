@@ -9,6 +9,7 @@ interface KanbanBoardProps {
 }
 
 const KanbanBoard: React.FC<KanbanBoardProps> = ({ board }) => {
+  console.log("BOARDS PROPS", board);
   return (
     <div className='KanbanBoard'>
       {board.columnns!.map((col) => (
@@ -19,7 +20,6 @@ const KanbanBoard: React.FC<KanbanBoardProps> = ({ board }) => {
 };
 
 const mapStateProps = ({ kanban }: StoreState) => {
-  console.log(kanban);
   return {
     boards: kanban,
   };
