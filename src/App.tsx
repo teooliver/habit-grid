@@ -9,8 +9,9 @@ import { getHabits, getViewSelection, Habit } from "./redux/actions";
 import { StoreState } from "./redux/reducers";
 import ServiceWorkerWrapper from "./ServiceWorkerWrapper";
 import "./styles/styles.scss";
-import { KanbanBoard } from "./components/kanban/KanbanBoard";
+import KanbanBoard from "./components/kanban/KanbanBoard";
 import PageNotFound from "./pages/PageNotFound";
+import { Boards } from "./pages/Boards";
 
 interface AppProps {
   getHabits: Function;
@@ -33,7 +34,7 @@ const _App: React.FC<AppProps> = ({ getHabits, getViewSelection }) => {
         <section className='page-container'>
           <BrowserRouter>
             <Switch>
-              <Route path='/kanban' exact component={KanbanBoard} />
+              <Route path='/kanban' exact component={Boards} />
               <Route path='/' exact component={HabitTracker} />
               <Route path='/about' exact render={() => <div>ABOUT</div>} />
               <Route path='/' render={PageNotFound} />
@@ -46,10 +47,6 @@ const _App: React.FC<AppProps> = ({ getHabits, getViewSelection }) => {
     </div>
   );
 };
-
-// const mapStateToProps = ({ habits }: StoreState): { habits: Habit[] } => {
-//   return { habits };
-// };
 
 export const App = connect(null, {
   getHabits,

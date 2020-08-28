@@ -33,24 +33,18 @@ export const CardDropdown: React.FC<CardDropdownProps> = ({
 
   return (
     <ul ref={cardDropDownRef} className='dropdown-list'>
-      <li
-        className='menu-item'
-        onClick={() => {
-          setIsOpen(false);
-          console.log(boardColumns[0]);
-        }}
-      >
-        <span>{boardColumns[0]}</span>
-      </li>
-      <li
-        className='menu-item'
-        onClick={() => {
-          setIsOpen(false);
-          console.log(boardColumns[1]);
-        }}
-      >
-        <span>{boardColumns[1]}</span>
-      </li>
+      {boardColumns.length > 0 &&
+        boardColumns.map((column) => (
+          <li
+            className='menu-item'
+            onClick={() => {
+              setIsOpen(false);
+              console.log(column);
+            }}
+          >
+            <span>{column}</span>
+          </li>
+        ))}
     </ul>
   );
 };

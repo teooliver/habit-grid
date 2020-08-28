@@ -1,9 +1,10 @@
 import React from "react";
-import { KanbanCardProps, KanbanCard } from "./KanbanCard";
+import { KanbanCard } from "./KanbanCard";
+import { Issue } from "../../redux/actions";
 
 interface KanbanColumnProps {
   title: string;
-  issues: KanbanCardProps[];
+  issues: Issue[];
 }
 
 export const KanbanColumn: React.FC<KanbanColumnProps> = ({
