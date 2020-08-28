@@ -9,7 +9,6 @@ interface BoardsProps {
 }
 
 const Boards: React.FC<BoardsProps> = ({ boards }) => {
-  console.log("kanban,am", boards);
   return (
     <div className='Boards'>
       {boards.map((board) => (
@@ -19,10 +18,9 @@ const Boards: React.FC<BoardsProps> = ({ boards }) => {
   );
 };
 
-const mapStateToProps = ({ kanban }: StoreState) => {
-  console.log("kambana", kanban);
+const mapStateToProps = ({ boards }: StoreState) => {
   return {
-    boards: kanban,
+    boards,
   };
 };
 

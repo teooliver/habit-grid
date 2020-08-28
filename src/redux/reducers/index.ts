@@ -11,7 +11,7 @@ export interface StoreState {
   selectedMonthYear: { selectedMonth: number; selectedYear: number };
   selectedView: ViewOptions;
   alerts: Message[];
-  kanban: Board[];
+  boards: Board[];
 }
 
 export const reducers = combineReducers<StoreState>({
@@ -19,5 +19,5 @@ export const reducers = combineReducers<StoreState>({
   selectedMonthYear: selectMonthYearReducer,
   selectedView: viewReducer,
   alerts: alertReducer,
-  kanban: kanbanReducer,
+  boards: kanbanReducer,
 });

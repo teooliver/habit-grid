@@ -1,15 +1,12 @@
 import React from "react";
 import { KanbanColumn } from "./KanbanColumn";
 import { Board } from "../../redux/actions";
-import { connect } from "react-redux";
-import { StoreState } from "../../redux/reducers";
 
 interface KanbanBoardProps {
   board: Board;
 }
 
 const KanbanBoard: React.FC<KanbanBoardProps> = ({ board }) => {
-  console.log("BOARDS PROPS", board);
   return (
     <div className='KanbanBoard'>
       {board.columnns!.map((col) => (
@@ -19,10 +16,4 @@ const KanbanBoard: React.FC<KanbanBoardProps> = ({ board }) => {
   );
 };
 
-const mapStateProps = ({ kanban }: StoreState) => {
-  return {
-    boards: kanban,
-  };
-};
-
-export default connect(mapStateProps)(KanbanBoard);
+export default KanbanBoard;

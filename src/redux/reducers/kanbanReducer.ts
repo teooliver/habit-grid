@@ -27,11 +27,38 @@ const initialState: Board[] = [
         boardId: 329840982,
         column: "todo",
       },
+      {
+        id: "4",
+        title: "Read Something",
+        description: "Read Something for school project",
+        boardId: 329840982,
+        column: "in progress",
+      },
+      {
+        id: "5",
+        title: "Read Something",
+        description: "Read Something for school project",
+        boardId: 329840982,
+        column: "in progress",
+      },
+      {
+        id: "6",
+        title: "Read Something",
+        description: "Read Something for school project",
+        boardId: 329840982,
+        column: "in progress",
+      },
+      {
+        id: "7",
+        title: "Read Something",
+        description: "Read Something for school project",
+        boardId: 329840982,
+        column: "done",
+      },
     ],
   },
 ];
 
-// Todo Create KanbanActions
 export const kanbanReducer = (
   state: Board[] = initialState,
   action: KanbanActions

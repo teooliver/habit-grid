@@ -9,7 +9,7 @@ import { getHabits, getViewSelection, Habit } from "./redux/actions";
 import { StoreState } from "./redux/reducers";
 import ServiceWorkerWrapper from "./ServiceWorkerWrapper";
 import "./styles/styles.scss";
-import KanbanBoard from "./components/kanban/KanbanBoard";
+
 import PageNotFound from "./pages/PageNotFound";
 import Boards from "./pages/Boards";
 
