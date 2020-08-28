@@ -36,7 +36,8 @@ export const CardDropdown: React.FC<CardDropdownProps> = ({
       <li
         className='menu-item'
         onClick={() => {
-          console.log("TODO");
+          setIsOpen(false);
+          console.log(boardColumns[0]);
         }}
       >
         <span>{boardColumns[0]}</span>
@@ -44,7 +45,8 @@ export const CardDropdown: React.FC<CardDropdownProps> = ({
       <li
         className='menu-item'
         onClick={() => {
-          console.log("In Progress");
+          setIsOpen(false);
+          console.log(boardColumns[1]);
         }}
       >
         <span>{boardColumns[1]}</span>

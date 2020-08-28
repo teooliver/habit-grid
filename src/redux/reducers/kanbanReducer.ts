@@ -43,5 +43,7 @@ export const kanbanReducer = (
       return state;
     case ActionTypes.createKanbanCard:
       return state;
+    default:
+      return state;
   }
 };
