@@ -4,14 +4,14 @@ import { db } from "../../indexedDb/connectDb";
 import { SetAlert } from "./alerts";
 
 export interface Board {
-  id?: number;
-  name?: string;
-  columnns?: string[];
-  issues?: Issue[];
+  id: number;
+  name: string;
+  columnns: string[];
+  issues: Issue[];
 }
 
 export interface Issue {
-  id?: string;
+  id: string;
   title: string;
   description: string;
   boardId: number;
@@ -53,14 +53,18 @@ export const getBoards = () => async (dispatch: Dispatch) => {
   }
 };
 
-export const createBoard = (formData: Board) => async (dispatch: Dispatch) => {
+export const createBoard = (formData: Partial<Board>) => async (
+  dispatch: Dispatch
+) => {
   try {
-    const board: Board = {
+    // Does the api fill the other properties? like issues, if I don supply them?
+    const newBoard: Partial<Board> = {
       name: formData.name,
       columnns: formData.columnns,
+      issues: [],
     };
 
-    let id = await db.table("boards").add(board);
+    let id = await db.table("boards").add(newBoard);
     const indexedBoard = await db.boards.get(Number(id));
     dispatch<CreateKanbanBoard>({
       type: ActionTypes.createKanbanBoard,
@@ -78,17 +82,19 @@ export const createBoard = (formData: Board) => async (dispatch: Dispatch) => {
   }
 };
 
-export const createIssue = (formData: Issue) => async (dispatch: Dispatch) => {
+export const createIssue = (formData: Partial<Issue>) => async (
+  dispatch: Dispatch
+) => {
   try {
     const { boardId } = formData;
-    const issue: Issue = {
+    const newIssue: Partial<Issue> = {
       title: formData.title,
       description: formData.description,
       boardId: boardId,
       column: formData.column,
     };
 
-    let id = await db.table("issues").add(issue);
+    let id = await db.table("issues").add(newIssue);
     const indexedIssue = await db.issues.get(Number(id));
 
     dispatch<CreateKanbanIssue>({
