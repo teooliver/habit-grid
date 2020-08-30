@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { Issue } from "../../redux/actions";
-import { CardDropdown } from "./CardDropdown";
+import CardDropdown from "./CardDropdown";
 
 export interface KanbanCardProps {
   title?: string;
@@ -32,6 +31,7 @@ export const KanbanCard: React.FC<KanbanCardProps> = ({
         {isDropdownOpen && (
           <CardDropdown
             setIsOpen={setIsDropdownOpen}
+            cardId={id!}
             boardColumns={boardColumns.filter((col) => col !== column)}
           />
         )}

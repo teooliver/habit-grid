@@ -1,13 +1,19 @@
 import React, { useEffect, useRef } from "react";
+import { editIssueStatus } from "../../redux/actions";
+import { connect } from "react-redux";
 
 interface CardDropdownProps {
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  editIssueStatus: Function;
   boardColumns: string[];
+  cardId: number;
 }
 
-export const CardDropdown: React.FC<CardDropdownProps> = ({
+const CardDropdown: React.FC<CardDropdownProps> = ({
   setIsOpen,
+  editIssueStatus,
   boardColumns,
+  cardId,
 }) => {
   const cardDropDownRef = useRef<HTMLUListElement>(null);
 
@@ -38,8 +44,9 @@ export const CardDropdown: React.FC<CardDropdownProps> = ({
           <li
             className='menu-item'
             onClick={() => {
+              editIssueStatus(cardId, column);
+              // console.log(column, cardId);
               setIsOpen(false);
-              console.log(column);
             }}
           >
             <span>{column}</span>
@@ -48,3 +55,5 @@ export const CardDropdown: React.FC<CardDropdownProps> = ({
     </ul>
   );
 };
+
+export default connect(null, { editIssueStatus })(CardDropdown);

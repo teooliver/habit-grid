@@ -24,6 +24,7 @@ export const KanbanColumn: React.FC<KanbanColumnProps> = ({
               title={issue.title}
               description={issue.description}
               column={issue.column}
+              id={issue.id}
             />
           ))}
         {firstColumn && <KanbanCardForm />}

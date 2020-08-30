@@ -9,6 +9,7 @@ interface BoardsProps {
 }
 
 const Boards: React.FC<BoardsProps> = ({ boards }) => {
+  // boardIssues
   return (
     <div className='Boards'>
       {boards.map((board) => (

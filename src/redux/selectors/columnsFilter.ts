@@ -1,6 +1,6 @@
-import { createSelector } from "reselect";
-import { Board } from "../actions";
-import { StoreState } from "../reducers";
+// import { createSelector } from "reselect";
+// import { Board } from "../actions";
+// import { StoreState } from "../reducers";
 
 // Create select functions the pick off the pieces of state
 // we care about for this calculation
@@ -19,21 +19,21 @@ export const groupBy = <T>(
 
 export default groupBy;
 
-const boardSelector = (state: StoreState) => {
-  return state.boards;
-};
+// const boardSelector = (state: StoreState) => {
+//   return state.boards;
+// };
 
 // groupBoardIssuesByCollumn
-const grouped = (boards: Board[]) =>
-  boards.map((board) => {
-    return groupBy(board.issues, (issue) => issue.column);
-  });
+// const grouped = (boards: Board[]) =>
+//   boards.map((board) => {
+//     return groupBy(board.issues, (issue) => issue.column);
+//   });
 
-console.log("Grouped", grouped);
+// console.log("Grouped", grouped);
 
-// console.log(initialState);
+// // console.log(initialState);
 
-export const issuesGroupedByColumnSelector = createSelector(
-  boardSelector,
-  grouped
-);
+// export const issuesGroupedByColumnSelector = createSelector(
+//   boardSelector,
+//   grouped
+// );

@@ -13,7 +13,8 @@ import {
   GetBoardsAction,
   CreateKanbanBoard,
   CreateKanbanIssue,
-} from "./kanban";
+  EditKanbanIssueStatus,
+} from "./boards";
 
 export enum ActionTypes {
   getHabits,
@@ -37,6 +38,7 @@ export enum ActionTypes {
   getKanbanCards,
   createKanbanCard,
   deleteKanbanCard,
+  editKanbanIssueStatus,
 }
 
 /// should ViewOptions be a Enum?
@@ -60,7 +62,8 @@ export type AlertActions = SetAlert | RemoveAlert;
 export type KanbanActions =
   | GetBoardsAction
   | CreateKanbanBoard
-  | CreateKanbanIssue;
+  | CreateKanbanIssue
+  | EditKanbanIssueStatus;
 
 export type Actions =
   | HabitActions

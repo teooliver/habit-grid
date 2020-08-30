@@ -7,11 +7,11 @@ export interface Board {
   id: number;
   name: string;
   columnns: string[];
-  issues: Issue[];
+  issueIds: number[];
 }
 
 export interface Issue {
-  id: string;
+  id: number;
   title: string;
   description: string;
   boardId: number;
@@ -30,6 +30,11 @@ export interface CreateKanbanBoard {
 
 export interface CreateKanbanIssue {
   type: ActionTypes.createKanbanCard;
+  payload: Issue;
+}
+
+export interface EditKanbanIssueStatus {
+  type: ActionTypes.editKanbanIssueStatus;
   payload: Issue;
 }
 
@@ -61,7 +66,7 @@ export const createBoard = (formData: Partial<Board>) => async (
     const newBoard: Partial<Board> = {
       name: formData.name,
       columnns: formData.columnns,
-      issues: [],
+      // issues: [],
     };
 
     let id = await db.table("boards").add(newBoard);
@@ -106,6 +111,33 @@ export const createIssue = (formData: Partial<Issue>) => async (
       type: ActionTypes.setAlert,
       payload: {
         msg: "Error creating a issue, please refresh the app",
+        alertType: "error",
+      },
+    });
+    console.log(error);
+  }
+};
+
+export const editIssueStatus = (id: number, column: string) => async (
+  dispatch: Dispatch
+) => {
+  try {
+    const issue = await db.issues.get(Number(id));
+
+    if (issue) {
+      issue.column = column;
+      await db.issues.put(issue, id);
+
+      dispatch<EditKanbanIssueStatus>({
+        type: ActionTypes.editKanbanIssueStatus,
+        payload: issue,
+      });
+    }
+  } catch (error) {
+    dispatch<SetAlert>({
+      type: ActionTypes.setAlert,
+      payload: {
+        msg: "Error changing the issue's status...",
         alertType: "error",
       },
     });
