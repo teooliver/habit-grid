@@ -189,6 +189,8 @@ export const deleteAllHabits = () => async (dispatch: Dispatch) => {
     // .finally(() => {
     //   // Do what should be done next...
     // });
+
+    // payload its not needed in this case. Just send type. (?)
     dispatch<DeleteAllHabits>({
       type: ActionTypes.deleteAllHabits,
       payload: [],

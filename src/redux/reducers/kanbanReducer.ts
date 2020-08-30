@@ -1,6 +1,6 @@
 import { ActionTypes, Board, KanbanActions } from "../actions/index";
 
-const initialState: Board[] = [
+export const initialState: Board[] = [
   {
     id: 329840982,
     name: "TestBoard",
