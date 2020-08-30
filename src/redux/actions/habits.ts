@@ -176,19 +176,6 @@ export const deleteAllHabits = () => async (dispatch: Dispatch) => {
         },
       });
     });
-    // .catch((err) => {
-    //   dispatch<SetAlert>({
-    //     type: ActionTypes.setAlert,
-    //     payload: {
-    //       msg: "Error deleting all data, please refresh the app",
-    //       alertType: "error",
-    //     },
-    //   });
-    //   console.log(err);
-    // })
-    // .finally(() => {
-    //   // Do what should be done next...
-    // });
 
     // payload its not needed in this case. Just send type. (?)
     dispatch<DeleteAllHabits>({

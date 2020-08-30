@@ -9,12 +9,9 @@ import {
 import { SelectMonthAction, SelectYearAction } from "./selectMonthYear";
 import { SelectViewAction, GetViewSelection } from "./viewActions";
 import { SetAlert, RemoveAlert } from "./alerts";
-import {
-  GetBoardsAction,
-  CreateKanbanBoard,
-  CreateKanbanIssue,
-  EditKanbanIssueStatus,
-} from "./boards";
+import { GetBoardsAction, CreateKanbanBoard } from "./boards";
+
+import { CreateKanbanIssue, EditKanbanIssueStatus } from "./issues";
 
 export enum ActionTypes {
   getHabits,
@@ -59,15 +56,14 @@ export type ViewActions = SelectViewAction | GetViewSelection;
 
 export type AlertActions = SetAlert | RemoveAlert;
 
-export type KanbanActions =
-  | GetBoardsAction
-  | CreateKanbanBoard
-  | CreateKanbanIssue
-  | EditKanbanIssueStatus;
+export type BoardActions = GetBoardsAction | CreateKanbanBoard;
+
+export type IssueActions = CreateKanbanIssue | EditKanbanIssueStatus;
 
 export type Actions =
   | HabitActions
   | CalendarActions
   | ViewActions
   | AlertActions
-  | KanbanActions;
+  | BoardActions
+  | IssueActions;

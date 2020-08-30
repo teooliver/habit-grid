@@ -1,4 +1,4 @@
-import { ActionTypes, Board, KanbanActions } from "../actions/index";
+import { ActionTypes, Board, BoardActions } from "../actions/index";
 
 export const initialState: Board[] = [
   {
@@ -7,63 +7,17 @@ export const initialState: Board[] = [
     columnns: ["todo", "in progress", "done"],
     issueIds: [1, 2, 3, 4, 5, 6, 7],
   },
+  {
+    id: 3298409824,
+    name: "TestBoard",
+    columnns: ["todo", "in progress", "done"],
+    issueIds: [8, 9, 10],
+  },
 ];
-
-// const issues = [
-//   {
-//     id: 1,
-//     title: "Read Something",
-//     description: "Read Something for school project",
-//     boardId: 329840982,
-//     column: "todo",
-//   },
-//   {
-//     id: 2,
-//     title: "Read Something",
-//     description: "Read Something for school project",
-//     boardId: 329840982,
-//     column: "todo",
-//   },
-//   {
-//     id: 3,
-//     title: "Read Something",
-//     description: "Read Something for school project",
-//     boardId: 329840982,
-//     column: "todo",
-//   },
-//   {
-//     id: 4,
-//     title: "Read Something",
-//     description: "Read Something for school project",
-//     boardId: 329840982,
-//     column: "in progress",
-//   },
-//   {
-//     id: 5,
-//     title: "Read Something",
-//     description: "Read Something for school project",
-//     boardId: 329840982,
-//     column: "in progress",
-//   },
-//   {
-//     id: 6,
-//     title: "Read Something",
-//     description: "Read Something for school project",
-//     boardId: 329840982,
-//     column: "in progress",
-//   },
-//   {
-//     id: 7,
-//     title: "Read Something",
-//     description: "Read Something for school project",
-//     boardId: 329840982,
-//     column: "done",
-//   },
-// ];
 
 export const kanbanReducer = (
   state: Board[] = initialState,
-  action: KanbanActions
+  action: BoardActions
 ) => {
   switch (action.type) {
     case ActionTypes.getKanbanBoards:
