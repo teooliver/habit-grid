@@ -1,19 +1,22 @@
 import React, { useEffect, useRef } from 'react';
-import { editIssueStatus } from '../../redux/actions';
+import { editIssueStatus, Column } from '../../redux/actions';
 import { connect } from 'react-redux';
+import { StoreState } from '../../redux/reducers';
 
 interface CardDropdownProps {
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
   editIssueStatus: Function;
-  boardColumns: number[];
+  boardColumnsIds: number[];
   cardId: number;
+  columns: Column[];
 }
 
 const CardDropdown: React.FC<CardDropdownProps> = ({
   setIsOpen,
   editIssueStatus,
-  boardColumns,
+  boardColumnsIds,
   cardId,
+  columns,
 }) => {
   const cardDropDownRef = useRef<HTMLUListElement>(null);
 
@@ -37,22 +40,38 @@ const CardDropdown: React.FC<CardDropdownProps> = ({
     }
   };
 
+  //TODO: This is being repeted on  KanbanBoard and KanbanCard, need to stract in just on place, porbably a selector
+  const getColumnName = (id: number) => {
+    const foundObj = columns.find((col) => {
+      if (col.id === id) return col.title;
+    });
+    if (foundObj) {
+      return foundObj.title;
+    }
+  };
+
   return (
     <ul ref={cardDropDownRef} className="dropdown-list">
-      {boardColumns.length > 0 &&
-        boardColumns.map((column) => (
+      {boardColumnsIds.length > 0 &&
+        boardColumnsIds.map((columnId) => (
           <li
             className="menu-item"
             onClick={() => {
-              editIssueStatus(cardId, column);
+              editIssueStatus(cardId, columnId);
               setIsOpen(false);
             }}
           >
-            <span>{column}</span>
+            <span>{getColumnName(columnId)}</span>
           </li>
         ))}
     </ul>
   );
 };
 
-export default connect(null, { editIssueStatus })(CardDropdown);
+const mapStateToProps = ({ columns }: StoreState) => {
+  return {
+    columns,
+  };
+};
+
+export default connect(mapStateToProps, { editIssueStatus })(CardDropdown);

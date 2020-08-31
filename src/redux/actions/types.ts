@@ -5,19 +5,19 @@ import {
   CreatePointAction,
   RemovePointAction,
   DeleteAllHabits,
-} from "./habits";
-import { SelectMonthAction, SelectYearAction } from "./selectMonthYear";
-import { SelectViewAction, GetViewSelection } from "./viewActions";
-import { SetAlert, RemoveAlert } from "./alerts";
-import { GetBoardsAction, CreateKanbanBoard } from "./boards";
+} from './habits';
+import { SelectMonthAction, SelectYearAction } from './selectMonthYear';
+import { SelectViewAction, GetViewSelection } from './viewActions';
+import { SetAlert, RemoveAlert } from './alerts';
+import { GetBoardsAction, CreateKanbanBoard } from './boards';
 
 import {
   CreateKanbanIssue,
   EditKanbanIssueStatus,
   GetKanbanIssues,
-} from "./issues";
+} from './issues';
 
-import { GetBoardColumns } from "./columns";
+import { GetBoardColumns } from './columns';
 
 export enum ActionTypes {
   getHabits,
@@ -45,7 +45,7 @@ export enum ActionTypes {
   editKanbanIssueStatus,
 }
 
-export type ViewOptions = "individual" | "table";
+export type ViewOptions = 'individual' | 'table';
 
 export type HabitActions =
   | RemoveHabitAction

@@ -1,7 +1,7 @@
-import React from "react";
-import { KanbanCard } from "./KanbanCard";
-import { Issue } from "../../redux/actions";
-import { KanbanCardForm } from "./KanbanCardForm";
+import React from 'react';
+import KanbanCard from './KanbanCard';
+import { Issue } from '../../redux/actions';
+import { KanbanCardForm } from './KanbanCardForm';
 
 interface KanbanColumnProps {
   title: string;
@@ -15,9 +15,9 @@ export const KanbanColumn: React.FC<KanbanColumnProps> = ({
   firstColumn,
 }) => {
   return (
-    <div className='KanbanColumn'>
-      <h1 className='KanbanColumn__title'>{title}</h1>
-      <div className='KanbanColumn__issues'>
+    <div className="KanbanColumn">
+      <h1 className="KanbanColumn__title">{title}</h1>
+      <div className="KanbanColumn__issues">
         {issues &&
           issues.map((issue) => (
             <KanbanCard

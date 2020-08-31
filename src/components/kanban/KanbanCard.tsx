@@ -1,5 +1,8 @@
-import React, { useState } from "react";
-import CardDropdown from "./CardDropdown";
+import React, { useState } from 'react';
+import CardDropdown from './CardDropdown';
+import { connect } from 'react-redux';
+import { StoreState } from '../../redux/reducers';
+import { Column } from '../../redux/actions';
 
 export interface KanbanCardProps {
   title?: string;
@@ -7,35 +10,55 @@ export interface KanbanCardProps {
   description?: string;
   columnId?: number;
   boardId?: number;
-  boardColumns?: number[];
+  boardColumnsIds?: number[];
+  columns: Column[];
 }
 
-export const KanbanCard: React.FC<KanbanCardProps> = ({
+const KanbanCard: React.FC<KanbanCardProps> = ({
   title,
   description,
   id,
   columnId = 1,
-  boardColumns = [1, 2, 3],
+  boardColumnsIds = [1, 2, 3],
+  columns,
 }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-  return (
-    <div className='KanbanCard'>
-      {title && <h1 className='KanbanCard__title'>{title}</h1>}
-      {description && <p className='KanbanCard__description'>{description}</p>}
+  //TODO: This is being repeted on  KanbanBoard and KanbanCard, need to stract in just on place, porbably a selector
+  const getColumnName = (id: number) => {
+    const foundObj = columns.find((col) => {
+      if (col.id === id) return col.title;
+    });
+    if (foundObj) {
+      return foundObj.title;
+    }
+  };
 
-      <div className='KanbanCard__dropdown'>
+  return (
+    <div className="KanbanCard">
+      {title && <h1 className="KanbanCard__title">{title}</h1>}
+      {description && <p className="KanbanCard__description">{description}</p>}
+
+      <div className="KanbanCard__dropdown">
         <button onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
-          {columnId}
+          {getColumnName(columnId)}
         </button>
         {isDropdownOpen && (
           <CardDropdown
             setIsOpen={setIsDropdownOpen}
             cardId={id!}
-            boardColumns={boardColumns.filter((col) => col !== columnId)}
+            boardColumnsIds={boardColumnsIds.filter((col) => col !== columnId)}
           />
         )}
       </div>
     </div>
   );
 };
+
+const mapStateToProps = ({ columns }: StoreState) => {
+  return {
+    columns,
+  };
+};
+
+export default connect(mapStateToProps)(KanbanCard);
