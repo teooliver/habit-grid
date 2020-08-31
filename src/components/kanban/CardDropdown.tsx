@@ -1,6 +1,6 @@
-import React, { useEffect, useRef } from "react";
-import { editIssueStatus } from "../../redux/actions";
-import { connect } from "react-redux";
+import React, { useEffect, useRef } from 'react';
+import { editIssueStatus } from '../../redux/actions';
+import { connect } from 'react-redux';
 
 interface CardDropdownProps {
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -18,9 +18,9 @@ const CardDropdown: React.FC<CardDropdownProps> = ({
   const cardDropDownRef = useRef<HTMLUListElement>(null);
 
   useEffect(() => {
-    document.addEventListener("click", (e) => handleClickOutside(e));
+    document.addEventListener('click', (e) => handleClickOutside(e));
     return () => {
-      document.removeEventListener("click", (e) => handleClickOutside(e));
+      document.removeEventListener('click', (e) => handleClickOutside(e));
     };
   }, []);
 
@@ -38,11 +38,11 @@ const CardDropdown: React.FC<CardDropdownProps> = ({
   };
 
   return (
-    <ul ref={cardDropDownRef} className='dropdown-list'>
+    <ul ref={cardDropDownRef} className="dropdown-list">
       {boardColumns.length > 0 &&
         boardColumns.map((column) => (
           <li
-            className='menu-item'
+            className="menu-item"
             onClick={() => {
               editIssueStatus(cardId, column);
               setIsOpen(false);

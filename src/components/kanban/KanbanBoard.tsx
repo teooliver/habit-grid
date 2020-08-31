@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { KanbanColumn } from "./KanbanColumn";
-import { Board, Issue, Column } from "../../redux/actions";
-import groupBy from "../../redux/selectors/columnsFilter";
-import { connect } from "react-redux";
-import { StoreState } from "../../redux/reducers";
+import React, { useEffect, useState } from 'react';
+import { KanbanColumn } from './KanbanColumn';
+import { Board, Issue, Column } from '../../redux/actions';
+import groupBy from '../../redux/selectors/columnsFilter';
+import { connect } from 'react-redux';
+import { StoreState } from '../../redux/reducers';
 
 interface KanbanBoardProps {
   board: Board;
@@ -33,6 +33,7 @@ const KanbanBoard: React.FC<KanbanBoardProps> = ({
     console.log(issuesSortedByColumn);
   }, [board, issues]);
 
+  // This could be a selector and memoazed
   const getColumnName = (id: number) => {
     const foundObj = columns.find((col) => {
       if (col.id === id) return col.title;
@@ -43,7 +44,7 @@ const KanbanBoard: React.FC<KanbanBoardProps> = ({
   };
 
   return (
-    <div className='KanbanBoard'>
+    <div className="KanbanBoard">
       {board.columnnIds!.map((colId, index) => (
         <KanbanColumn
           title={getColumnName(colId)!}
