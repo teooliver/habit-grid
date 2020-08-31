@@ -23,7 +23,7 @@ export const KanbanColumn: React.FC<KanbanColumnProps> = ({
             <KanbanCard
               title={issue.title}
               description={issue.description}
-              column={issue.column}
+              columnId={issue.columnId}
               id={issue.id}
             />
           ))}

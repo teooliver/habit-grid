@@ -21,8 +21,9 @@ class AppDatabase extends Dexie {
       views: "++id, view",
     });
     db.version(3).stores({
-      boards: "++id, name, columns, issueIds",
-      issues: "++id, title, description, column, boardId",
+      boards: "++id, name, columnIds, issueIds",
+      columns: "++id, name",
+      issues: "++id, title, description, columnId, boardId",
     });
 
     // The following line is needed if your typescript

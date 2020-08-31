@@ -11,7 +11,13 @@ import { SelectViewAction, GetViewSelection } from "./viewActions";
 import { SetAlert, RemoveAlert } from "./alerts";
 import { GetBoardsAction, CreateKanbanBoard } from "./boards";
 
-import { CreateKanbanIssue, EditKanbanIssueStatus } from "./issues";
+import {
+  CreateKanbanIssue,
+  EditKanbanIssueStatus,
+  GetKanbanIssues,
+} from "./issues";
+
+import { GetBoardColumns } from "./columns";
 
 export enum ActionTypes {
   getHabits,
@@ -32,16 +38,15 @@ export enum ActionTypes {
   getKanbanColumns,
   createKanbanColumn,
   deleteKanbanColumn,
-  getKanbanCards,
-  createKanbanCard,
-  deleteKanbanCard,
+  getAllKanbanIssues,
+  getKanbanIssue,
+  createKanbanIssue,
+  deleteKanbanIssue,
   editKanbanIssueStatus,
 }
 
-/// should ViewOptions be a Enum?
 export type ViewOptions = "individual" | "table";
 
-// Rename Action to HabitActions
 export type HabitActions =
   | RemoveHabitAction
   | GetHabitsAction
@@ -58,7 +63,12 @@ export type AlertActions = SetAlert | RemoveAlert;
 
 export type BoardActions = GetBoardsAction | CreateKanbanBoard;
 
-export type IssueActions = CreateKanbanIssue | EditKanbanIssueStatus;
+export type ColumnActions = GetBoardColumns;
+
+export type IssueActions =
+  | CreateKanbanIssue
+  | EditKanbanIssueStatus
+  | GetKanbanIssues;
 
 export type Actions =
   | HabitActions

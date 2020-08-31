@@ -4,18 +4,18 @@ export const initialState: Board[] = [
   {
     id: 329840982,
     name: "TestBoard",
-    columnns: ["todo", "in progress", "done"],
+    columnnIds: [1, 2, 3],
     issueIds: [1, 2, 3, 4, 5, 6, 7],
   },
   {
     id: 3298409824,
     name: "TestBoard",
-    columnns: ["todo", "in progress", "done"],
+    columnnIds: [1, 2, 3],
     issueIds: [8, 9, 10],
   },
 ];
 
-export const kanbanReducer = (
+export const boardReducer = (
   state: Board[] = initialState,
   action: BoardActions
 ) => {
@@ -23,15 +23,6 @@ export const kanbanReducer = (
     case ActionTypes.getKanbanBoards:
       return state;
     case ActionTypes.createKanbanBoard:
-      return state;
-    case ActionTypes.createKanbanCard:
-      return state;
-    case ActionTypes.editKanbanIssueStatus:
-      const editedIssue = action.payload;
-      // const filteredIssue = state[editedIssue.boardId].issues.filter(
-      //   (issue) => issue.id !== editedIssue.id
-      // );
-
       return state;
     default:
       return state;

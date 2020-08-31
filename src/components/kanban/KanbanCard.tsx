@@ -5,17 +5,17 @@ export interface KanbanCardProps {
   title?: string;
   id?: number;
   description?: string;
-  column?: string;
+  columnId?: number;
   boardId?: number;
-  boardColumns?: string[];
+  boardColumns?: number[];
 }
 
 export const KanbanCard: React.FC<KanbanCardProps> = ({
   title,
   description,
   id,
-  column = "todo",
-  boardColumns = ["todo", "in progress", "done"],
+  columnId = 1,
+  boardColumns = [1, 2, 3],
 }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
@@ -26,13 +26,13 @@ export const KanbanCard: React.FC<KanbanCardProps> = ({
 
       <div className='KanbanCard__dropdown'>
         <button onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
-          {column}
+          {columnId}
         </button>
         {isDropdownOpen && (
           <CardDropdown
             setIsOpen={setIsDropdownOpen}
             cardId={id!}
-            boardColumns={boardColumns.filter((col) => col !== column)}
+            boardColumns={boardColumns.filter((col) => col !== columnId)}
           />
         )}
       </div>

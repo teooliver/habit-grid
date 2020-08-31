@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 interface CardDropdownProps {
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
   editIssueStatus: Function;
-  boardColumns: string[];
+  boardColumns: number[];
   cardId: number;
 }
 
@@ -45,7 +45,6 @@ const CardDropdown: React.FC<CardDropdownProps> = ({
             className='menu-item'
             onClick={() => {
               editIssueStatus(cardId, column);
-              // console.log(column, cardId);
               setIsOpen(false);
             }}
           >

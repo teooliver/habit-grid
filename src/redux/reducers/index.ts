@@ -2,9 +2,11 @@ import { combineReducers } from "redux";
 import { habitsReducer } from "./habitsReducer";
 import { selectMonthYearReducer } from "./selectMonthYearReducer";
 import { viewReducer } from "./viewReducer";
-import { Habit, ViewOptions, Message, Board } from "../actions";
+import { Habit, ViewOptions, Message, Board, Issue, Column } from "../actions";
 import alertReducer from "./alertsReducer";
-import { kanbanReducer } from "./kanbanReducer";
+import { boardReducer } from "./boardReducer";
+import { issuesReducer } from "./issuesReducer";
+import { columnsReducer } from "./columnsReducer";
 
 export interface StoreState {
   habits: Habit[];
@@ -12,6 +14,8 @@ export interface StoreState {
   selectedView: ViewOptions;
   alerts: Message[];
   boards: Board[];
+  issues: Issue[];
+  columns: Column[];
 }
 
 export const reducers = combineReducers<StoreState>({
@@ -19,5 +23,7 @@ export const reducers = combineReducers<StoreState>({
   selectedMonthYear: selectMonthYearReducer,
   selectedView: viewReducer,
   alerts: alertReducer,
-  boards: kanbanReducer,
+  boards: boardReducer,
+  issues: issuesReducer,
+  columns: columnsReducer,
 });

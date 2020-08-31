@@ -6,7 +6,7 @@ import { SetAlert } from "./alerts";
 export interface Board {
   id: number;
   name: string;
-  columnns: string[];
+  columnnIds: number[];
   issueIds: number[];
 }
 
@@ -47,7 +47,7 @@ export const createBoard = (formData: Partial<Board>) => async (
     // Does the api fill the other properties? like issues, if I don supply them?
     const newBoard: Partial<Board> = {
       name: formData.name,
-      columnns: formData.columnns,
+      columnnIds: formData.columnnIds,
       // issues: [],
     };
 
