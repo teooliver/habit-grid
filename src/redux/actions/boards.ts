@@ -12,7 +12,7 @@ export interface Board {
   issueIds: number[];
 }
 
-interface createBoardForm {
+interface CreateBoardForm {
   boardName: string;
   columnsNames: string[];
 }
@@ -47,9 +47,10 @@ export const getBoards = () => async (dispatch: Dispatch) => {
   }
 };
 
-export const createBoard = (formData: createBoardForm) => async (
+export const createBoard = (formData: CreateBoardForm) => async (
   dispatch: Dispatch
 ) => {
+  console.log(formData);
   try {
     // Does the api fill the other properties? like issues, if I don supply them?
     const newBoard: Partial<Board> = {

@@ -1,8 +1,9 @@
-import React from "react";
-import { connect } from "react-redux";
-import { StoreState } from "../redux/reducers";
-import KanbanBoard from "../components/kanban/KanbanBoard";
-import { Board } from "../redux/actions";
+import React from 'react';
+import { connect } from 'react-redux';
+import { StoreState } from '../redux/reducers';
+import KanbanBoard from '../components/kanban/KanbanBoard';
+import { Board } from '../redux/actions';
+import CreateBoardForm from '../components/kanban/CreateBoardForm';
 
 interface BoardsProps {
   boards: Board[];
@@ -11,11 +12,14 @@ interface BoardsProps {
 const Boards: React.FC<BoardsProps> = ({ boards }) => {
   // boardIssues
   return (
-    <div className='Boards'>
-      {boards.map((board) => (
-        <KanbanBoard board={board} />
-      ))}
-    </div>
+    <>
+      <CreateBoardForm />
+      <div className="Boards">
+        {boards.map((board) => (
+          <KanbanBoard board={board} />
+        ))}
+      </div>
+    </>
   );
 };
 

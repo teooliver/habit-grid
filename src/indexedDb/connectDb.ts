@@ -1,5 +1,5 @@
-import Dexie from "dexie";
-import { Habit, ViewSelection, Board, Issue } from "../redux/actions";
+import Dexie from 'dexie';
+import { Habit, ViewSelection, Board, Issue, Column } from '../redux/actions';
 
 class AppDatabase extends Dexie {
   // Declare implicit table properties.
@@ -8,30 +8,32 @@ class AppDatabase extends Dexie {
   views: Dexie.Table<ViewSelection, number>;
   boards: Dexie.Table<Board, number>;
   issues: Dexie.Table<Issue, number>;
+  columns: Dexie.Table<Column, number>;
   //...other tables goes here...
 
   constructor() {
-    super("AppDatabase");
+    super('AppDatabase');
     var db = this;
     db.version(1).stores({
-      habits: "++id, name, events",
+      habits: '++id, name, events',
       //...other tables goes here...
     });
     db.version(2).stores({
-      views: "++id, view",
+      views: '++id, view',
     });
     db.version(3).stores({
-      boards: "++id, name, columnIds, issueIds",
-      columns: "++id, name",
-      issues: "++id, title, description, columnId, boardId",
+      boards: '++id, name, columnIds, issueIds',
+      columns: '++id, name',
+      issues: '++id, title, description, columnId, boardId',
     });
 
     // The following line is needed if your typescript
     // is compiled using babel instead of tsc:
-    this.habits = this.table("habits");
-    this.views = this.table("views");
-    this.boards = this.table("boards");
-    this.issues = this.table("issues");
+    this.habits = this.table('habits');
+    this.views = this.table('views');
+    this.boards = this.table('boards');
+    this.columns = this.table('columns');
+    this.issues = this.table('issues');
   }
 }
 
