@@ -1,16 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { StoreState } from '../redux/reducers';
 import KanbanBoard from '../components/kanban/KanbanBoard';
-import { Board } from '../redux/actions';
+import { Board, getBoards } from '../redux/actions';
 import CreateBoardForm from '../components/kanban/CreateBoardForm';
 
 interface BoardsProps {
   boards: Board[];
+  getBoards: Function;
 }
 
-const Boards: React.FC<BoardsProps> = ({ boards }) => {
+const Boards: React.FC<BoardsProps> = ({ boards, getBoards }) => {
+  useEffect(() => {
+    getBoards();
+  }, [boards]);
   // boardIssues
+  console.log(boards);
   return (
     <>
       <CreateBoardForm />
@@ -29,4 +34,4 @@ const mapStateToProps = ({ boards }: StoreState) => {
   };
 };
 
-export default connect(mapStateToProps)(Boards);
+export default connect(mapStateToProps, { getBoards })(Boards);
