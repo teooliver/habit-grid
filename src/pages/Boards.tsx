@@ -14,7 +14,7 @@ interface BoardsProps {
 const Boards: React.FC<BoardsProps> = ({ boards, getBoards }) => {
   useEffect(() => {
     getBoards();
-    getBoardColumns();
+    // getBoardColumns();
   }, []);
 
   console.log(boards);

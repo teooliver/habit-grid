@@ -30,10 +30,13 @@ const KanbanBoard: React.FC<KanbanBoardProps> = ({
 
   useEffect(() => {
     getBoardColumns();
+
+    // Selector
     const thisBoardIssues = issues.filter(
       (issue) => issue.boardId === board.id
     );
 
+    // Selector
     let issuesSortedByColumn = groupBy(
       thisBoardIssues,
       (issue) => issue.columnId
