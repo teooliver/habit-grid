@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { KanbanColumn } from './KanbanColumn';
-import { Board, Issue, Column } from '../../redux/actions';
+import {
+  Board,
+  Issue,
+  Column,
+  getBoardColumns,
+  getBoards,
+} from '../../redux/actions';
 import groupBy from '../../redux/selectors/columnsFilter';
 import { connect } from 'react-redux';
 import { StoreState } from '../../redux/reducers';
@@ -9,6 +15,7 @@ interface KanbanBoardProps {
   board: Board;
   issues: Issue[];
   columns: Column[];
+  getBoardColumns: Function;
 }
 
 export type GroupedIssues = ReturnType<typeof groupBy>;
@@ -17,10 +24,12 @@ const KanbanBoard: React.FC<KanbanBoardProps> = ({
   board,
   issues,
   columns,
+  getBoardColumns,
 }) => {
   const [sortedIssues, setSortedIssues] = useState<GroupedIssues>();
 
   useEffect(() => {
+    getBoardColumns();
     const thisBoardIssues = issues.filter(
       (issue) => issue.boardId === board.id
     );
@@ -30,24 +39,24 @@ const KanbanBoard: React.FC<KanbanBoardProps> = ({
       (issue) => issue.columnId
     );
     setSortedIssues(issuesSortedByColumn);
-    console.log(issuesSortedByColumn);
-  }, [board, issues]);
+  }, [issues]);
 
   // This could be a selector and memoazed
-  const getColumnName = (id: number) => {
-    const foundObj = columns.find((col) => {
-      if (col.id === id) return col.title;
-    });
+  const getColumnName = (id: number, columns: Column[]) => {
+    let foundObj = columns.find((col) => col.id === id);
+
     if (foundObj) {
       return foundObj.title;
     }
+    return 'Todo';
   };
 
   return (
     <div className="KanbanBoard">
       {board.columnnIds!.map((colId, index) => (
         <KanbanColumn
-          title={getColumnName(colId)!}
+          key={index}
+          title={getColumnName(colId, columns)}
           issues={
             sortedIssues ? (sortedIssues[colId] as Issue[]) : ([] as Issue[])
           }
@@ -65,4 +74,4 @@ const mapStateToProps = ({ issues, columns }: StoreState) => {
   };
 };
 
-export default connect(mapStateToProps)(KanbanBoard);
+export default connect(mapStateToProps, { getBoardColumns })(KanbanBoard);

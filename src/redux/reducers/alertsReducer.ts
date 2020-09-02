@@ -1,4 +1,4 @@
-import { ActionTypes, Message, AlertActions } from "../actions/index";
+import { ActionTypes, Message, AlertActions } from '../actions/index';
 
 export default function (state: Message[] = [], action: AlertActions) {
   switch (action.type) {

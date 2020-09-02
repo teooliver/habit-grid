@@ -8,13 +8,14 @@ interface CreateBoardFormProps {
 
 const CreateBoardForm: React.FC<CreateBoardFormProps> = ({ createBoard }) => {
   const [boardName, setBoardName] = useState<string>();
-  const [columnsNames, setColumnNames] = useState<string[]>([]);
+  const [columnsNames, setColumnNames] = useState<string[]>();
 
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     let formData = { boardName, columnsNames };
-
     createBoard(formData);
+    setBoardName('');
+    setColumnNames([]);
   };
 
   const onChangeBoardName = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -25,6 +26,8 @@ const CreateBoardForm: React.FC<CreateBoardFormProps> = ({ createBoard }) => {
     e.preventDefault();
 
     const columnsArray = e.target.value.split(',');
+    console.log('COLUMN ARRAY', columnsArray);
+    if (!columnsArray) setColumnNames([e.target.value]);
     setColumnNames(columnsArray);
   };
 

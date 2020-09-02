@@ -3,8 +3,6 @@ import { db } from '../../indexedDb/connectDb';
 import { Dispatch } from 'redux';
 import { SetAlert } from './alerts';
 
-export const test = 'test';
-
 export interface Column {
   id: number;
   title: string;

@@ -27,7 +27,7 @@ const _App: React.FC<AppProps> = ({
   useEffect(() => {
     getHabits();
     getViewSelection();
-    // getBoards();
+    getBoards();
   }, []);
 
   return (
