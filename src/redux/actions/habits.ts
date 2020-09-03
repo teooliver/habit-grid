@@ -165,7 +165,8 @@ export const removePoint = (id: number, date: Date) => async (
   }
 };
 
-// Delete all Data
+// TODO: This should go to it own action/reducer and be called deleteAllHabits
+//  we could also have a a deleteAllHabits, deleteAllBoards actions etc.
 export const deleteAllHabits = () => async (dispatch: Dispatch) => {
   try {
     await db.delete().then(() => {

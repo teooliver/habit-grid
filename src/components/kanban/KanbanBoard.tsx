@@ -5,7 +5,6 @@ import {
   Issue,
   Column,
   getBoardColumns,
-  getBoards,
   removeBoards,
 } from '../../redux/actions';
 import groupBy from '../../redux/selectors/columnsFilter';
