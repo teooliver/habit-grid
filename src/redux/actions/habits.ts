@@ -37,7 +37,6 @@ export interface RemovePointAction {
 
 export interface DeleteAllHabits {
   type: ActionTypes.deleteAllHabits;
-  payload: [];
 }
 
 export const getHabits = () => async (dispatch: Dispatch) => {
@@ -179,10 +178,8 @@ export const deleteAllHabits = () => async (dispatch: Dispatch) => {
       });
     });
 
-    // payload its not needed in this case. Just send type. (?)
     dispatch<DeleteAllHabits>({
       type: ActionTypes.deleteAllHabits,
-      payload: [],
     });
   } catch (error) {
     dispatch<SetAlert>({

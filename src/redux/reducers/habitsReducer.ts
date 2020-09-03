@@ -1,4 +1,4 @@
-import { ActionTypes, Habit, HabitActions } from "../actions/index";
+import { ActionTypes, Habit, HabitActions } from '../actions/index';
 
 export const habitsReducer = (state: Habit[] = [], action: HabitActions) => {
   switch (action.type) {
@@ -17,7 +17,7 @@ export const habitsReducer = (state: Habit[] = [], action: HabitActions) => {
         return habit.id === action.payload.id ? action.payload : habit;
       });
     case ActionTypes.deleteAllHabits:
-      return action.payload;
+      return [];
     default:
       return state;
   }
