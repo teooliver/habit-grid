@@ -19,14 +19,7 @@ const VerticalSlideMenu: React.FC<Props> = ({
   const confirmDeleteAllData = () => {
     if (window.confirm('Are you sure you want to delete all your Habits?')) {
       deleteAllHabits();
-
       console.log('The database was deleted');
-      // setTimeout(() => {
-      //   window.location.reload(false);
-      // }, 4000);
-    } else {
-      // Do nothing!
-      return;
     }
   };
 
