@@ -6,6 +6,7 @@ import {
   Column,
   getBoardColumns,
   getBoards,
+  removeBoards,
 } from '../../redux/actions';
 import groupBy from '../../redux/selectors/columnsFilter';
 import { connect } from 'react-redux';
@@ -16,6 +17,7 @@ interface KanbanBoardProps {
   issues: Issue[];
   columns: Column[];
   getBoardColumns: Function;
+  removeBoards: Function;
 }
 
 export type GroupedIssues = ReturnType<typeof groupBy>;
@@ -25,8 +27,10 @@ const KanbanBoard: React.FC<KanbanBoardProps> = ({
   issues,
   columns,
   getBoardColumns,
+  removeBoards,
 }) => {
   const [sortedIssues, setSortedIssues] = useState<GroupedIssues>();
+  // const [boardIssues, setBoardIssues] = useState<Issue[]>([]);
 
   useEffect(() => {
     getBoardColumns();
@@ -54,20 +58,42 @@ const KanbanBoard: React.FC<KanbanBoardProps> = ({
     return 'Todo';
   };
 
+  const getColumnIssues = (colId: number) => {
+    console.log('SORTED ISSUES', sortedIssues);
+    if (sortedIssues !== undefined) {
+      return sortedIssues[colId]
+        ? (sortedIssues[colId] as Issue[])
+        : ([] as Issue[]);
+    }
+    return [] as Issue[];
+  };
+
+  const getBoardIssuesIds = (board: Board) => {
+    board.columnnIds.map((colId) => {
+      return getColumnIssues(colId);
+    });
+  };
+
   return (
     <div className="KanbanBoard">
-      {board.columnnIds!.map((colId, index) => (
-        <KanbanColumn
-          columnId={colId}
-          boardId={board.id}
-          key={index}
-          title={getColumnName(colId, columns)}
-          issues={
-            sortedIssues ? (sortedIssues[colId] as Issue[]) : ([] as Issue[])
-          }
-          firstColumn={index === 0 ? true : false}
-        />
-      ))}
+      <button
+        className="remove-board-btn"
+        onClick={() => removeBoards(board, getBoardIssuesIds(board))}
+      >
+        X
+      </button>
+      <section className="KanbanBoardColumns">
+        {board.columnnIds!.map((colId, index) => (
+          <KanbanColumn
+            columnId={colId}
+            boardId={board.id}
+            key={index}
+            title={getColumnName(colId, columns)}
+            issues={getColumnIssues(colId)}
+            firstColumn={index === 0 ? true : false}
+          />
+        ))}
+      </section>
     </div>
   );
 };
@@ -79,4 +105,6 @@ const mapStateToProps = ({ issues, columns }: StoreState) => {
   };
 };
 
-export default connect(mapStateToProps, { getBoardColumns })(KanbanBoard);
+export default connect(mapStateToProps, { getBoardColumns, removeBoards })(
+  KanbanBoard
+);

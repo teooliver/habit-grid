@@ -1,6 +1,6 @@
 import { ActionTypes } from './types';
 import { db } from '../../indexedDb/connectDb';
-import { Dispatch } from 'redux';
+import { Dispatch, Action } from 'redux';
 import { SetAlert } from './alerts';
 
 export interface Column {
@@ -12,6 +12,11 @@ export interface Column {
 export interface GetBoardColumns {
   type: ActionTypes.getKanbanColumns;
   payload: Column[];
+}
+
+export interface RemoveKanbanColumn {
+  type: ActionTypes.deleteKanbanColumn;
+  payload: number;
 }
 
 export const getBoardColumns = () => async (dispatch: Dispatch) => {
@@ -31,5 +36,25 @@ export const getBoardColumns = () => async (dispatch: Dispatch) => {
       },
     });
     console.error(error);
+  }
+};
+
+export const removeColumn = (id: number) => async (dispatch: Dispatch) => {
+  try {
+    await db.table('issues').delete(id);
+
+    dispatch<RemoveKanbanColumn>({
+      type: ActionTypes.deleteKanbanColumn,
+      payload: id,
+    });
+  } catch (error) {
+    dispatch<SetAlert>({
+      type: ActionTypes.setAlert,
+      payload: {
+        msg: 'Error removing column...',
+        alertType: 'error',
+      },
+    });
+    console.log(error);
   }
 };

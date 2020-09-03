@@ -1,22 +1,6 @@
 import { ColumnActions, Column, ActionTypes } from '../actions';
 
-export const initialState: Column[] = [
-  // {
-  //   id: 1,
-  //   title: 'todo',
-  //   boardId: 329840982,
-  // },
-  // {
-  //   id: 2,
-  //   title: 'in progress',
-  //   boardId: 329840982,
-  // },
-  // {
-  //   id: 3,
-  //   title: 'done',
-  //   boardId: 329840982,
-  // },
-];
+export const initialState: Column[] = [];
 
 export const columnsReducer = (
   state: Column[] = initialState,
@@ -25,6 +9,8 @@ export const columnsReducer = (
   switch (action.type) {
     case ActionTypes.getKanbanColumns:
       return action.payload;
+    case ActionTypes.deleteKanbanColumn:
+      return state.filter((column) => column.id !== action.payload);
     default:
       return state;
   }

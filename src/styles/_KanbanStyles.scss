@@ -1,12 +1,21 @@
 .KanbanBoard {
+  position: relative;
   margin: 1rem auto;
   max-height: 80vh;
   max-width: 80vw;
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
-  border-radius: 0.3rem;
-  background-color: lightgrey;
+  .remove-board-btn {
+    padding: 0.2rem;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+  .KanbanBoardColumns {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    border-radius: 0.3rem;
+    background-color: lightgrey;
+  }
 }
 
 .KanbanColumn {

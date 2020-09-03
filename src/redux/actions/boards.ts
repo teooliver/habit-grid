@@ -1,9 +1,10 @@
 import { ActionTypes } from './types';
-import { Dispatch } from 'redux';
+import { Dispatch, Action } from 'redux';
 import { db } from '../../indexedDb/connectDb';
 import { SetAlert } from './alerts';
-import { Column } from './columns';
+import { Column, RemoveKanbanColumn } from './columns';
 import { isArray } from 'util';
+import { Issue, RemoveKanbanIssue } from '.';
 
 export interface Board {
   id: number;
@@ -25,6 +26,11 @@ export interface GetBoardsAction {
 export interface CreateKanbanBoard {
   type: ActionTypes.createKanbanBoard;
   payload: Board;
+}
+
+export interface DeleteKanbanBoard {
+  type: ActionTypes.deleteKanbanBoard;
+  payload: number;
 }
 
 export const getBoards = () => async (dispatch: Dispatch) => {
@@ -75,7 +81,7 @@ export const createBoard = (formData: CreateBoardForm) => async (
     await db.boards.update(Number(newBoardId), newBoard);
 
     const indexedBoard = await db.boards.get(Number(newBoardId));
-    console.log(indexedBoard);
+
     dispatch<CreateKanbanBoard>({
       type: ActionTypes.createKanbanBoard,
       payload: indexedBoard!,
@@ -89,5 +95,44 @@ export const createBoard = (formData: CreateBoardForm) => async (
       },
     });
     console.log(error);
+  }
+};
+
+export const removeBoards = (board: Board, boardIssuesIds: number[]) => async (
+  dispatch: Dispatch
+) => {
+  try {
+    if (boardIssuesIds) {
+      await db.table('issues').bulkDelete(boardIssuesIds);
+      for (let issueId of boardIssuesIds) {
+        dispatch<RemoveKanbanIssue>({
+          type: ActionTypes.deleteKanbanIssue,
+          payload: issueId,
+        });
+      }
+    }
+    await db.table('columns').bulkDelete(board.columnnIds);
+    for (let columnId of board.columnnIds) {
+      dispatch<RemoveKanbanColumn>({
+        type: ActionTypes.deleteKanbanColumn,
+        payload: columnId,
+      });
+    }
+
+    await db.table('boards').delete(board.id);
+
+    dispatch<DeleteKanbanBoard>({
+      type: ActionTypes.deleteKanbanBoard,
+      payload: board.id,
+    });
+  } catch (error) {
+    dispatch<SetAlert>({
+      type: ActionTypes.setAlert,
+      payload: {
+        msg: 'Error geting boards, please refresh the app',
+        alertType: 'error',
+      },
+    });
+    console.error(error);
   }
 };

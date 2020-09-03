@@ -16,7 +16,6 @@ const Boards: React.FC<BoardsProps> = ({ boards, getBoards }) => {
     getBoards();
   }, []);
 
-  console.log(boards);
   return (
     <>
       <CreateBoardForm />
