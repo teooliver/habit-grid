@@ -10,7 +10,7 @@ const CreateBoardForm: React.FC<CreateBoardFormProps> = ({ createBoard }) => {
   const [boardName, setBoardName] = useState<string>();
   const [columnsNames, setColumnNames] = useState<string[]>();
 
-  const onSubmit = (e: React.FormEvent) => {
+  const handleOnSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     let formData = { boardName, columnsNames };
     createBoard(formData);
@@ -32,16 +32,18 @@ const CreateBoardForm: React.FC<CreateBoardFormProps> = ({ createBoard }) => {
   };
 
   return (
-    <form className="BoardForm" onSubmit={onSubmit}>
-      <label htmlFor="">Board Name</label>
+    <form className="BoardForm" onSubmit={handleOnSubmit}>
+      <label htmlFor="boardName">Board Name</label>
       <input
+        id="boardName"
         type="text"
         name="boardName"
         value={boardName}
         onChange={(e) => onChangeBoardName(e)}
       />
-      <label htmlFor="">{'Columns Names'}</label>
+      <label htmlFor="columnsName">{'Columns Names'}</label>
       <input
+        id="columnsName"
         type="text"
         name="columnsName"
         value={columnsNames}

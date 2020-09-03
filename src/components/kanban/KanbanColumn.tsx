@@ -1,19 +1,30 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import KanbanCard from './KanbanCard';
-import { Issue } from '../../redux/actions';
-import { KanbanCardForm } from './KanbanCardForm';
+import { Issue, getIssues } from '../../redux/actions';
+import KanbanCardForm from './KanbanCardForm';
+import { connect } from 'react-redux';
 
 interface KanbanColumnProps {
   title: string;
   issues: Issue[];
   firstColumn?: boolean;
+  boardId: number;
+  columnId: number;
+  getIssues: Function;
 }
 
-export const KanbanColumn: React.FC<KanbanColumnProps> = ({
+const KanbanColumn: React.FC<KanbanColumnProps> = ({
   title,
   issues,
   firstColumn,
+  boardId,
+  columnId,
+  getIssues,
 }) => {
+  useEffect(() => {
+    getIssues();
+  }, []);
+
   return (
     <div className="KanbanColumn">
       <h1 className="KanbanColumn__title">{title}</h1>
@@ -21,14 +32,19 @@ export const KanbanColumn: React.FC<KanbanColumnProps> = ({
         {issues &&
           issues.map((issue) => (
             <KanbanCard
+              key={issue.id}
+              id={issue.id}
               title={issue.title}
               description={issue.description}
               columnId={issue.columnId}
-              id={issue.id}
             />
           ))}
-        {firstColumn && <KanbanCardForm />}
+        {firstColumn && (
+          <KanbanCardForm boardId={boardId} columnId={columnId} />
+        )}
       </div>
     </div>
   );
 };
+
+export default connect(null, { getIssues })(KanbanColumn);

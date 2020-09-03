@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { StoreState } from '../redux/reducers';
 import KanbanBoard from '../components/kanban/KanbanBoard';
-import { Board, getBoards, getBoardColumns } from '../redux/actions';
+import { Board, getBoards, getBoardColumns, getIssues } from '../redux/actions';
 import CreateBoardForm from '../components/kanban/CreateBoardForm';
 
 interface BoardsProps {
@@ -14,7 +14,6 @@ interface BoardsProps {
 const Boards: React.FC<BoardsProps> = ({ boards, getBoards }) => {
   useEffect(() => {
     getBoards();
-    // getBoardColumns();
   }, []);
 
   console.log(boards);

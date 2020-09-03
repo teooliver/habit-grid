@@ -1,8 +1,8 @@
-import { v4 as uuid } from "uuid";
-import { ActionTypes } from "./types";
-import { Dispatch } from "redux";
+import { v4 as uuid } from 'uuid';
+import { ActionTypes } from './types';
+import { Dispatch } from 'redux';
 
-type alertTypes = "success" | "warning" | "error";
+type alertTypes = 'success' | 'warning' | 'error';
 
 export interface Message {
   msg: string;
@@ -25,8 +25,6 @@ export const setAlert = (
   alertType: alertTypes,
   timeout = 10000
 ) => (dispatch: Dispatch) => {
-  console.log("FROM ALERT ACTION");
-
   const id = uuid();
   dispatch<SetAlert>({
     type: ActionTypes.setAlert,

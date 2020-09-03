@@ -1,7 +1,7 @@
-import { ActionTypes } from "./types";
-import { Dispatch } from "redux";
-import { db } from "../../indexedDb/connectDb";
-import { SetAlert } from "./alerts";
+import { ActionTypes } from './types';
+import { Dispatch } from 'redux';
+import { db } from '../../indexedDb/connectDb';
+import { SetAlert } from './alerts';
 
 export interface Issue {
   id: number;
@@ -28,7 +28,7 @@ export interface EditKanbanIssueStatus {
 
 export const getIssues = () => async (dispatch: Dispatch) => {
   try {
-    let allIssues: Issue[] = await db.table("issues").toArray();
+    let allIssues: Issue[] = await db.table('issues').toArray();
 
     dispatch<GetKanbanIssues>({
       type: ActionTypes.getAllKanbanIssues,
@@ -38,8 +38,8 @@ export const getIssues = () => async (dispatch: Dispatch) => {
     dispatch<SetAlert>({
       type: ActionTypes.setAlert,
       payload: {
-        msg: "Error creating a issue, please refresh the app",
-        alertType: "error",
+        msg: 'Error creating a issue, please refresh the app',
+        alertType: 'error',
       },
     });
     console.log(error);
@@ -50,15 +50,14 @@ export const createIssue = (formData: Partial<Issue>) => async (
   dispatch: Dispatch
 ) => {
   try {
-    const { boardId } = formData;
     const newIssue: Partial<Issue> = {
       title: formData.title,
       description: formData.description,
-      boardId: boardId,
+      boardId: formData.boardId,
       columnId: formData.columnId,
     };
 
-    let id = await db.table("issues").add(newIssue);
+    let id = await db.table('issues').add(newIssue);
     const indexedIssue = await db.issues.get(Number(id));
 
     dispatch<CreateKanbanIssue>({
@@ -69,8 +68,8 @@ export const createIssue = (formData: Partial<Issue>) => async (
     dispatch<SetAlert>({
       type: ActionTypes.setAlert,
       payload: {
-        msg: "Error creating a issue, please refresh the app",
-        alertType: "error",
+        msg: 'Error creating a issue, please refresh the app',
+        alertType: 'error',
       },
     });
     console.log(error);
@@ -97,7 +96,7 @@ export const editIssueStatus = (id: number, columnId: number) => async (
       type: ActionTypes.setAlert,
       payload: {
         msg: "Error changing the issue's status...",
-        alertType: "error",
+        alertType: 'error',
       },
     });
     console.log(error);

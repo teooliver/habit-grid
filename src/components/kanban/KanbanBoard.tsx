@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { KanbanColumn } from './KanbanColumn';
+import KanbanColumn from './KanbanColumn';
 import {
   Board,
   Issue,
@@ -58,6 +58,8 @@ const KanbanBoard: React.FC<KanbanBoardProps> = ({
     <div className="KanbanBoard">
       {board.columnnIds!.map((colId, index) => (
         <KanbanColumn
+          columnId={colId}
+          boardId={board.id}
           key={index}
           title={getColumnName(colId, columns)}
           issues={
