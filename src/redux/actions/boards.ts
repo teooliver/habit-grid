@@ -1,16 +1,15 @@
 import { ActionTypes } from './types';
-import { Dispatch, Action } from 'redux';
+import { Dispatch } from 'redux';
 import { db } from '../../indexedDb/connectDb';
 import { SetAlert } from './alerts';
 import { Column, RemoveKanbanColumn } from './columns';
-import { isArray } from 'util';
-import { Issue, RemoveKanbanIssue } from '.';
+import { RemoveKanbanIssue } from '.';
+import { errorMessages } from '../../utils/errorMessages';
 
 export interface Board {
   id: number;
   name: string;
   columnnIds: number[];
-  issueIds: number[];
 }
 
 interface CreateBoardForm {
@@ -45,7 +44,7 @@ export const getBoards = () => async (dispatch: Dispatch) => {
     dispatch<SetAlert>({
       type: ActionTypes.setAlert,
       payload: {
-        msg: 'Error geting boards, please refresh the app',
+        msg: errorMessages.somethingWentWrong,
         alertType: 'error',
       },
     });
@@ -62,7 +61,6 @@ export const createBoard = (formData: CreateBoardForm) => async (
     const newBoard: Partial<Board> = {
       name: formData.boardName,
       columnnIds: [],
-      issueIds: [],
     };
     let newBoardId = await db.table('boards').add(newBoard);
 
@@ -90,7 +88,7 @@ export const createBoard = (formData: CreateBoardForm) => async (
     dispatch<SetAlert>({
       type: ActionTypes.setAlert,
       payload: {
-        msg: 'Error creating a board, please refresh the app',
+        msg: errorMessages.somethingWentWrong,
         alertType: 'error',
       },
     });
@@ -129,7 +127,7 @@ export const removeBoards = (board: Board, boardIssuesIds: number[]) => async (
     dispatch<SetAlert>({
       type: ActionTypes.setAlert,
       payload: {
-        msg: 'Error geting boards, please refresh the app',
+        msg: errorMessages.somethingWentWrong,
         alertType: 'error',
       },
     });

@@ -1,7 +1,8 @@
-import { Dispatch } from "redux";
-import { ActionTypes } from "./types";
-import { db } from "../../indexedDb/connectDb";
-import { SetAlert } from "./alerts";
+import { Dispatch } from 'redux';
+import { ActionTypes } from './types';
+import { db } from '../../indexedDb/connectDb';
+import { SetAlert } from './alerts';
+import { errorMessages } from '../../utils/errorMessages';
 
 export interface Habit {
   id?: number;
@@ -41,7 +42,7 @@ export interface DeleteAllHabits {
 
 export const getHabits = () => async (dispatch: Dispatch) => {
   try {
-    let allHabits: Habit[] = await db.table("habits").toArray();
+    let allHabits: Habit[] = await db.table('habits').toArray();
 
     dispatch<GetHabitsAction>({
       type: ActionTypes.getHabits,
@@ -51,8 +52,8 @@ export const getHabits = () => async (dispatch: Dispatch) => {
     dispatch<SetAlert>({
       type: ActionTypes.setAlert,
       payload: {
-        msg: "Error geting habits, please refresh the app",
-        alertType: "error",
+        msg: 'Error geting habits, please refresh the app',
+        alertType: 'error',
       },
     });
     console.error(error);
@@ -67,7 +68,7 @@ export const createHabit = (formData: string) => async (dispatch: Dispatch) => {
     };
 
     // TODO: check if database exists before addHabit
-    let id = await db.table("habits").add(habit);
+    let id = await db.table('habits').add(habit);
     const indexdHabit = await db.habits.get(Number(id));
 
     dispatch<CreateHabitAction>({
@@ -78,8 +79,8 @@ export const createHabit = (formData: string) => async (dispatch: Dispatch) => {
     dispatch<SetAlert>({
       type: ActionTypes.setAlert,
       payload: {
-        msg: "Error creating a habit, please refresh the app",
-        alertType: "error",
+        msg: 'Error creating a habit, please refresh the app',
+        alertType: 'error',
       },
     });
     console.error(error);
@@ -89,7 +90,7 @@ export const createHabit = (formData: string) => async (dispatch: Dispatch) => {
 export const removeHabit = (id: number) => async (dispatch: Dispatch) => {
   try {
     // const habit = await db.habits.get(Number(id));
-    await db.table("habits").delete(id);
+    await db.table('habits').delete(id);
     dispatch<RemoveHabitAction>({
       type: ActionTypes.removeHabit,
       payload: id,
@@ -98,8 +99,8 @@ export const removeHabit = (id: number) => async (dispatch: Dispatch) => {
     dispatch<SetAlert>({
       type: ActionTypes.setAlert,
       payload: {
-        msg: "Error removing a habit, please refresh the app",
-        alertType: "error",
+        msg: errorMessages.somethingWentWrong,
+        alertType: 'error',
       },
     });
     console.error(error);
@@ -125,8 +126,8 @@ export const addPoint = (id: number, date: Date) => async (
     dispatch<SetAlert>({
       type: ActionTypes.setAlert,
       payload: {
-        msg: "Error adding habit points, please refresh the app",
-        alertType: "error",
+        msg: errorMessages.somethingWentWrong,
+        alertType: 'error',
       },
     });
     console.error(error);
@@ -156,8 +157,8 @@ export const removePoint = (id: number, date: Date) => async (
     dispatch<SetAlert>({
       type: ActionTypes.setAlert,
       payload: {
-        msg: "Error removing habit point, please refresh the app",
-        alertType: "error",
+        msg: errorMessages.somethingWentWrong,
+        alertType: 'error',
       },
     });
     console.error(error);
@@ -171,8 +172,8 @@ export const deleteAllHabits = () => async (dispatch: Dispatch) => {
       dispatch<SetAlert>({
         type: ActionTypes.setAlert,
         payload: {
-          msg: "All data was deleted",
-          alertType: "success",
+          msg: 'All data was deleted',
+          alertType: 'success',
         },
       });
     });
@@ -186,8 +187,8 @@ export const deleteAllHabits = () => async (dispatch: Dispatch) => {
     dispatch<SetAlert>({
       type: ActionTypes.setAlert,
       payload: {
-        msg: "Error deleting all data, please refresh the app",
-        alertType: "error",
+        msg: errorMessages.allDataWasDeleted,
+        alertType: 'error',
       },
     });
     console.error(error);

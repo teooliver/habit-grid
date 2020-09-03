@@ -1,7 +1,8 @@
-import { Dispatch } from "redux";
-import { ActionTypes, ViewOptions } from "./types";
-import { db } from "../../indexedDb/connectDb";
-import { SetAlert } from "./alerts";
+import { Dispatch } from 'redux';
+import { ActionTypes, ViewOptions } from './types';
+import { db } from '../../indexedDb/connectDb';
+import { SetAlert } from './alerts';
+import { errorMessages } from '../../utils/errorMessages';
 
 export interface ViewSelection {
   id?: number;
@@ -21,7 +22,7 @@ export interface GetViewSelection {
 export const selectView = (view: ViewOptions) => async (dispatch: Dispatch) => {
   try {
     // Always edit the current view, so there's always only one view value.
-    await db.table("views").put({ view: view }, 1);
+    await db.table('views').put({ view: view }, 1);
 
     dispatch<SelectViewAction>({
       type: ActionTypes.selectView,
@@ -31,8 +32,8 @@ export const selectView = (view: ViewOptions) => async (dispatch: Dispatch) => {
     dispatch<SetAlert>({
       type: ActionTypes.setAlert,
       payload: {
-        msg: "Error selection a view",
-        alertType: "error",
+        msg: errorMessages.somethingWentWrong,
+        alertType: 'error',
       },
     });
     console.error(error);
@@ -41,13 +42,13 @@ export const selectView = (view: ViewOptions) => async (dispatch: Dispatch) => {
 
 export const getViewSelection = () => async (dispatch: Dispatch) => {
   try {
-    let views: ViewSelection[] = await db.table("views").toArray();
+    let views: ViewSelection[] = await db.table('views').toArray();
     let viewSelection = views.pop();
     let view = viewSelection?.view;
     if (view === undefined) {
       // Todo, delete all views and insert the new one, so not to acumulate data and keep only on value
-      await db.table("views").add({ view: "table" });
-      view = "table";
+      await db.table('views').add({ view: 'table' });
+      view = 'table';
     }
 
     dispatch<GetViewSelection>({
@@ -58,8 +59,8 @@ export const getViewSelection = () => async (dispatch: Dispatch) => {
     dispatch<SetAlert>({
       type: ActionTypes.setAlert,
       payload: {
-        msg: "Error getting possible views",
-        alertType: "error",
+        msg: errorMessages.somethingWentWrong,
+        alertType: 'error',
       },
     });
     console.error(error);

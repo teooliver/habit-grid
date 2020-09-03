@@ -2,6 +2,7 @@ import { ActionTypes } from './types';
 import { Dispatch } from 'redux';
 import { db } from '../../indexedDb/connectDb';
 import { SetAlert } from './alerts';
+import { errorMessages } from '../../utils/errorMessages';
 
 export interface Issue {
   id: number;
@@ -43,7 +44,7 @@ export const getIssues = () => async (dispatch: Dispatch) => {
     dispatch<SetAlert>({
       type: ActionTypes.setAlert,
       payload: {
-        msg: 'Error creating a issue, please refresh the app',
+        msg: errorMessages.somethingWentWrong,
         alertType: 'error',
       },
     });
@@ -73,7 +74,7 @@ export const createIssue = (formData: Partial<Issue>) => async (
     dispatch<SetAlert>({
       type: ActionTypes.setAlert,
       payload: {
-        msg: 'Error creating a issue, please refresh the app',
+        msg: errorMessages.somethingWentWrong,
         alertType: 'error',
       },
     });
@@ -100,7 +101,7 @@ export const editIssueStatus = (id: number, columnId: number) => async (
     dispatch<SetAlert>({
       type: ActionTypes.setAlert,
       payload: {
-        msg: "Error changing the issue's status...",
+        msg: errorMessages.somethingWentWrong,
         alertType: 'error',
       },
     });
@@ -120,7 +121,7 @@ export const removeIssue = (id: number) => async (dispatch: Dispatch) => {
     dispatch<SetAlert>({
       type: ActionTypes.setAlert,
       payload: {
-        msg: 'Error removing issue...',
+        msg: errorMessages.somethingWentWrong,
         alertType: 'error',
       },
     });

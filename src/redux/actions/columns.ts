@@ -1,7 +1,8 @@
 import { ActionTypes } from './types';
 import { db } from '../../indexedDb/connectDb';
-import { Dispatch, Action } from 'redux';
+import { Dispatch } from 'redux';
 import { SetAlert } from './alerts';
+import { errorMessages } from '../../utils/errorMessages';
 
 export interface Column {
   id: number;
@@ -31,7 +32,7 @@ export const getBoardColumns = () => async (dispatch: Dispatch) => {
     dispatch<SetAlert>({
       type: ActionTypes.setAlert,
       payload: {
-        msg: 'Error geting columns, please refresh the app',
+        msg: errorMessages.somethingWentWrong,
         alertType: 'error',
       },
     });
@@ -51,7 +52,7 @@ export const removeColumn = (id: number) => async (dispatch: Dispatch) => {
     dispatch<SetAlert>({
       type: ActionTypes.setAlert,
       payload: {
-        msg: 'Error removing column...',
+        msg: errorMessages.somethingWentWrong,
         alertType: 'error',
       },
     });
