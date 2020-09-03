@@ -37,6 +37,7 @@
 }
 
 .KanbanCard {
+  position: relative;
   min-height: 5rem;
   width: 95%;
   border: 1px solid gray;
@@ -72,13 +73,19 @@
         background-color: lightblue;
       }
     }
+  }
+  .remove-card {
+    padding: 0.2rem;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
 
-    button {
-      text-transform: capitalize;
-      &:hover {
-        cursor: pointer;
-        background-color: lightblue;
-      }
+  .dropdown {
+    text-transform: capitalize;
+    &:hover {
+      cursor: pointer;
+      background-color: lightblue;
     }
   }
 }

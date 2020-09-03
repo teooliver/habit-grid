@@ -15,6 +15,7 @@ import {
   CreateKanbanIssue,
   EditKanbanIssueStatus,
   GetKanbanIssues,
+  RemoveKanbanIssue,
 } from './issues';
 
 import { GetBoardColumns } from './columns';
@@ -68,7 +69,8 @@ export type ColumnActions = GetBoardColumns;
 export type IssueActions =
   | CreateKanbanIssue
   | EditKanbanIssueStatus
-  | GetKanbanIssues;
+  | GetKanbanIssues
+  | RemoveKanbanIssue;
 
 export type Actions =
   | HabitActions

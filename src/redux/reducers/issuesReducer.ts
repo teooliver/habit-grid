@@ -89,6 +89,8 @@ export const issuesReducer = (
     //   (issue) => issue.id !== editedIssue.id
     // );
     // return state;
+    case ActionTypes.deleteKanbanIssue:
+      return state.filter((issue) => issue.id !== action.payload);
     default:
       return state;
   }

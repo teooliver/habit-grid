@@ -26,6 +26,11 @@ export interface EditKanbanIssueStatus {
   payload: Issue;
 }
 
+export interface RemoveKanbanIssue {
+  type: ActionTypes.deleteKanbanIssue;
+  payload: number;
+}
+
 export const getIssues = () => async (dispatch: Dispatch) => {
   try {
     let allIssues: Issue[] = await db.table('issues').toArray();
@@ -96,6 +101,26 @@ export const editIssueStatus = (id: number, columnId: number) => async (
       type: ActionTypes.setAlert,
       payload: {
         msg: "Error changing the issue's status...",
+        alertType: 'error',
+      },
+    });
+    console.log(error);
+  }
+};
+
+export const removeIssue = (id: number) => async (dispatch: Dispatch) => {
+  try {
+    await db.table('issues').delete(id);
+
+    dispatch<RemoveKanbanIssue>({
+      type: ActionTypes.deleteKanbanIssue,
+      payload: id,
+    });
+  } catch (error) {
+    dispatch<SetAlert>({
+      type: ActionTypes.setAlert,
+      payload: {
+        msg: 'Error removing issue...',
         alertType: 'error',
       },
     });

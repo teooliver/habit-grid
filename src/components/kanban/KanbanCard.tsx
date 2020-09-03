@@ -3,6 +3,7 @@ import CardDropdown from './CardDropdown';
 import { connect } from 'react-redux';
 import { StoreState } from '../../redux/reducers';
 import { Column } from '../../redux/actions';
+import { removeIssue } from '../../redux/actions';
 
 export interface KanbanCardProps {
   title?: string;
@@ -12,6 +13,7 @@ export interface KanbanCardProps {
   boardId?: number;
   boardColumnsIds?: number[];
   columns: Column[];
+  removeIssue: Function;
 }
 
 const KanbanCard: React.FC<KanbanCardProps> = ({
@@ -21,6 +23,7 @@ const KanbanCard: React.FC<KanbanCardProps> = ({
   columnId,
   boardColumnsIds,
   columns,
+  removeIssue,
 }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
@@ -36,9 +39,14 @@ const KanbanCard: React.FC<KanbanCardProps> = ({
     <div className="KanbanCard">
       {title && <h1 className="KanbanCard__title">{title}</h1>}
       {description && <p className="KanbanCard__description">{description}</p>}
-
+      <button className="remove-card" onClick={() => removeIssue(id)}>
+        X
+      </button>
       <div className="KanbanCard__dropdown">
-        <button onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
+        <button
+          className="dropdown"
+          onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+        >
           {getColumnName(columnId!)}
         </button>
         {isDropdownOpen && (
@@ -59,4 +67,4 @@ const mapStateToProps = ({ columns }: StoreState) => {
   };
 };
 
-export default connect(mapStateToProps)(KanbanCard);
+export default connect(mapStateToProps, { removeIssue })(KanbanCard);
