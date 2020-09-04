@@ -55,8 +55,8 @@
     margin-bottom: 0.5rem;
   }
   &__issues {
-    height: 100%;
-    overflow: scroll;
+    height: 70vh;
+    overflow-x: scroll;
   }
 }
 
