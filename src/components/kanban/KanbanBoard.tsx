@@ -59,7 +59,6 @@ const KanbanBoard: React.FC<KanbanBoardProps> = ({
   };
 
   const getColumnIssues = (colId: number) => {
-    console.log('SORTED ISSUES', sortedIssues);
     if (sortedIssues !== undefined) {
       return sortedIssues[colId]
         ? (sortedIssues[colId] as Issue[])

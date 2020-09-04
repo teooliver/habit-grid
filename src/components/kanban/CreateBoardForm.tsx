@@ -7,8 +7,12 @@ interface CreateBoardFormProps {
 }
 
 const CreateBoardForm: React.FC<CreateBoardFormProps> = ({ createBoard }) => {
-  const [boardName, setBoardName] = useState<string>();
-  const [columnsNames, setColumnNames] = useState<string[]>();
+  const [boardName, setBoardName] = useState<string>('todo');
+  const [columnsNames, setColumnNames] = useState<string[]>([
+    'todo',
+    'in progress',
+    'done',
+  ]);
 
   const handleOnSubmit = (e: React.FormEvent) => {
     e.preventDefault();

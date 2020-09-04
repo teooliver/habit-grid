@@ -35,8 +35,9 @@
             color: black;
           }
           &.active {
-            color: white;
-            background-color: black;
+            // color: white;
+            // background-color: black;
+            text-decoration: underline;
           }
           &:hover {
             cursor: pointer;

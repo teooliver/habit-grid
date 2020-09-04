@@ -4,6 +4,7 @@ import GearIcon from './icons/GearIcon';
 import VerticalSlideMenu from './VerticalSlideMenu';
 import { NavLink } from 'react-router-dom';
 import { colors } from '../../utils/constants';
+import { NavBarCreateBtn } from './NavBarCreateBtn';
 
 const Navbar = () => {
   const [isVerticalMenuOpen, setIsVerticalMenuOpen] = useState(false);
@@ -48,6 +49,9 @@ const Navbar = () => {
               <NavLink exact to="/kanban" activeClassName="active">
                 Boards
               </NavLink>
+            </li>
+            <li>
+              <NavBarCreateBtn />
             </li>
           </ul>
           <span
