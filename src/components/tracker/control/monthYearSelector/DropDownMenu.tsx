@@ -1,13 +1,13 @@
-import React, { useState, useRef, useEffect } from "react";
-import { months } from "../../../../utils/variables";
-import { StoreState } from "../../../../redux/reducers";
-import { connect } from "react-redux";
+import React, { useState, useRef, useEffect } from 'react';
+import { months } from '../../../../utils/constants';
+import { StoreState } from '../../../../redux/reducers';
+import { connect } from 'react-redux';
 import {
   selectMonth,
   selectYear,
-} from "../../../../redux/actions/selectMonthYear";
-import ArrowBarRightIcon from "../../../layout/icons/ArrowBarRightIcon";
-import ArrowBarLeftIcon from "../../../layout/icons/ArrowBarLeftIcon";
+} from '../../../../redux/actions/selectMonthYear';
+import ArrowBarRightIcon from '../../../layout/icons/ArrowBarRightIcon';
+import ArrowBarLeftIcon from '../../../layout/icons/ArrowBarLeftIcon';
 
 interface Props {
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -25,13 +25,13 @@ const DropDownMenu: React.FC<Props> = ({
   possibleYearOptions,
   selectedYear,
 }) => {
-  const [activeMenu, setActiveMenu] = useState("main");
+  const [activeMenu, setActiveMenu] = useState('main');
   const dropDownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    document.addEventListener("click", (e) => handleClickOutside(e));
+    document.addEventListener('click', (e) => handleClickOutside(e));
     return () => {
-      document.removeEventListener("click", (e) => handleClickOutside(e));
+      document.removeEventListener('click', (e) => handleClickOutside(e));
     };
   }, []);
 
@@ -49,21 +49,21 @@ const DropDownMenu: React.FC<Props> = ({
   };
 
   return (
-    <div ref={dropDownRef} className='dropdown'>
-      <ul className={` ${activeMenu === "main" ? "active" : "inactive"}`}>
+    <div ref={dropDownRef} className="dropdown">
+      <ul className={` ${activeMenu === 'main' ? 'active' : 'inactive'}`}>
         <li
-          className='menu-item'
+          className="menu-item"
           onClick={() => {
-            setActiveMenu("month");
+            setActiveMenu('month');
           }}
         >
           <span>Month</span>
           <ArrowBarRightIcon />
         </li>
         <li
-          className='menu-item'
+          className="menu-item"
           onClick={() => {
-            setActiveMenu("year");
+            setActiveMenu('year');
           }}
         >
           <span>Year</span>
@@ -71,18 +71,18 @@ const DropDownMenu: React.FC<Props> = ({
         </li>
       </ul>
 
-      <ul className={` ${activeMenu === "month" ? "active" : "inactive"}`}>
-        <li className='menu-item' onClick={() => setActiveMenu("main")}>
+      <ul className={` ${activeMenu === 'month' ? 'active' : 'inactive'}`}>
+        <li className="menu-item" onClick={() => setActiveMenu('main')}>
           <ArrowBarLeftIcon />
         </li>
         {months.map((month, index) => {
           return (
             <li
               key={index}
-              className={`menu-item ${selectedMonth === index ? "active" : ""}`}
+              className={`menu-item ${selectedMonth === index ? 'active' : ''}`}
             >
               <button
-                type='button'
+                type="button"
                 onClick={() => {
                   selectMonth(index);
                 }}
@@ -94,18 +94,18 @@ const DropDownMenu: React.FC<Props> = ({
         })}
       </ul>
 
-      <ul className={` ${activeMenu === "year" ? "active" : "inactive"}`}>
-        <li className='menu-item' onClick={() => setActiveMenu("main")}>
+      <ul className={` ${activeMenu === 'year' ? 'active' : 'inactive'}`}>
+        <li className="menu-item" onClick={() => setActiveMenu('main')}>
           <ArrowBarLeftIcon />
         </li>
         {possibleYearOptions.map((year, index) => {
           return (
             <li
               key={index}
-              className={`menu-item ${selectedYear === year ? "active" : ""}`}
+              className={`menu-item ${selectedYear === year ? 'active' : ''}`}
             >
               <button
-                type='button'
+                type="button"
                 onClick={() => {
                   selectYear(year);
                 }}

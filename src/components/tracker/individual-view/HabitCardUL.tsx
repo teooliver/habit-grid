@@ -1,8 +1,8 @@
-import React from "react";
-import { connect } from "react-redux";
-import { removeHabit, Habit } from "../../../redux/actions/habits";
-import { colors } from "../../../utils/variables";
-import HabitCardLi from "./HabitCardLi";
+import React from 'react';
+import { connect } from 'react-redux';
+import { removeHabit, Habit } from '../../../redux/actions/habits';
+import { colors } from '../../../utils/constants';
+import HabitCardLi from './HabitCardLi';
 
 const n = colors.length;
 

@@ -47,7 +47,7 @@ const _App: React.FC<AppProps> = ({
             </Switch>
           </BrowserRouter>
         </section>
-        <HabitForm />
+
         <Toast />
       </main>
     </div>

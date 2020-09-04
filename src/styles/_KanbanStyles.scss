@@ -1,8 +1,13 @@
+.Boards {
+  overflow-y: hidden;
+}
+
 .KanbanBoard {
   position: relative;
   margin: 1rem auto;
   max-height: 80vh;
   max-width: 80vw;
+  min-width: 50rem;
   .remove-board-btn {
     padding: 0.2rem;
     position: absolute;

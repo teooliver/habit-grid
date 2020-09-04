@@ -1,12 +1,13 @@
-import React, { useEffect } from "react";
-import { connect } from "react-redux";
-import { getHabits, Habit } from "../redux/actions";
-import { StoreState } from "../redux/reducers";
-import { ViewOptions } from "../redux/actions/types";
-import Control from "../components/tracker/control/Control";
-import HabitCardsView from "../components/tracker/individual-view/HabitCardsView";
-import HabitsTable from "../components/tracker/table-view/HabitsTable";
-import { ReactComponent as StabilityBall } from "../images/undraw_Stability_ball_b4ia.svg";
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { getHabits, Habit } from '../redux/actions';
+import { StoreState } from '../redux/reducers';
+import { ViewOptions } from '../redux/actions/types';
+import Control from '../components/tracker/control/Control';
+import HabitCardsView from '../components/tracker/individual-view/HabitCardsView';
+import HabitsTable from '../components/tracker/table-view/HabitsTable';
+import { ReactComponent as StabilityBall } from '../images/undraw_Stability_ball_b4ia.svg';
+import HabitForm from '../components/tracker/HabitForm';
 
 interface Props {
   selectedView: ViewOptions;
@@ -16,21 +17,21 @@ interface Props {
 const HabitTracker: React.FC<Props> = ({ selectedView, habits }) => {
   const switchViews = (view: ViewOptions) => {
     switch (view) {
-      case "table":
+      case 'table':
         return (
-          <section className='habits-table-container'>
+          <section className="habits-table-container">
             <HabitsTable />
           </section>
         );
-      case "individual":
+      case 'individual':
         return (
-          <section className='habit-cards-container'>
+          <section className="habit-cards-container">
             <HabitCardsView />
           </section>
         );
       default:
         return (
-          <section className='habits-table-container'>
+          <section className="habits-table-container">
             <HabitsTable />
           </section>
         );
@@ -43,10 +44,11 @@ const HabitTracker: React.FC<Props> = ({ selectedView, habits }) => {
       {habits.length !== 0 ? (
         switchViews(selectedView)
       ) : (
-        <div className='splash-screen'>
+        <div className="splash-screen">
           <StabilityBall />
         </div>
       )}
+      <HabitForm />
     </>
   );
 };

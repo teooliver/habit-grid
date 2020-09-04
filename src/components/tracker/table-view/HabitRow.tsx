@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { connect } from "react-redux";
-import { removeHabit, Habit } from "../../../redux/actions/habits";
-import { colors } from "../../../utils/variables";
-import HabitCell from "./HabitCell";
-import TrashIcon from "../../layout/icons/TrashIcon";
+import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import { removeHabit, Habit } from '../../../redux/actions/habits';
+import { colors } from '../../../utils/constants';
+import HabitCell from './HabitCell';
+import TrashIcon from '../../layout/icons/TrashIcon';
 
 const n = colors.length;
 
@@ -25,14 +25,14 @@ const HabitRow: React.FC<Props> = ({
   return (
     <tr>
       <td
-        className='habit-name'
+        className="habit-name"
         style={{ color: colors[((index % n) + n) % n] }}
         onClick={() => setisTrashVisible(!isTrashVisible)}
       >
-        <div className='habit-name-items'>
+        <div className="habit-name-items">
           <span> {habit.name} </span>
 
-          <div className='trash-icon' onClick={() => removeHabit(habit.id)}>
+          <div className="trash-icon" onClick={() => removeHabit(habit.id)}>
             {isTrashVisible && <TrashIcon />}
           </div>
         </div>

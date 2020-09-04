@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
-import { StoreState } from "../../../../redux/reducers";
-import { connect } from "react-redux";
-import { months } from "../../../../utils/variables";
-import { Habit } from "../../../../redux/actions";
-import DropDownMenu from "./DropDownMenu";
-import ChevronBarExpandIcon from "../../../layout/icons/ChevronBarExpandIcon";
+import React, { useState, useEffect } from 'react';
+import { StoreState } from '../../../../redux/reducers';
+import { connect } from 'react-redux';
+import { months } from '../../../../utils/constants';
+import { Habit } from '../../../../redux/actions';
+import DropDownMenu from './DropDownMenu';
+import ChevronBarExpandIcon from '../../../layout/icons/ChevronBarExpandIcon';
 
 interface Props {
   selectedMonth: number;
@@ -43,14 +43,14 @@ const MonthYearDropdown: React.FC<Props> = ({
   return (
     <>
       {habits.length !== 0 && (
-        <div className='MonthDropdown'>
+        <div className="MonthDropdown">
           <div onClick={() => setIsOpen(!isOpen)}>
-            <button className='dropdown-button'>
-              <span className='dropdown-button-text'>
+            <button className="dropdown-button">
+              <span className="dropdown-button-text">
                 {months[selectedMonth].toUpperCase()} / {selectedYear}
               </span>
               <ChevronBarExpandIcon
-                className={`dropdown-button-icon ${isOpen ? "isOpen" : ""}`}
+                className={`dropdown-button-icon ${isOpen ? 'isOpen' : ''}`}
               />
             </button>
           </div>
