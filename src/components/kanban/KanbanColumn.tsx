@@ -8,6 +8,7 @@ interface KanbanColumnProps {
   title: string;
   issues: Issue[];
   firstColumn?: boolean;
+  boardColumnsIds: number[];
   boardId: number;
   columnId: number;
   getIssues: Function;
@@ -20,6 +21,7 @@ const KanbanColumn: React.FC<KanbanColumnProps> = ({
   boardId,
   columnId,
   getIssues,
+  boardColumnsIds,
 }) => {
   useEffect(() => {
     getIssues();
@@ -37,6 +39,7 @@ const KanbanColumn: React.FC<KanbanColumnProps> = ({
               title={issue.title}
               description={issue.description}
               columnId={issue.columnId}
+              boardColumnsIds={boardColumnsIds}
             />
           ))}
         {firstColumn && (

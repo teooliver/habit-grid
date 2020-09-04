@@ -11,7 +11,7 @@ export interface KanbanCardProps {
   description?: string;
   columnId?: number;
   boardId?: number;
-  boardColumnsIds?: number[];
+  boardColumnsIds: number[];
   columns: Column[];
   removeIssue: Function;
 }

@@ -11,12 +11,12 @@ export const issuesReducer = (
       return [...action.payload];
     case ActionTypes.createKanbanIssue:
       return [...state, action.payload];
-    // case ActionTypes.editKanbanIssueStatus:
-    // const editedIssue = action.payload;
-    // const filteredIssue = state[editedIssue.boardId].issues.filter(
-    //   (issue) => issue.id !== editedIssue.id
-    // );
-    // return state;
+    case ActionTypes.editKanbanIssueStatus:
+      const editedIssue = action.payload;
+      const filteredIssues = state.filter(
+        (issue) => issue.id !== editedIssue.id
+      );
+      return [...filteredIssues, editedIssue];
     case ActionTypes.deleteKanbanIssue:
       return state.filter((issue) => issue.id !== action.payload);
     default:

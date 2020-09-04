@@ -86,6 +86,7 @@ const KanbanBoard: React.FC<KanbanBoardProps> = ({
           <KanbanColumn
             columnId={colId}
             boardId={board.id}
+            boardColumnsIds={board.columnnIds}
             key={index}
             title={getColumnName(colId, columns)}
             issues={getColumnIssues(colId)}
