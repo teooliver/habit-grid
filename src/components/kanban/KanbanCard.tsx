@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { StoreState } from '../../redux/reducers';
 import { Column } from '../../redux/actions';
 import { removeIssue } from '../../redux/actions';
+import CloseIcon from '../layout/icons/CloseIcon';
 
 export interface KanbanCardProps {
   title?: string;
@@ -40,7 +41,7 @@ const KanbanCard: React.FC<KanbanCardProps> = ({
       {title && <h1 className="KanbanCard__title">{title}</h1>}
       {description && <p className="KanbanCard__description">{description}</p>}
       <button className="remove-card" onClick={() => removeIssue(id)}>
-        X
+        <CloseIcon className="close-icon" />
       </button>
       <div className="KanbanCard__dropdown">
         <button

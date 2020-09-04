@@ -13,6 +13,16 @@
     position: absolute;
     top: 0;
     right: 0;
+    border: 0;
+    background-color: transparent;
+    .close-icon {
+      width: 1rem;
+      height: auto;
+      &:hover {
+        fill: lightcoral;
+        cursor: pointer;
+      }
+    }
   }
   .KanbanBoardColumns {
     display: flex;
@@ -24,7 +34,7 @@
 }
 
 .KanbanColumn {
-  margin: 1rem;
+  margin: 1.2rem;
   display: flex;
   flex-direction: column;
   max-height: 90%;
@@ -93,6 +103,16 @@
     position: absolute;
     top: 0;
     right: 0;
+    background-color: transparent;
+    border: none;
+    .close-icon {
+      width: 1rem;
+      height: auto;
+      &:hover {
+        fill: lightcoral;
+        cursor: pointer;
+      }
+    }
   }
 
   .dropdown {

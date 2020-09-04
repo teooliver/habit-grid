@@ -10,6 +10,7 @@ import {
 import groupBy from '../../redux/selectors/columnsFilter';
 import { connect } from 'react-redux';
 import { StoreState } from '../../redux/reducers';
+import CloseIcon from '../layout/icons/CloseIcon';
 
 interface KanbanBoardProps {
   board: Board;
@@ -79,7 +80,7 @@ const KanbanBoard: React.FC<KanbanBoardProps> = ({
         className="remove-board-btn"
         onClick={() => removeBoards(board, getBoardIssuesIds(board))}
       >
-        X
+        <CloseIcon className="close-icon" />
       </button>
       <section className="KanbanBoardColumns">
         {board.columnnIds!.map((colId, index) => (
