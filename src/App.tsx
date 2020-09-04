@@ -32,24 +32,24 @@ const _App: React.FC<AppProps> = ({
 
   return (
     <div className="App">
-      <ServiceWorkerWrapper />
-      <header>
-        <Navbar />
-      </header>
-      <main>
-        <section className="page-container">
-          <BrowserRouter>
+      <BrowserRouter>
+        <ServiceWorkerWrapper />
+        <header>
+          <Navbar />
+        </header>
+        <main>
+          <section className="page-container">
             <Switch>
               <Route path="/kanban" exact component={Boards} />
               <Route path="/" exact component={HabitTracker} />
               <Route path="/about" exact render={() => <div>ABOUT</div>} />
               <Route path="/" render={PageNotFound} />
             </Switch>
-          </BrowserRouter>
-        </section>
+          </section>
 
-        <Toast />
-      </main>
+          <Toast />
+        </main>
+      </BrowserRouter>
     </div>
   );
 };
