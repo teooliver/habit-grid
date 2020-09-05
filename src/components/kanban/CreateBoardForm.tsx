@@ -1,18 +1,21 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { createBoard } from '../../redux/actions';
+import { useLocation, useHistory } from 'react-router-dom';
 
 interface CreateBoardFormProps {
   createBoard: Function;
+  setIsModalOpen?: Function;
 }
 
-const CreateBoardForm: React.FC<CreateBoardFormProps> = ({ createBoard }) => {
-  const [boardName, setBoardName] = useState<string>('todo');
-  const [columnsNames, setColumnNames] = useState<string[]>([
-    'todo',
-    'in progress',
-    'done',
-  ]);
+const CreateBoardForm: React.FC<CreateBoardFormProps> = ({
+  createBoard,
+  setIsModalOpen,
+}) => {
+  const [boardName, setBoardName] = useState<string>('');
+  const [columnsNames, setColumnNames] = useState<string[]>([]);
+  const { pathname } = useLocation();
+  const history = useHistory();
 
   const handleOnSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -20,6 +23,13 @@ const CreateBoardForm: React.FC<CreateBoardFormProps> = ({ createBoard }) => {
     createBoard(formData);
     setBoardName('');
     setColumnNames([]);
+    if (pathname !== '/kanban') {
+      history.push('/kanban');
+    }
+
+    if (setIsModalOpen) {
+      setIsModalOpen(false);
+    }
   };
 
   const onChangeBoardName = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -30,7 +40,7 @@ const CreateBoardForm: React.FC<CreateBoardFormProps> = ({ createBoard }) => {
     e.preventDefault();
 
     const columnsArray = e.target.value.split(',');
-    console.log('COLUMN ARRAY', columnsArray);
+
     if (!columnsArray) setColumnNames([e.target.value]);
     setColumnNames(columnsArray);
   };
@@ -44,6 +54,7 @@ const CreateBoardForm: React.FC<CreateBoardFormProps> = ({ createBoard }) => {
         name="boardName"
         value={boardName}
         onChange={(e) => onChangeBoardName(e)}
+        placeholder="New Board"
       />
       <label htmlFor="columnsName">{'Columns Names'}</label>
       <input
@@ -52,6 +63,7 @@ const CreateBoardForm: React.FC<CreateBoardFormProps> = ({ createBoard }) => {
         name="columnsName"
         value={columnsNames}
         onChange={(e) => onChangeColumnName(e)}
+        placeholder="Todo, In Progress, Done"
       />
       <button>Submit</button>
     </form>

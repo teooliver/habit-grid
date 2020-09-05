@@ -18,8 +18,6 @@ const VerticalSlideMenu: React.FC<Props> = ({
   setIsOpen,
   deleteAllHabits,
 }) => {
-  const { pathname } = useLocation();
-
   const confirmDeleteAllData = () => {
     if (window.confirm('Are you sure you want to delete all your Habits?')) {
       deleteAllHabits();
@@ -48,7 +46,7 @@ const VerticalSlideMenu: React.FC<Props> = ({
         </li>
       </ul>
       <section className="create-board-section">
-        {pathname === '/kanban' && <NavBarCreateBtn />}
+        <NavBarCreateBtn />
       </section>
 
       <article className="faq">
