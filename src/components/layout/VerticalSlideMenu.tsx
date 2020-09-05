@@ -40,7 +40,7 @@ const VerticalSlideMenu: React.FC<Props> = ({
           </NavLink>
         </li>
         <li>
-          <NavLink exact to="/kanban" activeClassName="active">
+          <NavLink exact to="/boards" activeClassName="active">
             Boards
           </NavLink>
         </li>
