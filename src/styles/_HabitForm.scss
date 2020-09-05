@@ -4,9 +4,6 @@
   bottom: 0;
   right: 0;
   right: 0;
-  width: 320px;
-  height: 100px;
-
   .arrow-animation-container {
     position: absolute;
     top: -11rem;
@@ -51,6 +48,8 @@
     bottom: 1rem;
     right: 5rem;
     margin-right: 1.2rem;
+    width: fit-content;
+    // height: 100px;
     button {
       width: 200px;
       padding: 0.2rem 0.2rem;
@@ -107,7 +106,7 @@
     }
     .bar:before,
     .bar:after {
-      content: "";
+      content: '';
       height: 2px;
       width: 0;
       bottom: 1px;

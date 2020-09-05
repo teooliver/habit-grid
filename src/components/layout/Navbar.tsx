@@ -2,14 +2,13 @@ import React, { useState, useEffect, useRef } from 'react';
 import Logo from './Logo';
 import GearIcon from './icons/GearIcon';
 import VerticalSlideMenu from './VerticalSlideMenu';
-import { NavLink } from 'react-router-dom';
-import { colors } from '../../utils/constants';
+import { NavLink, useLocation } from 'react-router-dom';
 import { NavBarCreateBtn } from './NavBarCreateBtn';
 
 const Navbar = () => {
   const [isVerticalMenuOpen, setIsVerticalMenuOpen] = useState(false);
-
   const verticalMenuRef = useRef<HTMLElement>(null);
+  const { pathname } = useLocation();
 
   useEffect(() => {
     document.addEventListener('click', (e) => handleClickOutside(e));
@@ -50,9 +49,12 @@ const Navbar = () => {
                 Boards
               </NavLink>
             </li>
-            <li>
-              <NavBarCreateBtn />
-            </li>
+
+            {pathname === '/kanban' && (
+              <li>
+                <NavBarCreateBtn />
+              </li>
+            )}
           </ul>
           <span
             className="navbar-control"

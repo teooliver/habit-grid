@@ -57,7 +57,6 @@ export const createBoard = (formData: CreateBoardForm) => async (
 ) => {
   console.log(formData);
   try {
-    // Does the api fill the other properties? like issues, if I don supply them?
     const newBoard: Partial<Board> = {
       name: formData.boardName,
       columnnIds: [],

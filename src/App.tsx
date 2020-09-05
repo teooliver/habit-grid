@@ -3,16 +3,13 @@ import { connect } from 'react-redux';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
 import Toast from './components/toast/Toast';
-import HabitForm from './components/tracker/HabitForm';
 import HabitTracker from './pages/HabitTracker';
 import { getHabits, getViewSelection, getBoards } from './redux/actions';
-import { StoreState } from './redux/reducers';
 import ServiceWorkerWrapper from './ServiceWorkerWrapper';
 import './styles/styles.scss';
 
 import PageNotFound from './pages/PageNotFound';
 import Boards from './pages/Boards';
-import { Portal } from './components/layout/Portal';
 
 interface AppProps {
   getHabits: Function;
