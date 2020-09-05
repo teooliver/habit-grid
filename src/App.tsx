@@ -12,6 +12,7 @@ import './styles/styles.scss';
 
 import PageNotFound from './pages/PageNotFound';
 import Boards from './pages/Boards';
+import { Portal } from './components/layout/Portal';
 
 interface AppProps {
   getHabits: Function;

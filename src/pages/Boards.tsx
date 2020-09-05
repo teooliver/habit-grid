@@ -18,7 +18,6 @@ const Boards: React.FC<BoardsProps> = ({ boards, getBoards }) => {
 
   return (
     <>
-      <CreateBoardForm />
       <div className="Boards">
         {boards.map((board, index) => (
           <KanbanBoard key={index} board={board} />
