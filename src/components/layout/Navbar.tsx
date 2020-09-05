@@ -4,11 +4,11 @@ import GearIcon from './icons/GearIcon';
 import VerticalSlideMenu from './VerticalSlideMenu';
 import { NavLink, useLocation } from 'react-router-dom';
 import { NavBarCreateBtn } from './NavBarCreateBtn';
+import ArrowBarLeftIcon from './icons/ArrowBarLeftIcon';
 
 const Navbar = () => {
   const [isVerticalMenuOpen, setIsVerticalMenuOpen] = useState(false);
   const verticalMenuRef = useRef<HTMLElement>(null);
-  const { pathname } = useLocation();
 
   useEffect(() => {
     document.addEventListener('click', (e) => handleClickOutside(e));
@@ -49,18 +49,13 @@ const Navbar = () => {
                 Boards
               </NavLink>
             </li>
-
-            {pathname === '/kanban' && (
-              <li>
-                <NavBarCreateBtn />
-              </li>
-            )}
           </ul>
           <span
             className="navbar-control"
             onClick={() => setIsVerticalMenuOpen(true)}
           >
-            <GearIcon className="gear-icon" />
+            <ArrowBarLeftIcon className="nav-arrow-left-icon" />
+            {/* <GearIcon className="gear-icon" /> */}
           </span>
           <VerticalSlideMenu
             isOpen={isVerticalMenuOpen}

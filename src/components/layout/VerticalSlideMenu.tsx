@@ -4,6 +4,8 @@ import Logo from './Logo';
 
 import { connect } from 'react-redux';
 import { deleteAllHabits } from '../../redux/actions';
+import { NavLink, useLocation } from 'react-router-dom';
+import { NavBarCreateBtn } from './NavBarCreateBtn';
 
 interface Props {
   isOpen: boolean;
@@ -16,6 +18,8 @@ const VerticalSlideMenu: React.FC<Props> = ({
   setIsOpen,
   deleteAllHabits,
 }) => {
+  const { pathname } = useLocation();
+
   const confirmDeleteAllData = () => {
     if (window.confirm('Are you sure you want to delete all your Habits?')) {
       deleteAllHabits();
@@ -31,6 +35,21 @@ const VerticalSlideMenu: React.FC<Props> = ({
       <div className="logo">
         <Logo className="vertical-menu-logo" backgroundColor="transparent" />
       </div>
+      <ul className="navigation">
+        <li>
+          <NavLink exact to="/" activeClassName="active">
+            Habits
+          </NavLink>
+        </li>
+        <li>
+          <NavLink exact to="/kanban" activeClassName="active">
+            Boards
+          </NavLink>
+        </li>
+      </ul>
+      <section className="create-board-section">
+        {pathname === '/kanban' && <NavBarCreateBtn />}
+      </section>
 
       <article className="faq">
         <h2>FAQ: </h2>
