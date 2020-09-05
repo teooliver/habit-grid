@@ -10,4 +10,15 @@
   input {
     margin-bottom: 0.8rem;
   }
+  button {
+    background-color: lightgreen;
+    outline: none;
+    border: none;
+    border-radius: 0.4rem;
+    font-size: 1.5rem;
+    &:hover {
+      background-color: lightblue;
+      color: white;
+    }
+  }
 }
