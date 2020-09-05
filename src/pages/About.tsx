@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
 interface AboutProps {}
 
 export const About: React.FC<AboutProps> = ({}) => {
-  return <div className='About'></div>;
+  return <div className="About"></div>;
 };

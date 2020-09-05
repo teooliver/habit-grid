@@ -1,0 +1,23 @@
+$zindex: (
+  modal: 9000,
+  overlay: 8000,
+  dropdown: 7000,
+  header: 6000,
+  footer: 5000,
+);
+
+// Example
+// .header {
+//   z-index: map-get($zindex, header);
+// }
+
+// Colors - Need Better Colors
+$base1: #abc3e7;
+$base2: #4c4e58;
+$base3: #e7cfab;
+$base5: #f4c6bc;
+$base6: #ffb3ba;
+$base7: #ffdfba;
+$base4: #abe7cf;
+$base8: #baffc9;
+$base9: #bae1ff;

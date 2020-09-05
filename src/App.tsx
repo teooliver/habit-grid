@@ -10,6 +10,7 @@ import './styles/styles.scss';
 
 import PageNotFound from './pages/PageNotFound';
 import Boards from './pages/Boards';
+import { Home } from './pages/Home';
 
 interface AppProps {
   getHabits: Function;
@@ -38,8 +39,9 @@ const _App: React.FC<AppProps> = ({
         <main>
           <section className="page-container">
             <Switch>
-              <Route path="/kanban" exact component={Boards} />
+              <Route path="/home" exact component={Home} />
               <Route path="/" exact component={HabitTracker} />
+              <Route path="/boards" exact component={Boards} />
               <Route path="/about" exact render={() => <div>ABOUT</div>} />
               <Route path="/" render={PageNotFound} />
             </Switch>
