@@ -70,6 +70,9 @@
   border-radius: 0.2rem;
   margin: 0.5rem auto;
   padding: 0.5rem;
+  -webkit-box-shadow: 6px 6px 8px -6px rgba(156, 156, 156, 0.67);
+  -moz-box-shadow: 6px 6px 8px -6px rgba(156, 156, 156, 0.67);
+  box-shadow: 6px 6px 8px -6px rgba(156, 156, 156, 0.67);
   &__title {
     font-size: 1.2rem;
     margin-bottom: 0.5rem;

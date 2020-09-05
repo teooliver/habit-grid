@@ -29,7 +29,7 @@ const KanbanColumn: React.FC<KanbanColumnProps> = ({
 
   return (
     <div className="KanbanColumn">
-      <h1 className="KanbanColumn__title">{title}</h1>
+      <h2 className="KanbanColumn__title">{title}</h2>
       <div className="KanbanColumn__issues">
         {issues &&
           issues.map((issue) => (

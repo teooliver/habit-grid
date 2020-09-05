@@ -39,7 +39,7 @@ const KanbanCard: React.FC<KanbanCardProps> = ({
 
   return (
     <div className="KanbanCard">
-      {title && <h1 className="KanbanCard__title">{title}</h1>}
+      {title && <h2 className="KanbanCard__title">{title}</h2>}
       {description && <p className="KanbanCard__description">{description}</p>}
       <button className="remove-card" onClick={() => removeIssue(id)}>
         <CloseIcon className="close-icon" />
