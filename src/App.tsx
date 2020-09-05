@@ -46,7 +46,6 @@ const _App: React.FC<AppProps> = ({
               <Route path="/" render={PageNotFound} />
             </Switch>
           </section>
-
           <Toast />
         </main>
       </BrowserRouter>

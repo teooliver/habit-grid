@@ -23,8 +23,8 @@ const CreateBoardForm: React.FC<CreateBoardFormProps> = ({
     createBoard(formData);
     setBoardName('');
     setColumnNames([]);
-    if (pathname !== '/kanban') {
-      history.push('/kanban');
+    if (pathname !== '/boards') {
+      history.push('/boards');
     }
 
     if (setIsModalOpen) {

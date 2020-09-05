@@ -5,6 +5,7 @@ import { StoreState } from '../../redux/reducers';
 import { Column } from '../../redux/actions';
 import { removeIssue } from '../../redux/actions';
 import CloseIcon from '../layout/icons/CloseIcon';
+import ChevronDownIcon from '../layout/icons/ChevronDownIcon';
 
 export interface KanbanCardProps {
   title?: string;
@@ -45,10 +46,11 @@ const KanbanCard: React.FC<KanbanCardProps> = ({
       </button>
       <div className="KanbanCard__dropdown">
         <button
-          className="dropdown"
+          className="dropdown-btn"
           onClick={() => setIsDropdownOpen(!isDropdownOpen)}
         >
-          {getColumnName(columnId!)}
+          {/* {getColumnName(columnId!)} */}
+          <span>Move To:</span> <ChevronDownIcon />
         </button>
         {isDropdownOpen && (
           <CardDropdown

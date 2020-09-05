@@ -61,7 +61,7 @@ const CardDropdown: React.FC<CardDropdownProps> = ({
               setIsOpen(false);
             }}
           >
-            <span>{getColumnName(columnId)}</span>
+            <span>&#62; {getColumnName(columnId)}</span>
           </li>
         ))}
     </ul>
