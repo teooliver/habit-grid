@@ -16,8 +16,12 @@ const CreateBoardForm: React.FC<CreateBoardFormProps> = ({
 }) => {
   const [boardName, setBoardName] = useState<string>('');
   const [columnsNames, setColumnNames] = useState<string[]>([]);
-  const [isColumnNamesValid, setIsColumnNamesValid] = useState<boolean>(true);
-  const [isBoardNameValid, setIsBoardNameValid] = useState<boolean>(true);
+
+  const [columnsValidationError, setColumnsValidationError] = useState<string>(
+    ''
+  );
+  const [boardValidationError, setBoardValidationError] = useState<string>('');
+
   const { pathname } = useLocation();
   const history = useHistory();
 
@@ -25,19 +29,16 @@ const CreateBoardForm: React.FC<CreateBoardFormProps> = ({
     if (!isModalOpen) {
       setBoardName('');
       setColumnNames([]);
-      setIsColumnNamesValid(true);
-      setIsBoardNameValid(true);
     }
   }, [isModalOpen]);
 
   const handleOnSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    let formData = { boardName, columnsNames };
-    createBoard(formData);
-    setBoardName('');
-    setColumnNames([]);
-
-    if (isColumnNamesValid) {
+    const isColumnNamesValid = validateColumnsNames(columnsNames);
+    const isBoardNameValid = validateBoardName(boardName);
+    if (isColumnNamesValid && isBoardNameValid) {
+      let formData = { boardName, columnsNames };
+      createBoard(formData);
       if (pathname !== '/boards') {
         history.push('/boards');
       }
@@ -45,39 +46,42 @@ const CreateBoardForm: React.FC<CreateBoardFormProps> = ({
       if (setIsModalOpen) {
         setIsModalOpen(false);
       }
+      setBoardName('');
+      setColumnNames([]);
     } else {
       return;
     }
   };
 
-  const onChangeBoardName = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChangeBoardName = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setBoardValidationError('');
     setBoardName(e.target.value);
-    validateBoardName(e.target.value);
   };
 
-  const onChangeColumnName = (e: React.ChangeEvent<HTMLInputElement>) => {
-    e.preventDefault();
-
+  const handleChangeColumnName = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setColumnsValidationError('');
     const columnsArray = e.target.value.split(',');
-    validateColumnsNames(columnsArray);
     if (!columnsArray) setColumnNames([e.target.value]);
     setColumnNames(columnsArray);
   };
 
   const validateBoardName = (name: string) => {
     if (name.length > 0) {
-      setIsBoardNameValid(true);
+      return true;
     } else {
-      setIsBoardNameValid(false);
+      setBoardValidationError('This field is required');
+      return false;
     }
   };
 
   const validateColumnsNames = (colNames: string[]) => {
     if (colNames.length < 2) {
-      setIsColumnNamesValid(false);
-      console.log('please provide at least 2 column names separeted by comas.');
+      setColumnsValidationError(
+        'please provide at least 2 column names separeted by comas.'
+      );
+      return false;
     } else {
-      setIsColumnNamesValid(true);
+      return true;
     }
   };
 
@@ -85,27 +89,32 @@ const CreateBoardForm: React.FC<CreateBoardFormProps> = ({
     <form className="BoardForm" onSubmit={handleOnSubmit}>
       <label htmlFor="boardName">Board Name</label>
       <input
-        className={isBoardNameValid ? '' : 'error'}
+        className={boardValidationError ? 'error' : ''}
         id="boardName"
         type="text"
         name="boardName"
         value={boardName}
-        onChange={(e) => onChangeBoardName(e)}
+        onChange={(e) => handleChangeBoardName(e)}
         placeholder="New Board"
       />
+      {boardValidationError && <p>{boardValidationError}</p>}
       <label htmlFor="columnsName">{'Columns Names'}</label>
       <input
-        className={isColumnNamesValid ? '' : 'error'}
+        className={columnsValidationError ? 'error' : ''}
         id="columnsName"
         type="text"
         name="columnsName"
         value={columnsNames}
-        onChange={(e) => onChangeColumnName(e)}
+        onChange={(e) => handleChangeColumnName(e)}
         placeholder="Todo, In Progress, Done"
       />
+      {columnsValidationError && <p>{columnsValidationError}</p>}
       <button
-        className={isColumnNamesValid ? '' : 'error'}
-        disabled={isColumnNamesValid ? false : true}
+        type="submit"
+        className={
+          columnsValidationError && boardValidationError ? 'error' : ''
+        }
+        disabled={columnsValidationError && boardValidationError ? true : false}
       >
         Submit
       </button>
