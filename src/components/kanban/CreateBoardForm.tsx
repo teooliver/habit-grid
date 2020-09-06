@@ -29,6 +29,8 @@ const CreateBoardForm: React.FC<CreateBoardFormProps> = ({
     if (!isModalOpen) {
       setBoardName('');
       setColumnNames([]);
+      setColumnsValidationError('');
+      setBoardValidationError('');
     }
   }, [isModalOpen]);
 
