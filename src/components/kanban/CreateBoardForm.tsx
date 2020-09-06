@@ -75,9 +75,13 @@ const CreateBoardForm: React.FC<CreateBoardFormProps> = ({
   };
 
   const validateColumnsNames = (colNames: string[]) => {
+    if (colNames.length === 0) {
+      setColumnsValidationError('This field is required');
+      return false;
+    }
     if (colNames.length < 2) {
       setColumnsValidationError(
-        'please provide at least 2 column names separeted by comas.'
+        'Please provide at least 2 names separeted by comas. Ex: "Todo, In Progress, Done"'
       );
       return false;
     } else {
