@@ -13,7 +13,10 @@ export const NavBarCreateBtn: React.FC<NavBarCreateBtnProps> = ({}) => {
         <button onClick={() => setIsModalOpen(true)}>Create Board</button>
       </div>
       <Portal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}>
-        <CreateBoardForm setIsModalOpen={setIsModalOpen} />
+        <CreateBoardForm
+          isModalOpen={isModalOpen}
+          setIsModalOpen={setIsModalOpen}
+        />
       </Portal>
     </>
   );

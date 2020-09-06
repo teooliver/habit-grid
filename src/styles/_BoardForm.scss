@@ -1,24 +1,43 @@
 .BoardForm {
   display: flex;
   flex-direction: column;
+  border: 1px solid lightgray;
   width: 20rem;
   padding: 1.5rem;
-  border: 1px solid gray;
   border-radius: 0.2rem;
   margin: 1rem auto;
   background-color: white;
+  label {
+    margin: 0.2rem;
+  }
   input {
+    margin: 0 0.2rem;
+    border: 1px solid lightgray;
+    padding: 0.2rem;
+    border-radius: 0.2rem;
     margin-bottom: 0.8rem;
+
+    &.error {
+      border: 2px solid red;
+    }
   }
   button {
     background-color: lightgreen;
     outline: none;
     border: none;
     border-radius: 0.4rem;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     &:hover {
+      cursor: pointer;
       background-color: lightblue;
       color: white;
+    }
+    &.error {
+      background-color: lightgray;
+      &:hover {
+        background-color: lightgray;
+        color: rgb(156, 156, 156);
+      }
     }
   }
 }
