@@ -87,28 +87,37 @@ const CreateBoardForm: React.FC<CreateBoardFormProps> = ({
 
   return (
     <form className="BoardForm" onSubmit={handleOnSubmit}>
-      <label htmlFor="boardName">Board Name</label>
-      <input
-        className={boardValidationError ? 'error' : ''}
-        id="boardName"
-        type="text"
-        name="boardName"
-        value={boardName}
-        onChange={(e) => handleChangeBoardName(e)}
-        placeholder="New Board"
-      />
-      {boardValidationError && <p>{boardValidationError}</p>}
-      <label htmlFor="columnsName">{'Columns Names'}</label>
-      <input
-        className={columnsValidationError ? 'error' : ''}
-        id="columnsName"
-        type="text"
-        name="columnsName"
-        value={columnsNames}
-        onChange={(e) => handleChangeColumnName(e)}
-        placeholder="Todo, In Progress, Done"
-      />
-      {columnsValidationError && <p>{columnsValidationError}</p>}
+      <h2>Create Board</h2>
+      <div className="input-wrapper">
+        <label htmlFor="boardName">Board Name</label>
+        <input
+          className={boardValidationError ? 'error' : ''}
+          id="boardName"
+          type="text"
+          name="boardName"
+          value={boardName}
+          onChange={(e) => handleChangeBoardName(e)}
+          placeholder="New Board"
+        />
+        {boardValidationError && (
+          <p className="error-message">{boardValidationError}</p>
+        )}
+      </div>
+      <div className="input-wrapper">
+        <label htmlFor="columnsName">{'Columns Names'}</label>
+        <input
+          className={columnsValidationError ? 'error' : ''}
+          id="columnsName"
+          type="text"
+          name="columnsName"
+          value={columnsNames}
+          onChange={(e) => handleChangeColumnName(e)}
+          placeholder="Todo, In Progress, Done"
+        />
+        {columnsValidationError && (
+          <p className="error-message">{columnsValidationError}</p>
+        )}
+      </div>
       <button
         type="submit"
         className={

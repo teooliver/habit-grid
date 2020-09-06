@@ -7,18 +7,37 @@
   border-radius: 0.2rem;
   margin: 1rem auto;
   background-color: white;
-  label {
-    margin: 0.2rem;
-  }
-  input {
-    margin: 0 0.2rem;
-    border: 1px solid lightgray;
-    padding: 0.2rem;
-    border-radius: 0.2rem;
+  h2 {
+    font-size: 1.4rem;
+    margin-left: 0.2rem;
     margin-bottom: 0.8rem;
+    text-decoration: underline;
+  }
+  .input-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0.5rem;
+    label {
+      margin: 0.2rem;
+    }
+    input {
+      margin: 0 0.2rem;
+      border: 1px solid lightgray;
+      padding: 0.2rem;
+      border-radius: 0.2rem;
+      margin-bottom: 0.3rem;
 
-    &.error {
-      border: 2px solid red;
+      &.error {
+        border: 2px solid red;
+      }
+    }
+    .error-message {
+      margin-bottom: 0.2rem;
+      color: red;
+      font-size: 0.8rem;
+      &::before {
+        content: '* ';
+      }
     }
   }
   button {
