@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
-import { StoreState } from "../../../redux/reducers";
-import { connect } from "react-redux";
-import { Habit, removeHabit } from "../../../redux/actions/habits";
-import HabitCardUL from "./HabitCardUL";
-import TrashIcon from "../../layout/icons/TrashIcon";
+import React, { useState, useEffect } from 'react';
+import { StoreState } from '../../../redux/reducers';
+import { connect } from 'react-redux';
+import { Habit, removeHabit } from '../../../redux/actions/habits';
+import HabitCardUL from './HabitCardUL';
+import TrashIcon from '../../layout/icons/TrashIcon';
 
 interface Props {
   habit: Habit;
@@ -22,19 +22,19 @@ const HabitCard: React.FC<Props> = ({
 }) => {
   const [isTrashVisible, setisTrashVisible] = useState(false);
   const [daysArray, setDaysArray] = useState<string[]>([]);
-  // Maybe this should be a separate Component and store the info on State(Redux)
+
   useEffect(() => {
     renderTableHeader(selectedMonth, selectedYear);
   }, [selectedMonth]);
 
-  // FindAmountOfDaysInMonth?
+  // Maybe this should be a separate Component and store the info on State(Redux)
+  // FindAmountOfDaysInMonth and render table header
   const renderTableHeader = (month: number, year: number) => {
     let days: string[] = [];
-    // amountOfDayInSelectedMonth
-    let daysAmountInSelectedMonth: number =
+    let getAmountOfDayInSelectedMonth: number =
       new Date(year, month + 1, 0).getDate() + 1;
 
-    for (let i = 1; i < daysAmountInSelectedMonth; i++) {
+    for (let i = 1; i < getAmountOfDayInSelectedMonth; i++) {
       days.push(`${i}`);
     }
 
@@ -42,16 +42,16 @@ const HabitCard: React.FC<Props> = ({
   };
 
   return (
-    <div className='HabitsCard'>
+    <div className="HabitsCard">
       <h3
-        className='habit-name'
+        className="habit-name"
         onClick={() => setisTrashVisible(!isTrashVisible)}
       >
-        <div className='habit-name-items'>
+        <div className="habit-name-items">
           <span> {habit.name} </span>
 
           <div
-            className={`trash-icon ${isTrashVisible ? "" : "display-none"}`}
+            className={`trash-icon ${isTrashVisible ? '' : 'display-none'}`}
             onClick={() => removeHabit(habit.id)}
           >
             {isTrashVisible && <TrashIcon />}
