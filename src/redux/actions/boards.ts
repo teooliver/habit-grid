@@ -12,7 +12,7 @@ export interface Board {
   columnnIds: number[];
 }
 
-interface CreateBoardForm {
+export interface CreateBoardFormData {
   boardName: string;
   columnsNames: string[];
 }
@@ -52,7 +52,7 @@ export const getBoards = () => async (dispatch: Dispatch) => {
   }
 };
 
-export const createBoard = (formData: CreateBoardForm) => async (
+export const createBoard = (formData: CreateBoardFormData) => async (
   dispatch: Dispatch
 ) => {
   console.log(formData);

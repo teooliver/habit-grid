@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { createBoard } from '../../redux/actions';
 import { useLocation, useHistory } from 'react-router-dom';
+import {CreateBoardFormData} from '../../redux/actions/boards'
 
 interface CreateBoardFormProps {
-  createBoard: Function;
+  createBoard: (args: CreateBoardFormData) => void;
   setIsModalOpen?: Function;
   isModalOpen?: boolean;
 }
@@ -39,7 +40,7 @@ const CreateBoardForm: React.FC<CreateBoardFormProps> = ({
     const isColumnNamesValid = validateColumnsNames(columnsNames);
     const isBoardNameValid = validateBoardName(boardName);
     if (isColumnNamesValid && isBoardNameValid) {
-      let formData = { boardName, columnsNames };
+      let formData: CreateBoardFormData = { boardName, columnsNames };
       createBoard(formData);
       if (pathname !== '/boards') {
         history.push('/boards');
