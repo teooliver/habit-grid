@@ -22,19 +22,17 @@ const HabitCard: React.FC<Props> = ({
 }) => {
   const [isTrashVisible, setisTrashVisible] = useState(false);
   const [daysArray, setDaysArray] = useState<string[]>([]);
-
   useEffect(() => {
-    renderTableHeader(selectedMonth, selectedYear);
+    getTableHeaderData(selectedMonth, selectedYear);
   }, [selectedMonth]);
 
-  // Maybe this should be a separate Component and store the info on State(Redux)
-  // FindAmountOfDaysInMonth and render table header
-  const renderTableHeader = (month: number, year: number) => {
+  // FindAmountOfDaysInMonth
+  const getTableHeaderData = (month: number, year: number) => {
     let days: string[] = [];
-    let getAmountOfDayInSelectedMonth: number =
+    let amountOfDayInSelectedMonth: number =
       new Date(year, month + 1, 0).getDate() + 1;
 
-    for (let i = 1; i < getAmountOfDayInSelectedMonth; i++) {
+    for (let i = 1; i < amountOfDayInSelectedMonth; i++) {
       days.push(`${i}`);
     }
 
