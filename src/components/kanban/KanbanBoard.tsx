@@ -16,8 +16,8 @@ interface KanbanBoardProps {
   board: Board;
   issues: Issue[];
   columns: Column[];
-  getBoardColumns: Function;
-  removeBoards: Function;
+  getBoardColumns: ()=> void;
+  removeBoards: (board: Board, boardIds: number[]) => void;
 }
 
 export type GroupedIssues = ReturnType<typeof groupBy>;
@@ -30,7 +30,6 @@ const KanbanBoard: React.FC<KanbanBoardProps> = ({
   removeBoards,
 }) => {
   const [sortedIssues, setSortedIssues] = useState<GroupedIssues>();
-  // const [boardIssues, setBoardIssues] = useState<Issue[]>([]);
 
   useEffect(() => {
     getBoardColumns();
