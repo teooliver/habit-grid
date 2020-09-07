@@ -11,7 +11,7 @@ interface KanbanColumnProps {
   boardColumnsIds: number[];
   boardId: number;
   columnId: number;
-  getIssues: Function;
+  getIssues: () => void;
 }
 
 const KanbanColumn: React.FC<KanbanColumnProps> = ({

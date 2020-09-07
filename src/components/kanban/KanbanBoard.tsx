@@ -16,7 +16,7 @@ interface KanbanBoardProps {
   board: Board;
   issues: Issue[];
   columns: Column[];
-  getBoardColumns: ()=> void;
+  getBoardColumns: () => void;
   removeBoards: (board: Board, boardIds: number[]) => void;
 }
 
@@ -70,7 +70,7 @@ const KanbanBoard: React.FC<KanbanBoardProps> = ({
     const columnIssues = board.columnnIds.map((colId) => {
       return getColumnIssues(colId);
     });
-    return columnIssues.flat().map(issue => issue.id)
+    return columnIssues.flat().map((issue) => issue.id);
   };
 
   return (

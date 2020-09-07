@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { createBoard } from '../../redux/actions';
 import { useLocation, useHistory } from 'react-router-dom';
-import {CreateBoardFormData} from '../../redux/actions/boards'
+import { CreateBoardFormData } from '../../redux/actions/boards';
 
 interface CreateBoardFormProps {
   createBoard: (args: CreateBoardFormData) => void;

@@ -5,7 +5,7 @@ import { StoreState } from '../../redux/reducers';
 
 interface CardDropdownProps {
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  editIssueStatus: Function;
+  editIssueStatus: (cardId: number, columnId: number) => void;
   boardColumnsIds: number[];
   cardId: number;
   columns: Column[];
@@ -40,7 +40,7 @@ const CardDropdown: React.FC<CardDropdownProps> = ({
     }
   };
 
-  //TODO: This is being repeted on  KanbanBoard and KanbanCard, need to stract in just on place, porbably a selector
+  //TODO: This is being repeated on  KanbanBoard and KanbanCard, need to stract in just on place, porbably a selector
   const getColumnName = (id: number) => {
     const foundObj = columns.find((col) => {
       if (col.id === id) return col.title;
