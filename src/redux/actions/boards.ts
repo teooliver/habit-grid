@@ -55,7 +55,6 @@ export const getBoards = () => async (dispatch: Dispatch) => {
 export const createBoard = (formData: CreateBoardFormData) => async (
   dispatch: Dispatch
 ) => {
-  console.log(formData);
   try {
     const newBoard: Partial<Board> = {
       name: formData.boardName,
@@ -98,6 +97,7 @@ export const createBoard = (formData: CreateBoardFormData) => async (
 export const removeBoards = (board: Board, boardIssuesIds: number[]) => async (
   dispatch: Dispatch
 ) => {
+  console.log(boardIssuesIds)
   try {
     if (boardIssuesIds) {
       await db.table('issues').bulkDelete(boardIssuesIds);

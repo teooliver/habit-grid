@@ -68,16 +68,17 @@ const KanbanBoard: React.FC<KanbanBoardProps> = ({
   };
 
   const getBoardIssuesIds = (board: Board) => {
-    board.columnnIds.map((colId) => {
+    const columnIssues = board.columnnIds.map((colId) => {
       return getColumnIssues(colId);
     });
+    return columnIssues.flat().map(issue => issue.id)
   };
 
   return (
     <div className="KanbanBoard">
       <button
         className="remove-board-btn"
-        onClick={() => removeBoards(board, getBoardIssuesIds(board))}
+        onClick={() => removeBoards(board, getBoardIssuesIds(board).flat())}
       >
         <CloseIcon className="close-icon" />
       </button>
