@@ -27,7 +27,7 @@ const _App: React.FC<AppProps> = ({
     getHabits();
     getViewSelection();
     getBoards();
-  }, []);
+  }, [getBoards, getHabits, getViewSelection]);
 
   return (
     <div className="App">
