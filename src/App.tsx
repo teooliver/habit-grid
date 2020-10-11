@@ -30,7 +30,7 @@ const _App: React.FC<AppProps> = ({
   }, [getBoards, getHabits, getViewSelection]);
 
   return (
-    <div className="App">
+    <div className="App" data-testid="app-test">
       <BrowserRouter>
         <ServiceWorkerWrapper />
         <header>

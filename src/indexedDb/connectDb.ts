@@ -1,7 +1,7 @@
 import Dexie from 'dexie';
 import { Habit, ViewSelection, Board, Issue, Column } from '../redux/actions';
 
-class AppDatabase extends Dexie {
+export class AppDatabase extends Dexie {
   // Declare implicit table properties.
   // (just to inform Typescript. Instanciated by Dexie in stores() method)
   habits: Dexie.Table<Habit, number>; // number = type of the primkey

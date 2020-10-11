@@ -1,19 +1,32 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+import { render, screen } from './test-utils';
 import { createMemoryHistory } from 'history';
 import { Router } from 'react-router-dom';
-import PageNotFound from '../pages/PageNotFound';
+import { App } from '../App';
 
 test('render 404 page when route is not found', () => {
+  const portalRoot = document.createElement('div');
+  portalRoot.setAttribute('id', 'portal-root');
+  document.body.append(portalRoot);
+
   const history = createMemoryHistory();
-  history.push('/some/bad/route');
+  history.push('/about');
 
   render(
     <Router history={history}>
-      <PageNotFound />
+      <App />
     </Router>
   );
 
-  expect(screen.getByText(/Error 404/i)).toBeInTheDocument();
+  expect(screen.getByText('Error 404')).toBeInTheDocument();
+});
+
+test('render App', () => {
+  const portalRoot = document.createElement('div');
+  portalRoot.setAttribute('id', 'portal-root');
+  document.body.append(portalRoot);
+
+  render(<App />);
+
+  expect(screen.getByTestId('app-test')).toBeInTheDocument();
 });
