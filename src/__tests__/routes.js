@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from './test-utils';
 import { createMemoryHistory } from 'history';
-import { Router, BrowserRouter } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import { App } from '../App';
 
 beforeAll(() => {
