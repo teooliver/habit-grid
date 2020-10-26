@@ -55,6 +55,7 @@ const CardDropdown: React.FC<CardDropdownProps> = ({
       {boardColumnsIds.length > 0 &&
         boardColumnsIds.map((columnId) => (
           <li
+            key={columnId}
             className="menu-item"
             onClick={() => {
               editIssueStatus(cardId, columnId);
