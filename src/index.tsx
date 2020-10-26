@@ -9,35 +9,22 @@ import { Provider } from "react-redux";
 import thunk, { ThunkMiddleware } from "redux-thunk";
 import { reducers, StoreState } from "./redux/reducers";
 import { Actions } from "./redux/actions";
+import {logger} from './utils/redux-logger'
 
+// Extract this all this logic to a configStore function
 const initialState = {};
+const middleWares = [thunk as ThunkMiddleware<StoreState, Actions>]
+
+
+if(process.env.NODE_ENV !== 'production'){
+middleWares.push(logger)
+}
+
 const store = createStore(
   reducers,
   initialState,
-  applyMiddleware(thunk as ThunkMiddleware<StoreState, Actions>)
+  applyMiddleware(...middleWares)
 );
-
-//TODO: get propery type for store
-const addLogginToDisptach = (store: any ) => {
-  const rawDispatch = store.dispatch;
-  if(!console.group){
-    return rawDispatch
-  }
-  // TODO: get propery type for action
-  return (action: any) => {
-    console.group(action.type);
-    console.log('%c prev state', 'color:gray',store.getState());
-    console.log('%c action', 'color:blue', action)
-    const returnValue = rawDispatch(action);
-    console.log('%c next state', 'color: green', store.getState())
-    console.groupEnd();
-    return returnValue;
-  }
-}
-
-if(process.env.NODE_ENV !== 'production'){
-  store.dispatch = addLogginToDisptach(store)
-}
 
 
 ReactDOM.render(
