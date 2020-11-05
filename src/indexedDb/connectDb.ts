@@ -1,6 +1,9 @@
 import Dexie from 'dexie';
 import { Habit, ViewSelection, Board, Issue, Column } from '../redux/actions';
 
+const indexedDB = require('fake-indexeddb');
+const IDBKeyRange = require('fake-indexeddb/lib/FDBKeyRange');
+
 export class AppDatabase extends Dexie {
   // Declare implicit table properties.
   // (just to inform Typescript. Instanciated by Dexie in stores() method)

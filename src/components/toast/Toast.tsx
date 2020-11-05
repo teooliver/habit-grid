@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { StoreState } from "../../redux/reducers";
 import { Message } from "../../redux/actions";
-import { setAlert } from "../../redux/actions/alerts";
+// import { setAlert } from "../../redux/actions/alerts";
 
 interface Props {
   alerts: Message[];
-  setAlert: Function;
+  // setAlert: Function;
 }
 
 const Toast: React.FC<Props> = ({ alerts, setAlert }) => {
@@ -36,4 +36,4 @@ const mapStateToProps = ({ alerts }: StoreState) => {
   };
 };
 
-export default connect(mapStateToProps, { setAlert })(Toast);
+export default connect(mapStateToProps)(Toast);
