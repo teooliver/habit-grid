@@ -7,7 +7,7 @@ interface HomeProps {}
 
 export const Home: React.FC<HomeProps> = ({}) => {
   return (
-    <div className="Home" data-testid="app-test">
+    <div className="Home" data-testid="home-test">
       <Link to="/">
         <section>
           <h2>Habits</h2>

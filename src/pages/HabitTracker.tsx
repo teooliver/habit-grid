@@ -39,7 +39,7 @@ const HabitTracker: React.FC<Props> = ({ selectedView, habits }) => {
   };
 
   return (
-    <>
+    <div data-testid="habits">
       <Control />
       {habits.length !== 0 ? (
         switchViews(selectedView)
@@ -49,7 +49,7 @@ const HabitTracker: React.FC<Props> = ({ selectedView, habits }) => {
         </div>
       )}
       <HabitForm />
-    </>
+    </div>
   );
 };
 
