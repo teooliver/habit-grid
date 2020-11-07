@@ -1,6 +1,6 @@
 import { v4 as uuid } from 'uuid';
 import { ActionTypes } from './types';
-import { Dispatch } from 'redux';
+import { Action, Dispatch, AnyAction } from 'redux';
 
 type alertTypes = 'success' | 'warning' | 'error';
 
@@ -23,7 +23,7 @@ export interface RemoveAlert {
 export const setAlert = (
   msg: string,
   alertType: alertTypes,
-  timeout = 10000
+  timeout = 5000
 ) => (dispatch: Dispatch) => {
   const id = uuid();
   dispatch<SetAlert>({

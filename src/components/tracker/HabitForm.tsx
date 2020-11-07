@@ -1,9 +1,9 @@
-import React, { FC, useState, useEffect, useRef, useLayoutEffect } from "react";
-import { connect } from "react-redux";
-import { createHabit, Habit } from "../../redux/actions/habits";
-import { StoreState } from "../../redux/reducers";
-import PlusCircleIcon from "../layout/icons/PlusCircleIcon";
-import ArrowDownIcon from "../layout/icons/ArrowDownIcon";
+import React, { FC, useState, useEffect, useRef, useLayoutEffect } from 'react';
+import { connect } from 'react-redux';
+import { createHabit, Habit } from '../../redux/actions/habits';
+import { StoreState } from '../../redux/reducers';
+import PlusCircleIcon from '../layout/icons/PlusCircleIcon';
+import ArrowDownIcon from '../layout/icons/ArrowDownIcon';
 
 interface Props {
   createHabit: Function;
@@ -11,15 +11,15 @@ interface Props {
 }
 const HabitForm: FC<Props> = ({ createHabit, habits }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [habitName, setHabitName] = useState("");
+  const [habitName, setHabitName] = useState('');
   const [isValid, setIsValid] = useState(true);
   const habitFormRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    document.addEventListener("click", (e) => handleClickOutside(e));
+    document.addEventListener('click', (e) => handleClickOutside(e));
     return () => {
-      document.removeEventListener("click", (e) => handleClickOutside(e));
+      document.removeEventListener('click', (e) => handleClickOutside(e));
     };
   }, []);
 
@@ -41,7 +41,7 @@ const HabitForm: FC<Props> = ({ createHabit, habits }) => {
   };
 
   const inputValidation = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.value === "") {
+    if (e.target.value === '') {
       return setIsValid(false);
     }
     return setIsValid(true);
@@ -51,32 +51,32 @@ const HabitForm: FC<Props> = ({ createHabit, habits }) => {
   const handleSubmit = () => {
     if (isValid) {
       createHabit(habitName);
-      setHabitName("");
+      setHabitName('');
       setIsOpen(false);
     }
   };
 
   return (
-    <div ref={habitFormRef} className='HabitForm'>
+    <div ref={habitFormRef} className="HabitForm" data-testid="habit-form">
       {habits.length === 0 && (
-        <div className='arrow-animation-container'>
-          <ArrowDownIcon className='arrow-down' />
+        <div className="arrow-animation-container">
+          <ArrowDownIcon className="arrow-down" />
         </div>
       )}
       <div
         onClick={() => {
           setIsOpen(!isOpen);
-          setHabitName("");
+          setHabitName('');
         }}
       >
-        <PlusCircleIcon className='plus-circle' />
+        <PlusCircleIcon className="plus-circle" />
       </div>
       {isOpen && (
         <form>
           <input
             ref={inputRef}
-            type='text'
-            id='name'
+            type="text"
+            id="name"
             required
             value={habitName}
             onChange={(e) => {
@@ -84,9 +84,9 @@ const HabitForm: FC<Props> = ({ createHabit, habits }) => {
               setHabitName(e.target.value);
             }}
           />
-          <span className='highlight'></span>
-          <span className='bar'></span>
-          <label htmlFor='name'>New Habit</label>
+          <span className="highlight"></span>
+          <span className="bar"></span>
+          <label htmlFor="name">New Habit</label>
 
           <button
             onClick={(e) => {

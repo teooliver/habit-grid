@@ -1,7 +1,7 @@
 import { Dispatch } from 'redux';
 import { ActionTypes } from './types';
 import { db } from '../../indexedDb/connectDb';
-import { SetAlert } from './alerts';
+import { setAlert, SetAlert } from './alerts';
 import { errorMessages } from '../../utils/errorMessages';
 
 export interface Habit {
@@ -169,17 +169,19 @@ export const removePoint = (id: number, date: Date) => async (
 export const deleteAllHabits = () => async (dispatch: Dispatch) => {
   try {
     await db.delete().then(() => {
-      dispatch<SetAlert>({
-        type: ActionTypes.setAlert,
-        payload: {
-          msg: 'All data was deleted',
-          alertType: 'success',
-        },
+      // dispatch<SetAlert>({
+      //   type: ActionTypes.setAlert,
+      //   payload: {
+      //     msg: 'All data was deleted',
+      //     alertType: 'success',
+      //   },
+      // });
+      dispatch<DeleteAllHabits>({
+        type: ActionTypes.deleteAllHabits,
       });
-    });
 
-    dispatch<DeleteAllHabits>({
-      type: ActionTypes.deleteAllHabits,
+      dispatch<any>(setAlert('All data was deleted', 'success'));
+      db.open();
     });
   } catch (error) {
     dispatch<SetAlert>({

@@ -18,7 +18,7 @@ const Boards: React.FC<BoardsProps> = ({ boards, getBoards }) => {
 
   return (
     <>
-      <div className="Boards">
+      <div className="Boards" data-testid="boards-test">
         {boards.length !== 0 ? (
           boards.map((board, index) => (
             <KanbanBoard key={index} board={board} />

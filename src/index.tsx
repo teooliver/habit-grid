@@ -1,23 +1,23 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import "../src/styles/styles.scss";
-import { App } from "./App";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import '../src/styles/styles.scss';
+import { App } from './App';
 
 // Redux
-import { createStore, applyMiddleware, Store, Action } from "redux";
-import { Provider } from "react-redux";
-import thunk, { ThunkMiddleware } from "redux-thunk";
-import { reducers, StoreState } from "./redux/reducers";
-import { Actions } from "./redux/actions";
-import {logger} from './utils/redux-logger'
+import { createStore, applyMiddleware, Store, Action } from 'redux';
+import { Provider } from 'react-redux';
+import thunk, { ThunkMiddleware } from 'redux-thunk';
+import { reducers, StoreState } from './redux/reducers';
+import { Actions } from './redux/actions';
+import { logger } from './utils/redux-logger';
+import { BrowserRouter } from 'react-router-dom';
 
-// Extract this all this logic to a configStore function
+// Extract all this logic to a configStore function
 const initialState = {};
-const middleWares = [thunk as ThunkMiddleware<StoreState, Actions>]
+const middleWares = [thunk as ThunkMiddleware<StoreState, Actions>];
 
-
-if(process.env.NODE_ENV !== 'production'){
-middleWares.push(logger)
+if (process.env.NODE_ENV !== 'production') {
+  middleWares.push(logger);
 }
 
 const store = createStore(
@@ -26,14 +26,15 @@ const store = createStore(
   applyMiddleware(...middleWares)
 );
 
-
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </Provider>
   </React.StrictMode>,
-  document.getElementById("root")
+  document.getElementById('root')
 );
 
 // If you want your app to work offline and load faster, you can change
