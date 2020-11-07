@@ -1,6 +1,6 @@
 import { v4 as uuid } from 'uuid';
 import { ActionTypes } from './types';
-import { Action, Dispatch, AnyAction } from 'redux';
+import { Dispatch } from 'redux';
 
 type alertTypes = 'success' | 'warning' | 'error';
 

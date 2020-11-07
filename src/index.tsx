@@ -4,7 +4,7 @@ import '../src/styles/styles.scss';
 import { App } from './App';
 
 // Redux
-import { createStore, applyMiddleware, Store, Action } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import thunk, { ThunkMiddleware } from 'redux-thunk';
 import { reducers, StoreState } from './redux/reducers';
@@ -12,7 +12,7 @@ import { Actions } from './redux/actions';
 import { logger } from './utils/redux-logger';
 import { BrowserRouter } from 'react-router-dom';
 
-// Extract all this logic to a configStore function
+// TODO: Extract all this logic to a configStore function
 const initialState = {};
 const middleWares = [thunk as ThunkMiddleware<StoreState, Actions>];
 
