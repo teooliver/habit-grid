@@ -64,6 +64,7 @@ const HabitForm: FC<Props> = ({ createHabit, habits }) => {
         </div>
       )}
       <div
+        data-testid="open-habit-form"
         onClick={() => {
           setIsOpen(!isOpen);
           setHabitName('');

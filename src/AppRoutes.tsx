@@ -7,7 +7,7 @@ import HabitTracker from './pages/HabitTracker';
 
 const AppRoutes = () => {
   return (
-    <div>
+    <>
       <section className="page-container">
         <Switch>
           <Route path="/home" exact component={Home} />
@@ -17,7 +17,7 @@ const AppRoutes = () => {
           <Route path="/" render={PageNotFound} />
         </Switch>
       </section>
-    </div>
+    </>
   );
 };
 
