@@ -21,24 +21,24 @@ const MonthYearDropdown: React.FC<Props> = ({
   const [possibleYearOptions, setPossibleYearOptions] = useState<number[]>([]);
 
   useEffect(() => {
-    checkYearInEvents();
-  }, [habits]);
-
-  // Could this becaume a Redux Selector?
-  const checkYearInEvents = () => {
-    habits.forEach((habit) => {
-      habit.events.forEach((event) => {
-        if (!possibleYearOptions.includes(event.getFullYear())) {
-          setPossibleYearOptions([...possibleYearOptions, event.getFullYear()]);
-          // possibleYearOptions.push(event.getFullYear());
-        } else {
-          return;
-        }
+    // Could this becaume a Redux Selector?
+    const checkYearInEvents = () => {
+      habits.forEach((habit) => {
+        habit.events.forEach((event) => {
+          if (!possibleYearOptions.includes(event.getFullYear())) {
+            setPossibleYearOptions([
+              ...possibleYearOptions,
+              event.getFullYear(),
+            ]);
+            // possibleYearOptions.push(event.getFullYear());
+          } else {
+            return;
+          }
+        });
       });
-    });
-  };
-
-  // checkYearInEvents();
+    };
+    checkYearInEvents();
+  }, [habits, possibleYearOptions]);
 
   return (
     <>

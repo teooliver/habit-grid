@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 interface HomeProps {}
 
-export const Home: React.FC<HomeProps> = ({}) => {
+export const Home: React.FC<HomeProps> = () => {
   return (
     <div className="Home" data-testid="home-test">
       <Link to="/">

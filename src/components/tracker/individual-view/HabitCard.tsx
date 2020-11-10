@@ -24,7 +24,7 @@ const HabitCard: React.FC<Props> = ({
   const [daysArray, setDaysArray] = useState<string[]>([]);
   useEffect(() => {
     getTableHeaderData(selectedMonth, selectedYear);
-  }, [selectedMonth]);
+  }, [selectedMonth, selectedYear]);
 
   // FindAmountOfDaysInMonth
   const getTableHeaderData = (month: number, year: number) => {

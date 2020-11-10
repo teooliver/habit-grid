@@ -94,6 +94,7 @@ const HabitForm: FC<Props> = ({ createHabit, habits }) => {
               e.preventDefault();
               handleSubmit();
             }}
+            data-testid="submit"
           >
             Submit
           </button>

@@ -25,7 +25,7 @@ const KanbanColumn: React.FC<KanbanColumnProps> = ({
 }) => {
   useEffect(() => {
     getIssues();
-  }, []);
+  }, [getIssues]);
 
   return (
     <div className="KanbanColumn">

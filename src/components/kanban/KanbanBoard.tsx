@@ -45,7 +45,7 @@ const KanbanBoard: React.FC<KanbanBoardProps> = ({
       (issue) => issue.columnId
     );
     setSortedIssues(issuesSortedByColumn);
-  }, [issues]);
+  }, [board.id, getBoardColumns, issues]);
 
   // This could be a selector and memoazed
   const getColumnName = (id: number, columns: Column[]) => {

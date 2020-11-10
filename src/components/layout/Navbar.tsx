@@ -1,9 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Logo from './Logo';
-import GearIcon from './icons/GearIcon';
 import VerticalSlideMenu from './VerticalSlideMenu';
-import { NavLink, useLocation } from 'react-router-dom';
-import { NavBarCreateBtn } from './NavBarCreateBtn';
+import { NavLink } from 'react-router-dom';
 import ArrowBarLeftIcon from './icons/ArrowBarLeftIcon';
 
 const Navbar = () => {

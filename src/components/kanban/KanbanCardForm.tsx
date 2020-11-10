@@ -1,4 +1,4 @@
-import React, { useState, FormEvent } from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { createIssue, Issue } from '../../redux/actions';
 

@@ -4,7 +4,7 @@ import Logo from './Logo';
 
 import { connect } from 'react-redux';
 import { deleteAllHabits } from '../../redux/actions';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { NavBarCreateBtn } from './NavBarCreateBtn';
 
 interface Props {

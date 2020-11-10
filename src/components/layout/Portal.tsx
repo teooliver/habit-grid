@@ -1,6 +1,5 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useEffect } from 'react';
 import ReactDOM from 'react-dom';
-import CreateBoardForm from '../kanban/CreateBoardForm';
 
 interface PortalProps {
   // children: React.ReactNode;

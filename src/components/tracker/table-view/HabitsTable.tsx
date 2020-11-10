@@ -20,7 +20,7 @@ export const HabitsTable: React.FC<Props> = ({
   // Maybe this should be a separate Component and store the info on State(Redux)
   useEffect(() => {
     renderTableHeader(selectedMonth, selectedYear);
-  }, [selectedMonth]);
+  }, [selectedMonth, selectedYear]);
 
   // FindAmountOfDaysInMonth?
   const renderTableHeader = (month: number, year: number) => {

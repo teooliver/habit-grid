@@ -29,13 +29,13 @@ const KanbanCard: React.FC<KanbanCardProps> = ({
 }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-  //TODO: This is being repeted on  KanbanBoard and KanbanCard, need to stract in just on place, porbably a selector
-  const getColumnName = (id: number) => {
-    const foundObj = columns.find((col) => col.id === id);
-    if (foundObj) {
-      return foundObj.title;
-    }
-  };
+  //TODO: This is being repeated on  KanbanBoard and KanbanCard, need to stract in just on place, porbably a selector
+  // const getColumnName = (id: number) => {
+  //   const foundObj = columns.find((col) => col.id === id);
+  //   if (foundObj) {
+  //     return foundObj.title;
+  //   }
+  // };
 
   return (
     <div className="KanbanCard">

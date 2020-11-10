@@ -4,7 +4,7 @@ import CreateBoardForm from '../kanban/CreateBoardForm';
 
 interface NavBarCreateBtnProps {}
 
-export const NavBarCreateBtn: React.FC<NavBarCreateBtnProps> = ({}) => {
+export const NavBarCreateBtn: React.FC<NavBarCreateBtnProps> = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleOnClick = () => {
