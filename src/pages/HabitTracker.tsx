@@ -15,34 +15,15 @@ interface Props {
 }
 
 const HabitTracker: React.FC<Props> = ({ selectedView, habits }) => {
-  const switchViews = (view: ViewOptions) => {
-    switch (view) {
-      case 'table':
-        return (
-          <section className="habits-table-container">
-            <HabitsTable />
-          </section>
-        );
-      case 'individual':
-        return (
-          <section className="habit-cards-container">
-            <HabitCardsView />
-          </section>
-        );
-      default:
-        return (
-          <section className="habits-table-container">
-            <HabitsTable />
-          </section>
-        );
-    }
-  };
-
   return (
     <div data-testid="habits">
       <Control />
       {habits.length !== 0 ? (
-        switchViews(selectedView)
+        selectedView === 'table' ? (
+          <HabitsTable />
+        ) : (
+          <HabitCardsView />
+        )
       ) : (
         <div className="splash-screen">
           <StabilityBall />

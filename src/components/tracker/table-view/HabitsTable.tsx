@@ -34,7 +34,7 @@ export const HabitsTable: React.FC<Props> = ({
   };
 
   return (
-    <>
+    <section className="habits-table-container">
       <table className="HabitsTable">
         <thead>
           <tr>
@@ -57,7 +57,7 @@ export const HabitsTable: React.FC<Props> = ({
           })}
         </tbody>
       </table>
-    </>
+    </section>
   );
 };
 
