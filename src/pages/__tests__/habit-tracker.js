@@ -2,19 +2,9 @@ import React from 'react';
 import { createMemoryHistory } from 'history';
 import { Router } from 'react-router-dom';
 import { AppRoutes } from '../../AppRoutes';
-import { App } from '../../App';
 import { createStore, applyMiddleware } from 'redux';
 import { reducers } from '../../redux/reducers';
-import { getHabits } from '../../redux/actions/habits';
-import {
-  fireEvent,
-  getByLabelText,
-  render,
-  screen,
-  waitForElement,
-  wait,
-  waitFor,
-} from '@testing-library/react';
+import { fireEvent, render, waitFor } from '@testing-library/react';
 
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
@@ -39,7 +29,7 @@ beforeAll(() => {
   document.body.append(portalRoot);
 });
 
-test('can add Habits', async () => {
+test('can add new Habits', async () => {
   const history = createMemoryHistory({ initialEntries: ['/'] });
 
   const { getByLabelText, getByTestId, getByText, debug } = render(
@@ -58,13 +48,7 @@ test('can add Habits', async () => {
   fireEvent.change(input, { target: { value: 'test habit' } });
   fireEvent.click(submitButton);
 
-  // await store.dispatch(getHabits());
-
-  console.log(store.getState());
   await waitFor(() => {
     getByText('test habit');
   });
-  debug();
-
-  // expect(newHabit).toBeInTheDocument();
 });
