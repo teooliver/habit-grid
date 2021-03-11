@@ -42,7 +42,6 @@ export interface DeleteAllHabits {
 export const getHabits = () => async (dispatch: Dispatch) => {
   try {
     let allHabits: Habit[] = await db.table('habits').toArray();
-
     dispatch<GetHabitsAction>({
       type: ActionTypes.getHabits,
       payload: allHabits,

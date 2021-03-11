@@ -33,6 +33,8 @@ export const HabitsTable: React.FC<Props> = ({
     setDaysArray([...days]);
   };
 
+  console.log(habits);
+
   return (
     <section className="habits-table-container">
       <table className="HabitsTable">

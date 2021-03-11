@@ -12,6 +12,8 @@ import {
   render,
   screen,
   waitForElement,
+  wait,
+  waitFor,
 } from '@testing-library/react';
 
 import thunk from 'redux-thunk';
@@ -48,23 +50,21 @@ test('can add Habits', async () => {
     </Provider>
   );
 
-  getByTestId('habits');
-  getByTestId('habit-form');
-  getByTestId('open-habit-form');
   fireEvent.click(getByTestId('open-habit-form'));
-  expect(getByLabelText('New Habit')).toBeInTheDocument();
 
+  expect(getByLabelText('New Habit')).toBeInTheDocument();
   const input = getByLabelText(/new habit/i);
-  // input.value = 'new test habit';
   const submitButton = getByTestId('submit');
-  fireEvent.change(input, { target: { value: 'new test habit' } });
+  fireEvent.change(input, { target: { value: 'test habit' } });
   fireEvent.click(submitButton);
 
-  store.dispatch(getHabits());
-  const newHabit = await waitForElement(() => {
-    getByText('new test habit');
-  });
+  // await store.dispatch(getHabits());
 
-  expect(newHabit).toBeInTheDocument();
+  console.log(store.getState());
+  await waitFor(() => {
+    getByText('test habit');
+  });
   debug();
+
+  // expect(newHabit).toBeInTheDocument();
 });
