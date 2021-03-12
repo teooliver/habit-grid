@@ -1,4 +1,4 @@
-import { ActionTypes } from "./types";
+import { ActionTypes } from './types';
 
 export interface SelectMonthAction {
   type: ActionTypes.selectMonth;
@@ -17,11 +17,11 @@ export const selectMonth = (month: number): SelectMonthAction => {
   };
 };
 
-export const selectYear = (year: number) => {
+export const selectYear = (year: number): SelectYearAction => {
   return {
     type: ActionTypes.selectYear,
     payload: year,
   };
 };
 
-// get years (get years where the is habis on and return array of years)
+// get years (get years where the is habits on and return array of years)
