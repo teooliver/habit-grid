@@ -29,26 +29,28 @@ beforeAll(() => {
   document.body.append(portalRoot);
 });
 
-test('can add new Habits', async () => {
-  const history = createMemoryHistory({ initialEntries: ['/'] });
+describe('Test Habit Tracker', () => {
+  test('can add new Habits', async () => {
+    const history = createMemoryHistory({ initialEntries: ['/'] });
 
-  const { getByLabelText, getByTestId, getByText, debug } = render(
-    <Provider store={store}>
-      <Router history={history}>
-        <AppRoutes />
-      </Router>
-    </Provider>
-  );
+    const { getByLabelText, getByTestId, getByText, debug } = render(
+      <Provider store={store}>
+        <Router history={history}>
+          <AppRoutes />
+        </Router>
+      </Provider>
+    );
 
-  fireEvent.click(getByTestId('open-habit-form'));
+    fireEvent.click(getByTestId('open-habit-form'));
 
-  expect(getByLabelText('New Habit')).toBeInTheDocument();
-  const input = getByLabelText(/new habit/i);
-  const submitButton = getByTestId('submit');
-  fireEvent.change(input, { target: { value: 'test habit' } });
-  fireEvent.click(submitButton);
+    expect(getByLabelText('New Habit')).toBeInTheDocument();
+    const input = getByLabelText(/new habit/i);
+    const submitButton = getByTestId('submit');
+    fireEvent.change(input, { target: { value: 'test habit' } });
+    fireEvent.click(submitButton);
 
-  await waitFor(() => {
-    getByText('test habit');
+    await waitFor(() => {
+      getByText('test habit');
+    });
   });
 });
