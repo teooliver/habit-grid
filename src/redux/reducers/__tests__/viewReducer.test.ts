@@ -1,41 +1,31 @@
-import alertReducer from '../alertsReducer';
+import { viewReducer } from '../viewReducer';
 import { ActionTypes } from '../../actions/index';
 
 describe('Test View Reducer', () => {
   it('should handle change view style', () => {
     expect(
-      alertReducer([], {
-        type: ActionTypes.setAlert,
-        payload: {
-          msg: 'Test Message',
-          alertType: 'success',
-          id: 'asd-asd-asd-asd',
-        },
+      viewReducer('table', {
+        type: ActionTypes.selectView,
+        payload: 'table',
       })
-    ).toEqual([
-      {
-        msg: 'Test Message',
-        alertType: 'success',
-        id: 'asd-asd-asd-asd',
-      },
-    ]);
+    ).toEqual('table');
   });
 
-  it('should handle removeAlert', () => {
+  it('should handle change to individual view sytle', () => {
     expect(
-      alertReducer(
-        [
-          {
-            msg: 'Test Message',
-            alertType: 'success',
-            id: 'asd-asd-asd-asd',
-          },
-        ],
-        {
-          type: ActionTypes.removeAlert,
-          payload: 'asd-asd-asd-asd',
-        }
-      )
-    ).toEqual([]);
+      viewReducer('table', {
+        type: ActionTypes.selectView,
+        payload: 'individual',
+      })
+    ).toEqual('individual');
+  });
+
+  it('should handle change to table view sytle', () => {
+    expect(
+      viewReducer('individual', {
+        type: ActionTypes.selectView,
+        payload: 'table',
+      })
+    ).toEqual('table');
   });
 });
