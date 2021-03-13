@@ -1,29 +1,31 @@
 import { setAlert } from '../alerts';
+import { ActionTypes } from '../types';
+
+jest.mock('uuid', () => ({
+  v4: () => 'some-short-v4-uuid-0',
+}));
 
 describe('Redux::Actions Alerts', () => {
-  it('should setAlert', () => {
-    expect(true);
+  beforeEach(() => {
+    jest.useFakeTimers();
+  });
+
+  it('should set and remove alert after 1 second', () => {
+    const dispatch = jest.fn();
+    setAlert('Test Alert', 'success', 1000)(dispatch);
+    expect(dispatch).toHaveBeenCalledWith({
+      type: ActionTypes.setAlert,
+      payload: {
+        msg: 'Test Alert',
+        alertType: 'success',
+        id: 'some-short-v4-uuid-0',
+      },
+    });
+
+    jest.runAllTimers();
+    expect(dispatch).toHaveBeenCalledWith({
+      type: ActionTypes.removeAlert,
+      payload: 'some-short-v4-uuid-0',
+    });
   });
 });
-
-//  const dispatch = jest.fn();
-//   actions.yourAction()(dispatch);
-
-//   expect(dispatch.mock.calls.length).toBe(1);
-
-//   expect(dispatch.mock.calls[0]).toBe({
-//     type: SET_DATA,
-//     value: {...},
-//   });
-
-// it('should dispatch SET_LOADING_STATE on start of call', async () => {
-//   spyOn(apiCalls, 'fetchHelper').and.returnValue(Promise.resolve());
-//   const mockDispatch = jest.fn();
-
-//   await getSomeData()(mockDispatch);
-
-//   expect(mockDispatch).toHaveBeenCalledWith({
-//     type: SET_LOADING_STATE,
-//     value: true,
-//   });
-// });
