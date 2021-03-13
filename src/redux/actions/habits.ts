@@ -67,11 +67,11 @@ export const createHabit = (formData: string) => async (dispatch: Dispatch) => {
 
     // TODO: check if database exists before addHabit
     let id = await db.table('habits').add(habit);
-    const indexdHabit = await db.habits.get(Number(id));
+    const indexedHabit = await db.habits.get(Number(id));
 
     dispatch<CreateHabitAction>({
       type: ActionTypes.createHabit,
-      payload: indexdHabit!,
+      payload: indexedHabit!,
     });
   } catch (error) {
     dispatch<SetAlert>({
