@@ -1,30 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import '../src/styles/styles.scss';
 import { App } from './App';
-
-// Redux
-import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import thunk, { ThunkMiddleware } from 'redux-thunk';
-import { reducers, StoreState } from './redux/reducers';
-import { Actions } from './redux/actions';
-import { logger } from './utils/redux-logger';
 import { BrowserRouter } from 'react-router-dom';
-
-// TODO: Extract all this logic to a configStore function
-const initialState = {};
-const middleWares = [thunk as ThunkMiddleware<StoreState, Actions>];
-
-if (process.env.NODE_ENV !== 'production') {
-  middleWares.push(logger);
-}
-
-const store = createStore(
-  reducers,
-  initialState,
-  applyMiddleware(...middleWares)
-);
+import { store } from './redux/createStore';
+import '../src/styles/styles.scss';
 
 ReactDOM.render(
   <React.StrictMode>
