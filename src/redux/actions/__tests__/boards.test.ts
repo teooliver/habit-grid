@@ -4,9 +4,6 @@ import { ActionTypes } from '../types';
 
 jest.mock('../../../indexedDb/connectDb.ts');
 
-const datePoint = new Date();
-console.log(datePoint);
-
 describe('Redux::Actions Boards', () => {
   it('getBoards dispatches GetBoardsAction ', async () => {
     const dispatch = jest.fn();
