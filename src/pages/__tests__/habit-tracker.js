@@ -33,7 +33,7 @@ describe('Test Habit Tracker', () => {
   test('can add new Habits', async () => {
     const history = createMemoryHistory({ initialEntries: ['/'] });
 
-    const { getByLabelText, getByTestId, getByText, debug } = render(
+    const { getByLabelText, getByTestId, getByText } = render(
       <Provider store={store}>
         <Router history={history}>
           <AppRoutes />
