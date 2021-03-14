@@ -94,10 +94,10 @@ export const createBoard = (formData: CreateBoardFormData) => async (
   }
 };
 
+// TODO: Change to removeBoard
 export const removeBoards = (board: Board, boardIssuesIds: number[]) => async (
   dispatch: Dispatch
 ) => {
-  console.log(boardIssuesIds)
   try {
     if (boardIssuesIds) {
       await db.table('issues').bulkDelete(boardIssuesIds);
