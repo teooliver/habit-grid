@@ -4,9 +4,6 @@ import { ActionTypes } from '../types';
 
 jest.mock('../../../indexedDb/connectDb.ts');
 
-const datePoint = new Date();
-console.log(datePoint);
-
 describe('Redux::Actions Habits', () => {
   it('createHabit call dispatches CreateHabitAction', async () => {
     const dispatch = jest.fn();

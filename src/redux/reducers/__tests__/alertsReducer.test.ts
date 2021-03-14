@@ -1,4 +1,4 @@
-import alertReducer from '../alertsReducer';
+import { alertReducer } from '../alertsReducer';
 import { ActionTypes } from '../../actions/index';
 
 describe('Test Alert Reducer', () => {

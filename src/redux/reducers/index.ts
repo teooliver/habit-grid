@@ -1,12 +1,12 @@
-import { combineReducers } from "redux";
-import { habitsReducer } from "./habitsReducer";
-import { selectMonthYearReducer } from "./selectMonthYearReducer";
-import { viewReducer } from "./viewReducer";
-import { Habit, ViewOptions, Message, Board, Issue, Column } from "../actions";
-import alertReducer from "./alertsReducer";
-import { boardReducer } from "./boardReducer";
-import { issuesReducer } from "./issuesReducer";
-import { columnsReducer } from "./columnsReducer";
+import { combineReducers } from 'redux';
+import { habitsReducer } from './habitsReducer';
+import { selectMonthYearReducer } from './selectMonthYearReducer';
+import { viewReducer } from './viewReducer';
+import { Habit, ViewOptions, Message, Board, Issue, Column } from '../actions';
+import { alertReducer } from './alertsReducer';
+import { boardReducer } from './boardReducer';
+import { issuesReducer } from './issuesReducer';
+import { columnsReducer } from './columnsReducer';
 
 export interface StoreState {
   habits: Habit[];

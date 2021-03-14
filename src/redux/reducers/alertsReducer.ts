@@ -1,6 +1,6 @@
 import { ActionTypes, Message, AlertActions } from '../actions/index';
 
-export default function (state: Message[] = [], action: AlertActions) {
+export const alertReducer = (state: Message[] = [], action: AlertActions) => {
   switch (action.type) {
     case ActionTypes.setAlert:
       return [...state, action.payload];
@@ -9,4 +9,4 @@ export default function (state: Message[] = [], action: AlertActions) {
     default:
       return state;
   }
-}
+};
