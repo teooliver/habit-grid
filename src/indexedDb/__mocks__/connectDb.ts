@@ -1,5 +1,10 @@
 import Dexie from 'dexie';
-import { fakeHabit } from '../../utils/test/fakeDbData';
+import {
+  fakeBoards,
+  fakeHabit,
+  fakeColumns,
+  fakeIssues,
+} from '../../utils/test/fakeDbData';
 // require('fake-indexeddb/auto');
 const indexedDB = require('fake-indexeddb');
 const IDBKeyRange = require('fake-indexeddb/lib/FDBKeyRange');
@@ -19,8 +24,19 @@ db.version(1).stores({
 
 export const fakeEventPoint = '2021-03-13T15:16:52.540Z';
 
-// this will have an id equal to 1
 db.table('habits').add(fakeHabit);
+
+fakeBoards.map(async (board) => {
+  db.table('boards').add(board);
+});
+
+fakeColumns.map(async (col) => {
+  await db.table('columns').add(col);
+});
+
+fakeIssues.map(async (issue) => {
+  await db.table('issues').add(issue);
+});
 
 // import Dexie from 'dexie';
 // // @ts-ignore there is not a type for the fake indexeddb
