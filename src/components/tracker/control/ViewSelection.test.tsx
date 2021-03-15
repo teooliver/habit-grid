@@ -21,7 +21,7 @@ describe('Test ViewSelection Component', () => {
   test('should allow selection: "individual" or "table"', async () => {
     // const selectView = jest.fn();
 
-    const { getByTestId, container, debug } = render(
+    const { getByTestId, container } = render(
       <Provider store={store}>
         <ViewSelection />
       </Provider>
