@@ -20,6 +20,7 @@ jest.mock('../../indexedDb/connectDb.ts');
 //   issues: [],
 //   columns: [],
 // };
+
 const initialState = {};
 const store = createStore(reducers, initialState, applyMiddleware(thunk));
 
@@ -52,5 +53,9 @@ describe('Test Habit Tracker', () => {
     await waitFor(() => {
       getByText('test habit');
     });
+  });
+
+  test('can remove habit', () => {
+    expect('');
   });
 });

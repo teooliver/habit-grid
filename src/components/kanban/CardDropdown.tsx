@@ -40,7 +40,7 @@ const CardDropdown: React.FC<CardDropdownProps> = ({
     }
   };
 
-  //TODO: This is being repeated on  KanbanBoard and KanbanCard, need to stract in just on place, porbably a selector
+  //TODO: This is being repeated on  KanbanBoard and KanbanCard, need to stract it in just on place, maybe a selector?
   const getColumnName = (id: number) => {
     const foundObj = columns.find((col) => {
       if (col.id === id) return col.title;
