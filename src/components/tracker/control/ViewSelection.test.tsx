@@ -3,9 +3,6 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import { fireEvent, render, waitFor } from '@testing-library/react';
-import { selectView } from '../../../redux/actions/viewActions';
-import { createMemoryHistory } from 'history';
-import { Router } from 'react-router-dom';
 import { reducers } from '../../../redux/reducers';
 import ViewSelection from './ViewSelection';
 
@@ -22,31 +19,30 @@ beforeAll(() => {
 
 describe('Test ViewSelection Component', () => {
   test('should allow selection: "individual" or "table"', async () => {
-    const history = createMemoryHistory({ initialEntries: ['/'] });
+    const selectView = jest.fn();
 
-    const { getByTestId, debug } = render(
+    const { getByTestId, container, debug } = render(
       <Provider store={store}>
-        <Router history={history}>
-          <ViewSelection />
-        </Router>
+        <ViewSelection />
       </Provider>
     );
 
-    debug();
+    const tableIconSpan = getByTestId('table-view-icon');
+    const tableIcon = container.querySelector(
+      '[data-testId=table-view-icon] > svg'
+    );
+    const individualIconSpan = getByTestId('individual-view-icon');
+    const individualIcon = container.querySelector(
+      '[data-testId=individual-view-icon] > svg'
+    );
 
-    expect(getByTestId('table-view-icon'));
-    expect(getByTestId('individual-view-icon'));
+    expect(tableIcon).toHaveClass('selected');
 
-    // fireEvent.click(getByTestId('open-habit-form'));
+    fireEvent.click(individualIconSpan);
+    // await waitFor(() => expect(selectView).toHaveBeenNthCalledWith(1));
+    await waitFor(() => expect(individualIcon).toHaveClass('selected'));
 
-    // expect(getByLabelText('New Habit')).toBeInTheDocument();
-    // const input = getByLabelText(/new habit/i);
-    // const submitButton = getByTestId('submit');
-    // fireEvent.change(input, { target: { value: 'test habit' } });
-    // fireEvent.click(submitButton);
-
-    // await waitFor(() => {
-    //   getByText('test habit');
-    // });
+    fireEvent.click(tableIconSpan);
+    await waitFor(() => expect(tableIcon).toHaveClass('selected'));
   });
 });
