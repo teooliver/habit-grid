@@ -19,7 +19,7 @@ beforeAll(() => {
 
 describe('Test ViewSelection Component', () => {
   test('should allow selection: "individual" or "table"', async () => {
-    const selectView = jest.fn();
+    // const selectView = jest.fn();
 
     const { getByTestId, container, debug } = render(
       <Provider store={store}>
