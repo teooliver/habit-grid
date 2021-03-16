@@ -19,8 +19,6 @@ beforeAll(() => {
 
 describe('Test ViewSelection Component', () => {
   test('should allow selection: "individual" or "table"', async () => {
-    // const selectView = jest.fn();
-
     const { getByTestId, container } = render(
       <Provider store={store}>
         <ViewSelection />
@@ -39,10 +37,31 @@ describe('Test ViewSelection Component', () => {
     expect(tableIcon).toHaveClass('selected');
 
     fireEvent.click(individualIconSpan);
-    // await waitFor(() => expect(selectView).toHaveBeenNthCalledWith(1));
-    await waitFor(() => expect(individualIcon).toHaveClass('selected'));
+
+    await waitFor(() => {
+      expect(individualIcon).toHaveClass('selected');
+    });
 
     fireEvent.click(tableIconSpan);
     await waitFor(() => expect(tableIcon).toHaveClass('selected'));
+  });
+
+  // TODO: check selectView has been called with the proper arguments
+  test('should dispatch action of type  XXXX on view selection', async () => {
+    store.dispatch = jest.fn();
+
+    const { getByTestId } = render(
+      <Provider store={store}>
+        <ViewSelection />
+      </Provider>
+    );
+
+    const individualIconSpan = getByTestId('individual-view-icon');
+
+    fireEvent.click(individualIconSpan);
+
+    await waitFor(() => {
+      expect(store.dispatch).toHaveBeenCalledTimes(1);
+    });
   });
 });
