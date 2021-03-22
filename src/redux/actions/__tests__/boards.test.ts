@@ -1,4 +1,4 @@
-import { fakeBoards } from '../../../utils/test/fakeDbData';
+import { fakeBoards } from '../../../utils/test-utils/fakeDbData';
 import { getBoards, createBoard, removeBoards } from '../boards';
 import { ActionTypes } from '../types';
 

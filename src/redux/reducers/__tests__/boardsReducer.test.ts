@@ -1,6 +1,6 @@
 import { boardReducer } from '../boardReducer';
 import { ActionTypes } from '../../actions/index';
-import { fakeBoards } from '../../../utils/test/fakeDbData';
+import { fakeBoards } from '../../../utils/test-utils/fakeDbData';
 
 describe('Test Boards Reducer', () => {
   it('should handle get all boards', () => {

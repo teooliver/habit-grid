@@ -1,6 +1,6 @@
 import { columnsReducer } from '../columnsReducer';
 import { ActionTypes } from '../../actions/index';
-import { fakeColumns } from '../../../utils/test/fakeDbData';
+import { fakeColumns } from '../../../utils/test-utils/fakeDbData';
 
 describe('Test Columns Reducer', () => {
   it('should handle get Columns', () => {

@@ -4,7 +4,7 @@ import {
   fakeHabit,
   fakeColumns,
   fakeIssues,
-} from '../../utils/test/fakeDbData';
+} from '../../utils/test-utils/fakeDbData';
 // require('fake-indexeddb/auto');
 const indexedDB = require('fake-indexeddb');
 const IDBKeyRange = require('fake-indexeddb/lib/FDBKeyRange');

@@ -1,4 +1,4 @@
-import { fakeColumns } from '../../../utils/test/fakeDbData';
+import { fakeColumns } from '../../../utils/test-utils/fakeDbData';
 import { getBoardColumns, removeColumn } from '../columns';
 import { ActionTypes } from '../types';
 

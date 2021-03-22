@@ -1,4 +1,4 @@
-import { fakeEventPoint } from '../../../utils/test/fakeDbData';
+import { fakeEventPoint } from '../../../utils/test-utils/fakeDbData';
 import { createHabit, removeHabit, addPoint, removePoint } from '../habits';
 import { ActionTypes } from '../types';
 

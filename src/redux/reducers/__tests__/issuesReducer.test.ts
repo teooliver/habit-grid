@@ -1,6 +1,6 @@
 import { issuesReducer } from '../issuesReducer';
 import { ActionTypes } from '../../actions/index';
-import { fakeIssues } from '../../../utils/test/fakeDbData';
+import { fakeIssues } from '../../../utils/test-utils/fakeDbData';
 
 describe('Test Issues Reducer', () => {
   it('should handle get all Issues', () => {

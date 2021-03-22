@@ -1,4 +1,4 @@
-import { fakeIssues } from '../../../utils/test/fakeDbData';
+import { fakeIssues } from '../../../utils/test-utils/fakeDbData';
 import {
   getIssues,
   createIssue,
