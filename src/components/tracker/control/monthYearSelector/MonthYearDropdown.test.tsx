@@ -69,7 +69,7 @@ describe.only('Test MonthYearDropdown Component', () => {
     const selectedMonthYear = getByText('JAN / 2021');
 
     // TODO: Jest is complaining the toBe('JAN / 2021')
-    expect(selectedMonthYear).toBe('JAN / 2021');
+    expect(selectedMonthYear).toBeInTheDocument();
   });
 
   test('can select  Year', async () => {
@@ -94,9 +94,9 @@ describe.only('Test MonthYearDropdown Component', () => {
     fireEvent.click(yearOption);
 
     // // // Todo find better regex for "Jan / 2021"
-    const selectedMonthYear = getByText('MAR / 2021');
+    const selectedMonthYear = getByText('JAN / 2021');
 
     // TODO: Jest is complaining the toBe('JAN / 2021')
-    expect(selectedMonthYear).toBe('MAR / 2021');
+    expect(selectedMonthYear).toBeInTheDocument();
   });
 });

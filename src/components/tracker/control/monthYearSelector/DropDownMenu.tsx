@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { months } from '../../../../utils/constants';
 import { StoreState } from '../../../../redux/reducers';
 import { connect } from 'react-redux';
@@ -28,25 +28,26 @@ const DropDownMenu: React.FC<Props> = ({
   const [activeMenu, setActiveMenu] = useState('main');
   const dropDownRef = useRef<HTMLDivElement>(null);
 
+  const handleClickOutside = useCallback(
+    (e) => {
+      if (
+        dropDownRef.current != null &&
+        !dropDownRef.current.contains(e.target)
+      ) {
+        setIsOpen(false);
+      } else {
+        return;
+      }
+    },
+    [setIsOpen]
+  );
+
   useEffect(() => {
     document.addEventListener('click', (e) => handleClickOutside(e));
     return () => {
       document.removeEventListener('click', (e) => handleClickOutside(e));
     };
-  }, []);
-
-  const handleClickOutside: Function = (
-    e: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    if (
-      dropDownRef.current != null &&
-      !dropDownRef.current.contains(e.target)
-    ) {
-      setIsOpen(false);
-    } else {
-      return;
-    }
-  };
+  }, [handleClickOutside]);
 
   return (
     <div ref={dropDownRef} className="dropdown" data-testid="dropdown">
