@@ -49,7 +49,7 @@ const DropDownMenu: React.FC<Props> = ({
   };
 
   return (
-    <div ref={dropDownRef} className="dropdown">
+    <div ref={dropDownRef} className="dropdown" data-testid="dropdown">
       <ul className={` ${activeMenu === 'main' ? 'active' : 'inactive'}`}>
         <li
           className="menu-item"

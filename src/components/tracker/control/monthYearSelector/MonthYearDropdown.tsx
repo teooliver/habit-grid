@@ -44,16 +44,19 @@ const MonthYearDropdown: React.FC<Props> = ({
     <>
       {habits.length !== 0 && (
         <div className="MonthDropdown">
-          <div onClick={() => setIsOpen(!isOpen)}>
-            <button className="dropdown-button">
-              <span className="dropdown-button-text">
-                {months[selectedMonth].toUpperCase()} / {selectedYear}
-              </span>
-              <ChevronBarExpandIcon
-                className={`dropdown-button-icon ${isOpen ? 'isOpen' : ''}`}
-              />
-            </button>
-          </div>
+          <button
+            aria-expanded={isOpen ? 'true' : 'false'}
+            className="dropdown-button"
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            <span className="dropdown-button-text">
+              {months[selectedMonth].toUpperCase()} / {selectedYear}
+            </span>
+            <ChevronBarExpandIcon
+              className={`dropdown-button-icon ${isOpen ? 'isOpen' : ''}`}
+            />
+          </button>
+
           {isOpen && (
             <DropDownMenu
               setIsOpen={setIsOpen}
