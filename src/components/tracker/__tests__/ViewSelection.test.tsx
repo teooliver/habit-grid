@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import { fireEvent, render, waitFor } from '@testing-library/react';
 import { reducers } from '../../../redux/reducers';
-import ViewSelection from './ViewSelection';
+import ViewSelection from '../control/ViewSelection';
 
 jest.mock('../../../indexedDb/connectDb.ts');
 
@@ -47,7 +47,7 @@ describe('Test ViewSelection Component', () => {
   });
 
   // TODO: check selectView has been called with the proper arguments
-  test('should dispatch action of type  XXXX on view selection', async () => {
+  test('should dispatch action on view selection', async () => {
     store.dispatch = jest.fn();
 
     const { getByTestId } = render(

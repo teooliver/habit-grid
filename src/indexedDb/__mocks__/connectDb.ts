@@ -25,7 +25,6 @@ db.version(1).stores({
 export const fakeEventPoint = '2021-03-13T15:16:52.540Z';
 
 // TODO: refactor data seeding as functions
-
 db.table('habits').add(fakeHabit);
 
 fakeBoards.map(async (board) => {

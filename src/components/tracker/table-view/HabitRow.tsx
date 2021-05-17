@@ -25,6 +25,7 @@ const HabitRow: React.FC<Props> = ({
   return (
     <tr>
       <td
+        data-testid={`habit-name-${habit.name}`}
         className="habit-name"
         style={{ color: colors[((index % n) + n) % n] }}
         onClick={() => setisTrashVisible(!isTrashVisible)}
@@ -32,7 +33,11 @@ const HabitRow: React.FC<Props> = ({
         <div className="habit-name-items">
           <span> {habit.name} </span>
 
-          <div className="trash-icon" onClick={() => removeHabit(habit.id)}>
+          <div
+            data-testid={`delete-${habit.name}`}
+            className="trash-icon"
+            onClick={() => removeHabit(habit.id)}
+          >
             {isTrashVisible && <TrashIcon />}
           </div>
         </div>
