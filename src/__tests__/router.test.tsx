@@ -1,5 +1,4 @@
 import React from 'react';
-// import { render, screen } from '../utils/test-utils';
 import { createMemoryHistory } from 'history';
 import { Router } from 'react-router-dom';
 import { AppRoutes } from '../AppRoutes';
@@ -14,12 +13,6 @@ const initialState = { alerts: [], habits: [], boards: [] };
 const middlewares = [thunk];
 const mockStore = configureStore(middlewares);
 let store = mockStore(initialState);
-
-beforeAll(() => {
-  const portalRoot = document.createElement('div');
-  portalRoot.setAttribute('id', 'portal-root');
-  document.body.append(portalRoot);
-});
 
 describe('Test Router', () => {
   test('renders Home when navigating to "/"', () => {

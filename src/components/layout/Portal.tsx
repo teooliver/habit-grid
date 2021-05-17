@@ -10,8 +10,8 @@ interface PortalProps {
 const KEYCODES = {
   ESCAPE: 27,
 };
-const portalRoot = document.createElement('div');
-portalRoot.id = 'portal-root';
+// const portalRoot = document.createElement('div');
+// portalRoot.id = 'portal-root';
 
 // const createPortalRootDiv = () => {
 //   const portalRoot = document.createElement('div');

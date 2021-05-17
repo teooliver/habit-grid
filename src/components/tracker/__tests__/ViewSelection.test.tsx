@@ -11,12 +11,6 @@ jest.mock('../../../indexedDb/connectDb.ts');
 const initialState = {};
 const store = createStore(reducers, initialState, applyMiddleware(thunk));
 
-beforeAll(() => {
-  const portalRoot = document.createElement('div');
-  portalRoot.setAttribute('id', 'portal-root');
-  document.body.append(portalRoot);
-});
-
 describe('Test ViewSelection Component', () => {
   test('should allow selection: "individual" or "table"', async () => {
     const { getByTestId, container } = render(

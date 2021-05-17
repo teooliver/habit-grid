@@ -16,6 +16,7 @@ import { Provider } from 'react-redux';
 
 jest.mock('../../../indexedDb/connectDb.ts');
 
+//  State object example:
 // const initialState = {
 //   habits: [],
 //   selectedMonthYear: [],
@@ -28,10 +29,6 @@ jest.mock('../../../indexedDb/connectDb.ts');
 
 const initialState = {};
 const store = createStore(reducers, initialState, applyMiddleware(thunk));
-
-const portalRoot = document.createElement('div');
-portalRoot.setAttribute('id', 'portal-root');
-document.body.append(portalRoot);
 
 describe('Test Habit Tracker', () => {
   test('can add new Habits', async () => {
@@ -62,7 +59,7 @@ describe('Test Habit Tracker', () => {
   test('can remove habit', () => {
     const history = createMemoryHistory({ initialEntries: ['/'] });
 
-    const { getByLabelText, getByTestId, getByText } = render(
+    const { getByTestId, getByText } = render(
       <Provider store={store}>
         <Router history={history}>
           <AppRoutes />
