@@ -45,6 +45,7 @@ const CardDropdown: React.FC<CardDropdownProps> = ({
   const getColumnName = (id: number) => {
     const foundObj = columns.find((col) => {
       if (col.id === id) return col.title;
+      return undefined;
     });
     if (foundObj) {
       return foundObj.title;
