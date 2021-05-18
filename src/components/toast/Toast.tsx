@@ -2,11 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { StoreState } from '../../redux/reducers';
 import { Message } from '../../redux/actions';
-// import { setAlert } from "../../redux/actions/alerts";
 
 interface Props {
   alerts: Message[];
-  // setAlert: Function;
 }
 
 const Toast: React.FC<Props> = ({ alerts }) => {
@@ -21,6 +19,7 @@ const Toast: React.FC<Props> = ({ alerts }) => {
       {isOpen ? (
         <div
           className={`Toast ${isOpen ? 'open ' + alerts[0]?.alertType : ''}`}
+          data-testid="toast"
         >
           <p className="toast_type">{alerts[0]?.alertType}</p>
           <p className="toast_body">{alerts[0]?.msg}</p>

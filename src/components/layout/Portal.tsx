@@ -1,8 +1,8 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useCallback } from 'react';
 import ReactDOM from 'react-dom';
 
 interface PortalProps {
-  // children: React.ReactNode;
+  children: React.ReactNode;
   setIsModalOpen: Function;
   isModalOpen: boolean;
 }
@@ -10,6 +10,7 @@ interface PortalProps {
 const KEYCODES = {
   ESCAPE: 27,
 };
+
 // const portalRoot = document.createElement('div');
 // portalRoot.id = 'portal-root';
 
@@ -24,8 +25,27 @@ export const Portal: React.FC<PortalProps> = ({
   setIsModalOpen,
   isModalOpen,
 }) => {
-  // const [isOpen, setIsOpen] = useState(true);
   const modalRef = useRef<HTMLDivElement>(null);
+
+  const handleClickOutside: Function = useCallback(
+    (e: React.MouseEvent<HTMLInputElement>) => {
+      if (modalRef.current != null && e.target === modalRef.current) {
+        setIsModalOpen(false);
+      } else {
+        return;
+      }
+    },
+    [setIsModalOpen]
+  );
+
+  const handleKeydown = useCallback(
+    (e: KeyboardEvent) => {
+      if (e.keyCode === KEYCODES.ESCAPE && isModalOpen) {
+        setIsModalOpen(false);
+      }
+    },
+    [isModalOpen, setIsModalOpen]
+  );
 
   useEffect(() => {
     document.addEventListener('click', (e) => handleClickOutside(e));
@@ -34,23 +54,7 @@ export const Portal: React.FC<PortalProps> = ({
       document.removeEventListener('click', (e) => handleClickOutside(e));
       document.removeEventListener('keydown', handleKeydown);
     };
-  }, []);
-
-  const handleClickOutside: Function = (
-    e: React.MouseEvent<HTMLInputElement>
-  ) => {
-    if (modalRef.current != null && e.target === modalRef.current) {
-      setIsModalOpen(false);
-    } else {
-      return;
-    }
-  };
-
-  const handleKeydown = (e: KeyboardEvent) => {
-    if (e.keyCode === KEYCODES.ESCAPE && isModalOpen) {
-      setIsModalOpen(false);
-    }
-  };
+  }, [handleClickOutside, handleKeydown]);
 
   return ReactDOM.createPortal(
     <div
