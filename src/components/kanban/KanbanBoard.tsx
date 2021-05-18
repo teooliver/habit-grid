@@ -74,9 +74,10 @@ const KanbanBoard: React.FC<KanbanBoardProps> = ({
   };
 
   return (
-    <div className="KanbanBoard">
+    <div className="KanbanBoard" data-testid="KanbanBoard">
       <button
         className="remove-board-btn"
+        data-testid="remove-board-btn"
         onClick={() => removeBoards(board, getBoardIssuesIds(board).flat())}
       >
         <CloseIcon className="close-icon" />

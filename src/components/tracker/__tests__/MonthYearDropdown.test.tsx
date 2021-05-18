@@ -8,8 +8,6 @@ import MonthYearDropdown from '../control/monthYearSelector/MonthYearDropdown';
 
 jest.mock('../../../indexedDb/connectDb.ts');
 
-// const currentMonthNumber = new Date().getMonth;
-
 const fake2000Date = new Date('January 1, 2000, 00:00:00');
 const fakeCurrentDate = new Date();
 

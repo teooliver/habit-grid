@@ -16,17 +16,6 @@ import { Provider } from 'react-redux';
 
 jest.mock('../../../indexedDb/connectDb.ts');
 
-//  State object example:
-// const initialState = {
-//   habits: [],
-//   selectedMonthYear: [],
-//   selectedView: [],
-//   alerts: [],
-//   boards: [],
-//   issues: [],
-//   columns: [],
-// };
-
 const initialState = {};
 const store = createStore(reducers, initialState, applyMiddleware(thunk));
 

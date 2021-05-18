@@ -8,7 +8,7 @@ import KanbanCard from '../KanbanCard';
 const initialState = {
   alerts: [],
   habits: [],
-  boards: [{ name: 'test-board', columnnIds: Array(3), id: 1 }],
+  boards: [{ name: 'test-board', columnnIds: [1, 2, 3], id: 1 }],
   columns: [
     { title: 'Todo', boardId: 1, id: 1 },
     { title: 'In Prog', boardId: 1, id: 2 },
@@ -25,11 +25,8 @@ let store = mockStore(initialState);
 describe('Test KanbanCard Component', () => {
   test('Can render Card', () => {
     const Wrapper = () => {
-      // const [isOpen, setIsOpen] = useState(false);
-
       return (
         <Provider store={store}>
-          {/* <Router history={history}> */}
           <KanbanCard
             title="test-title"
             description="test-description"
@@ -38,7 +35,6 @@ describe('Test KanbanCard Component', () => {
             boardId={1}
             boardColumnsIds={[1, 2, 3]}
           />
-          {/* </Router> */}
         </Provider>
       );
     };
