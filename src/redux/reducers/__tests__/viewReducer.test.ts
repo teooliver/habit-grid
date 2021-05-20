@@ -1,7 +1,7 @@
 import { viewReducer } from '../viewReducer';
 import { ActionTypes } from '../../actions/index';
 
-describe('Test View Reducer', () => {
+describe('Redux::Test View Reducer', () => {
   it('should handle change view style', () => {
     expect(
       viewReducer('table', {

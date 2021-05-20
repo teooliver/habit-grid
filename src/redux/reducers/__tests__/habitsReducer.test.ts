@@ -16,7 +16,7 @@ const mockedHabitsInitialState: Habit[] = [
   },
 ];
 
-describe('Test Habits Reducer', () => {
+describe('Redux::Test Habits Reducer', () => {
   it('should handle get all habits', () => {
     expect(
       habitsReducer([], {

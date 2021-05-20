@@ -2,7 +2,7 @@ import { issuesReducer } from '../issuesReducer';
 import { ActionTypes } from '../../actions/index';
 import { fakeIssues } from '../../../utils/test-utils/fakeDbData';
 
-describe('Test Issues Reducer', () => {
+describe('Redux::Test Issues Reducer', () => {
   it('should handle get all Issues', () => {
     expect(
       issuesReducer([], {

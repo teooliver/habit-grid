@@ -1,7 +1,7 @@
 import { alertReducer } from '../alertsReducer';
 import { ActionTypes } from '../../actions/index';
 
-describe('Test Alert Reducer', () => {
+describe('Redux::Test Alert Reducer', () => {
   it('should handle setAlert', () => {
     expect(
       alertReducer([], {

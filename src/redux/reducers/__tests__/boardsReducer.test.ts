@@ -2,7 +2,7 @@ import { boardReducer } from '../boardReducer';
 import { ActionTypes } from '../../actions/index';
 import { fakeBoards } from '../../../utils/test-utils/fakeDbData';
 
-describe('Test Boards Reducer', () => {
+describe('Redux::Test Boards Reducer', () => {
   it('should handle get all boards', () => {
     expect(
       boardReducer([], {

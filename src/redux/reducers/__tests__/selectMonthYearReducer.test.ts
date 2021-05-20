@@ -4,7 +4,7 @@ import { ActionTypes } from '../../actions/index';
 const currentMonth = new Date().getMonth();
 const currentYear = new Date().getFullYear();
 
-describe('Test Select Month and Year Reducer', () => {
+describe('Redux::Test Select Month and Year Reducer', () => {
   it('should handle select Month', () => {
     expect(
       selectMonthYearReducer(

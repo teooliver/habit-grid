@@ -2,7 +2,7 @@ import { columnsReducer } from '../columnsReducer';
 import { ActionTypes } from '../../actions/index';
 import { fakeColumns } from '../../../utils/test-utils/fakeDbData';
 
-describe('Test Columns Reducer', () => {
+describe('Redux::Test Columns Reducer', () => {
   it('should handle get Columns', () => {
     expect(
       columnsReducer([], {
