@@ -1,14 +1,10 @@
 .Home {
   display: flex;
   section {
-    // justify-content: center;
-    // align-items: center;
     border: 1px solid gray;
     border-radius: 0.2rem;
-    // padding: 1rem;
     margin: 0.5rem;
-    // height: 60vh;
-    // width: auto;
+
     &:hover {
       background-color: lightcoral;
       h2 {
