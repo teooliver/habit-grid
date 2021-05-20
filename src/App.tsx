@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import Navbar from './components/layout/Navbar';
-import Toast from './components/Toast/Toast';
+import Toast from './components/toast/Toast';
 import { getHabits, getViewSelection, getBoards } from './redux/actions';
 import ServiceWorkerWrapper from './ServiceWorkerWrapper';
 import './styles/styles.scss';
