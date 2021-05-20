@@ -44,7 +44,7 @@ describe('Redux::Actions Boards', () => {
       });
     });
 
-    // for each columon in board.columns
+    // for each column in board.columns
     fakeBoards[0].columnnIds.forEach((id) => {
       expect(dispatch).toHaveBeenCalledWith({
         type: ActionTypes.deleteKanbanColumn,
